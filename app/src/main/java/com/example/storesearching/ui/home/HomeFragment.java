@@ -14,9 +14,54 @@ import com.example.storesearching.databinding.FragmentHomeBinding;
 import android.widget.SearchView;
 import com.example.storesearching.R;
 import android.util.TypedValue;
+import android.util.Log;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private View root;
+    class HomeState{
+        public int SearchMode;
+        public String[] textView_SearchMode_content;
+        public String[] button_SwitchSearchMode_content;
+
+
+        public HomeState(){
+            SearchMode = 0;
+            textView_SearchMode_content = new String[2];
+            button_SwitchSearchMode_content = new String[2];
+            textView_SearchMode_content[0] = "stores";
+            textView_SearchMode_content[1] = "items";
+            button_SwitchSearchMode_content[0] = "store";
+            button_SwitchSearchMode_content[1] = "item";
+            update();
+        }
+        private void update(){
+            //搜索设置文本框
+            TextView textView_SearchMode = root.findViewById(R.id.textView_SearchMode); // 找到你的 TextView 组件
+            textView_SearchMode.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            textView_SearchMode.setText("Search for " + textView_SearchMode_content[SearchMode]);
+
+            //搜索模式切换按钮
+            TextView button_SwitchSearchMode = root.findViewById(R.id.button_SwitchSearchMode); // 找到你的 TextView 组件
+            //textView_SearchMode.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            button_SwitchSearchMode.setText("Switch to " + button_SwitchSearchMode_content[SearchMode ^ 1]);
+            button_SwitchSearchMode.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 这里编写按钮被点击时要执行的操作
+                    // 例如，可以在这里处理按钮点击后的逻辑
+                    // 例如，可以打开一个新的界面，或者执行一些其他操作
+                    // 在这个示例中，我们简单地打印一条日志消息
+                    Log.d("Button Clicked", "Button SwitchSearchMode clicked!");
+                }
+            });
+        }
+        public void flip(){
+            SearchMode = SearchMode ^ 1;
+        }
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -24,16 +69,16 @@ public class HomeFragment extends Fragment {
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        root = binding.getRoot();
 
         final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
+        //初始化search mode
+        HomeState HomeSearchMode = new HomeState();
 
-        //搜索设置显示
-        TextView textView_SearchMode = root.findViewById(R.id.textView_SearchMode); // 找到你的 TextView 组件
-        textView_SearchMode.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-        textView_SearchMode.setText("Search for stores");
+
+
         //搜索框及其设置
         SearchView searchView = root.findViewById(R.id.mainSearchView);
         searchView.setIconified(false);

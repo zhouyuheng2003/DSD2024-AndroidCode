@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.storesearching.app-mergeDebugResources-39:/values-v18/values-v18.xml",
+            "outputFile": "com.example.storesearching.app-mergeDebugResources-42:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\zhouy\\.gradle\\caches\\transforms-3\\4ad317e8caeb934c0a7684a622b18668\\transformed\\appcompat-1.4.1\\res\\values-v18\\values-v18.xml",
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\4ad317e8caeb934c0a7684a622b18668\\transformed\\appcompat-1.4.1\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
