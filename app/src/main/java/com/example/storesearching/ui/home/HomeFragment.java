@@ -12,9 +12,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.storesearching.databinding.FragmentHomeBinding;
 import android.widget.SearchView;
+import android.widget.Button;
 import com.example.storesearching.R;
 import android.util.TypedValue;
 import android.util.Log;
+import android.graphics.Color;
+
 
 public class HomeFragment extends Fragment {
 
@@ -38,21 +41,20 @@ public class HomeFragment extends Fragment {
         }
         private void update(){
             //搜索设置文本框
-            TextView textView_SearchMode = root.findViewById(R.id.textView_SearchMode); // 找到你的 TextView 组件
+            TextView textView_SearchMode = root.findViewById(R.id.textView_SearchMode);
             textView_SearchMode.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             textView_SearchMode.setText("Search for " + textView_SearchMode_content[SearchMode]);
 
             //搜索模式切换按钮
-            TextView button_SwitchSearchMode = root.findViewById(R.id.button_SwitchSearchMode); // 找到你的 TextView 组件
-            //textView_SearchMode.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            Button button_SwitchSearchMode = root.findViewById(R.id.button_SwitchSearchMode);
+            button_SwitchSearchMode.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
             button_SwitchSearchMode.setText("Switch to " + button_SwitchSearchMode_content[SearchMode ^ 1]);
+            button_SwitchSearchMode.setBackgroundColor(Color.parseColor("#B9DADF"));
             button_SwitchSearchMode.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // 这里编写按钮被点击时要执行的操作
-                    // 例如，可以在这里处理按钮点击后的逻辑
-                    // 例如，可以打开一个新的界面，或者执行一些其他操作
-                    // 在这个示例中，我们简单地打印一条日志消息
+                    SearchMode^=1;
+                    update();
                     Log.d("Button Clicked", "Button SwitchSearchMode clicked!");
                 }
             });
