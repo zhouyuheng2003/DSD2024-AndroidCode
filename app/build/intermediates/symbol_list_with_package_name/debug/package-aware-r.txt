@@ -2705,6 +2705,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_nav_home_to_storeFragment
 id action_settings
 id action_text
 id actions
@@ -2741,6 +2742,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id button
 id buttonPanel
 id button_SwitchSearchMode
 id cache_measures
@@ -2882,10 +2884,12 @@ id light
 id line1
 id line3
 id linear
+id linearlayout_searchresult
 id listMode
 id list_item
 id locale
 id ltr
+id mainScrollView
 id mainSearchView
 id masked
 id match_constraint
@@ -3062,6 +3066,7 @@ id startVertical
 id staticLayout
 id staticPostLayout
 id stop
+id storeFragment
 id stretch
 id submenuarrow
 id submit_area
@@ -3093,9 +3098,9 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView2
 id textView_SearchMode
 id text_gallery
-id text_home
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3256,6 +3261,8 @@ layout design_text_input_start_icon
 layout fragment_gallery
 layout fragment_home
 layout fragment_slideshow
+layout fragment_store
+layout layout_listitem
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3448,6 +3455,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string first_fragment_label
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string home_ad_image_desc
 string home_add_fab_desc
