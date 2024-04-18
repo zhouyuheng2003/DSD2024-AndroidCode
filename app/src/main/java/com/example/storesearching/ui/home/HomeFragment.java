@@ -68,10 +68,37 @@ public class HomeFragment extends Fragment {
             SearchMode = SearchMode ^ 1;
         }
     }
+    private LayoutInflater inflater;
+    private void updateSearchResult(){
+        LinearLayout linearlayout_searchresult = root.findViewById(R.id.linearlayout_searchresult);
 
 
+        View[] listItemViews = new View[20];
+        for (int i = 0; i < 20; i++) {
+            View listItemView = inflater.inflate(R.layout.layout_listitem, null);
+            Button button = listItemView.findViewById(R.id.button);
+            TextView textView_no = listItemView.findViewById(R.id.textView_no);
+            textView_no.setText("Number"+(i + 1)+": ");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    int valueToSend = 123; // 要传递的整数值
+                    bundle.putInt("storeId", valueToSend); // 将整数值放入 Bundle 中，使用一个键来标识它
+                    Navigation.findNavController(view).navigate(R.id.action_nav_home_to_storeFragment, bundle);
+                }
+            });
+            listItemViews[i] = listItemView;
+            linearlayout_searchresult.addView(listItemView);
+        }
+    }
+    public void onResume() {
+        super.onResume();
+        updateSearchResult();
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        this.inflater = inflater;
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -92,24 +119,7 @@ public class HomeFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                LinearLayout linearlayout_searchresult = root.findViewById(R.id.linearlayout_searchresult);
-
-
-                View[] listItemViews = new View[20];
-                for (int i = 0; i < 20; i++) {
-                    View listItemView = inflater.inflate(R.layout.layout_listitem, null);
-                    Button button = listItemView.findViewById(R.id.button);
-                    button.setText("Button " + (i + 1));
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            // 点击按钮后跳转到另一个 Fragment
-                            Navigation.findNavController(view).navigate(R.id.action_nav_home_to_storeFragment);
-                        }
-                    });
-                    listItemViews[i] = listItemView;
-                    linearlayout_searchresult.addView(listItemView);
-                }
+                updateSearchResult();
                 return false;
             }
 

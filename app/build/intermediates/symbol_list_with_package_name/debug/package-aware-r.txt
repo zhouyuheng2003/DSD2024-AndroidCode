@@ -3099,7 +3099,10 @@ id textStart
 id textTop
 id textView
 id textView2
+id textView3
+id textView4
 id textView_SearchMode
+id textView_no
 id text_gallery
 id text_input_end_icon
 id text_input_error_icon

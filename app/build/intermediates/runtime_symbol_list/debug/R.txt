@@ -3098,7 +3098,10 @@ int id textStart 0x7f0801c7
 int id textTop 0x7f0801c8
 int id textView 0x7f0801c9
 int id textView2 0x7f080201
+int id textView3 0x7f080205
+int id textView4 0x7f080206
 int id textView_SearchMode 0x7f0801ca
+int id textView_no 0x7f080207
 int id text_gallery 0x7f0801cb
 int id text_input_end_icon 0x7f0801cd
 int id text_input_error_icon 0x7f0801ce

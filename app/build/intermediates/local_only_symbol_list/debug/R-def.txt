@@ -53,7 +53,10 @@ id nav_view
 id storeFragment
 id textView
 id textView2
+id textView3
+id textView4
 id textView_SearchMode
+id textView_no
 id text_gallery
 id text_slideshow
 id toolbar

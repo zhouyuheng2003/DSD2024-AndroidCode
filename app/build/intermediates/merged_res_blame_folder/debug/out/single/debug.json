@@ -36,6 +36,10 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\layout_fragment_store.xml.flat",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\fragment_store.xml"
+    },
+    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\layout_layout_order_summary_card.xml.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_order_summary_card.xml"
     },
@@ -64,10 +68,6 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_home_top_app_bar.xml"
     },
     {
-        "merged": "com.example.storesearching.app-merged_res-44:/navigation_mobile_navigation.xml.flat",
-        "source": "com.example.storesearching.app-main-46:/navigation/mobile_navigation.xml"
-    },
-    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
@@ -92,6 +92,10 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "com.example.storesearching.app-merged_res-44:/layout_fragment_home.xml.flat",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_home.xml"
+    },
+    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\xml_backup_rules.xml.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\xml\\backup_rules.xml"
     },
@@ -110,10 +114,6 @@
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\drawable_ic_menu_gallery.xml.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\drawable\\ic_menu_gallery.xml"
-    },
-    {
-        "merged": "com.example.storesearching.app-merged_res-44:/layout_fragment_store.xml.flat",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_store.xml"
     },
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\layout_products_list_item.xml.flat",

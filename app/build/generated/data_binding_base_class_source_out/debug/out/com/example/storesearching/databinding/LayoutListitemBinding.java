@@ -26,11 +26,15 @@ public final class LayoutListitemBinding implements ViewBinding {
   @NonNull
   public final TextView textView2;
 
+  @NonNull
+  public final TextView textViewNo;
+
   private LayoutListitemBinding(@NonNull LinearLayout rootView, @NonNull Button button,
-      @NonNull TextView textView2) {
+      @NonNull TextView textView2, @NonNull TextView textViewNo) {
     this.rootView = rootView;
     this.button = button;
     this.textView2 = textView2;
+    this.textViewNo = textViewNo;
   }
 
   @Override
@@ -72,7 +76,13 @@ public final class LayoutListitemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new LayoutListitemBinding((LinearLayout) rootView, button, textView2);
+      id = R.id.textView_no;
+      TextView textViewNo = ViewBindings.findChildViewById(rootView, id);
+      if (textViewNo == null) {
+        break missingId;
+      }
+
+      return new LayoutListitemBinding((LinearLayout) rootView, button, textView2, textViewNo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

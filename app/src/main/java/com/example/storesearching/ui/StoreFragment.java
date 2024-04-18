@@ -51,6 +51,13 @@ public class StoreFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            // 从 Bundle 中分别获取整数值和字符串值
+            int receivedIntValue = bundle.getInt("intKey");
+            String receivedStringValue = bundle.getString("stringKey");
+            // 使用接收到的值...
+        }
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
