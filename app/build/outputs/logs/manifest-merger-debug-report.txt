@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [androidx.databinding:viewbinding:8.0.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\5fbc36163ce99e44b453dea252dbc822\transformed\viewbinding-8.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-ui:2.5.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\fb948d513b2fbd5a8363758261afe4e8\transformed\navigation-ui-2.5.2\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.5.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b79e00459b51debe71c70b38b92dedee\transformed\material-1.5.0\AndroidManifest.xml:17:1-24:12
@@ -62,27 +62,41 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] D:\Program Files\Java\jdk
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\e955da626a3fb0b49faa6dcf12a4f6a2\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\e15e0c47fb3dde4d9ec9696347094b31\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\d1aa2b371f1e9df558d544988d3133ef\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-28:12
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:5:5-97
+	android:name
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:7:5-95
+	android:name
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.INTERNET
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:8:5-83
+MERGED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:8:22-64
 application
-ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:5:5-26:19
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:12:5-33:19
 MERGED from [com.google.android.material:material:1.5.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b79e00459b51debe71c70b38b92dedee\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.5.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b79e00459b51debe71c70b38b92dedee\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] D:\Program Files\Java\jdk-1.8\caches\transforms-3\91a4ee518fac6b7ce5b8aea777d63a78\transformed\constraintlayout-2.1.3\AndroidManifest.xml:9:5-20
@@ -110,43 +124,43 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] D:\Program 
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\c1bc9974ce087a4885457a421dafaa18\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:19:9-35
 	android:label
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:17:9-41
 	android:fullBackupContent
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:15:9-54
 	android:roundIcon
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:18:9-54
 	tools:targetApi
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:14:9-29
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:21:9-29
 	android:icon
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:16:9-43
 	android:allowBackup
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:13:9-52
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:20:9-52
 	android:dataExtractionRules
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:14:9-65
 activity#com.example.storesearching.MainActivity
-ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:15:9-25:20
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:22:9-32:20
 	android:label
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:18:13-45
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:25:13-45
 	android:exported
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:24:13-36
 	android:theme
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:19:13-68
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:26:13-68
 	android:name
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:23:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:27:13-31:29
 action#android.intent.action.MAIN
-ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:28:17-69
 	android:name
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:28:25-66
 category#android.intent.category.LAUNCHER
-ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml:30:27-74
 uses-sdk
 INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from K:\Document\DSD2024-AndroidCode\app\src\main\AndroidManifest.xml
@@ -281,10 +295,6 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:23:5-79
 	android:name
 		ADDED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:23:22-76
-uses-permission#android.permission.INTERNET
-ADDED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:24:5-67
-	android:name
-		ADDED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:24:22-64
 uses-feature#0x00020000
 ADDED from [com.google.android.gms:play-services-maps:18.0.2] D:\Program Files\Java\jdk-1.8\caches\transforms-3\b46081cc02ea4cfdd37795c98a63c3a7\transformed\play-services-maps-18.0.2\AndroidManifest.xml:26:5-28:35
 	android:glEsVersion

@@ -16,9 +16,13 @@ import android.widget.ScrollView;
 import android.widget.LinearLayout;
 import android.widget.Button;
 import com.example.storesearching.R;
+import com.example.storesearching.util.TestLocationActivity;
+
 import android.util.TypedValue;
 import android.util.Log;
 import android.graphics.Color;
+import android.widget.Toast;
+
 import androidx.navigation.Navigation;
 
 
@@ -99,6 +103,12 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
+
+        //获取地址信息
+        TestLocationActivity location = new TestLocationActivity(container.getContext(),getActivity(),true);
+        location.getLocation();//能返回一个location实例
+
+
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 

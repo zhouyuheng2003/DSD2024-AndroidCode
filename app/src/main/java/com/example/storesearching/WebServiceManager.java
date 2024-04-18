@@ -18,6 +18,7 @@ public class WebServiceManager {
     public synchronized String getJson(int interfaceId , int userId){
         //xxxxx
         //""
+        return "";
     }
     public synchronized String getJson(){
         return getJson(0,0);
