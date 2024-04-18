@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.storesearching.DataManager;
+import com.example.storesearching.Store;
 import com.example.storesearching.databinding.FragmentHomeBinding;
 import android.widget.SearchView;
 import android.widget.ScrollView;
@@ -25,17 +27,20 @@ import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
+import org.json.JSONException;
+
+import java.util.List;
+
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private View root;
-    class HomeState{
-        public int SearchMode;
-        public String[] textView_SearchMode_content;
+
+    class HomeState{//It is a search mode manager
+        public int SearchMode;//0 means search for stores, 1 means search for items
+        public String[] textView_SearchMode_content;//tags
         public String[] button_SwitchSearchMode_content;
-
-
         public HomeState(){
             SearchMode = 0;
             textView_SearchMode_content = new String[2];
@@ -73,22 +78,31 @@ public class HomeFragment extends Fragment {
         }
     }
     private LayoutInflater inflater;
-    private void updateSearchResult(){
+    private void updateSearchResult(){//update the content of ScrollView
         LinearLayout linearlayout_searchresult = root.findViewById(R.id.linearlayout_searchresult);
 
 
         View[] listItemViews = new View[20];
+
+        DataManager dataManager = DataManager.getInstance();
+        List<Store> storeList = dataManager.currentStoreList();
         for (int i = 0; i < 20; i++) {
+            if(i >= storeList.size())break;
             View listItemView = inflater.inflate(R.layout.layout_listitem, null);
             Button button = listItemView.findViewById(R.id.button);
             TextView textView_no = listItemView.findViewById(R.id.textView_no);
-            textView_no.setText("Number"+(i + 1)+": ");
+            textView_no.setText("Number"+ (i+1) +": ");
+            TextView textView_name = listItemView.findViewById(R.id.textView_name);
+            textView_name.setText(storeList.get(i).storeName);
+
+            int finalI = i;
+            int finalI1 = i;
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Bundle bundle = new Bundle();
-                    int valueToSend = 123; // 要传递的整数值
-                    bundle.putInt("storeId", valueToSend); // 将整数值放入 Bundle 中，使用一个键来标识它
+                    int index = finalI1;
+                    bundle.putInt("storeId", index); // 将整数值放入 Bundle 中，使用一个键来标识它
                     Navigation.findNavController(view).navigate(R.id.action_nav_home_to_storeFragment, bundle);
                 }
             });
@@ -103,10 +117,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
+        //updateUserId;
 
-        //获取地址信息
+        //Interface 2, get location
         TestLocationActivity location = new TestLocationActivity(container.getContext(),getActivity(),true);
-        location.getLocation();//能返回一个location实例
+        location.getLocation();//return a Location
 
 
         HomeViewModel homeViewModel =
@@ -118,17 +133,22 @@ public class HomeFragment extends Fragment {
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
-        //初始化search mode
+        //Search mode manager, init information
         HomeState HomeSearchMode = new HomeState();
 
-
-
-        //搜索框及其设置
+        //SearchView setting
         SearchView searchView = root.findViewById(R.id.mainSearchView);
         searchView.setIconified(false);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                DataManager dataManager = DataManager.getInstance();
+                try {
+                    dataManager.SearchStore(query);
+                } catch (JSONException e) {
+                    Toast.makeText(container.getContext(), "Fail to parse JSON", Toast.LENGTH_SHORT).show();
+                    throw new RuntimeException(e);
+                }
                 updateSearchResult();
                 return false;
             }

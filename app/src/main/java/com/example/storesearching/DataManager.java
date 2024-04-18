@@ -1,46 +1,48 @@
 package com.example.storesearching;
 
 
+import com.example.storesearching.util.JsonUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DataManager {
+    public static boolean testSign = true;
     private static DataManager instance;
-    private Map< Integer, UserManager> users;
+    public int currentUserId;
+    public Map< Integer, User> users;
     private DataManager() {
-        users = new HashMap<Integer, UserManager>();
+        users = new HashMap<Integer, User>();
+        currentUserId = 0;
+        users.put(0, new User(0));
     }
     public static synchronized DataManager getInstance() {
         if (instance == null) {
             instance = new DataManager();
-            instance.users.put(0, new UserManager());
         }
         return instance;
     }
-    public static class UserManager {
-        public int userId;
-        public String UserEmail;
-        public String UserName;
-        public String HashedPassword;
-        public List <Store> storeList;
-        public UserManager(){
-            userId = 1;
-            UserEmail = "1287121642@qq.com";
-            UserName = "Alice";
-            HashedPassword = "Bob";
-            storeList = new ArrayList<>();
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
-            storeList.add(new Store());
+    public void SearchStore(String query) throws JSONException {
+        WebServiceManager webServiceManager = WebServiceManager.getInstance();
+        int interfaceId = 3;
+        String userName = users.get(currentUserId).UserName;
+        webServiceManager.sendJson(interfaceId, userName,
+                JsonUtils.buildInterface3JsonObject(interfaceId, userName,query).toString()
+                );
+        String JsonString = webServiceManager.getJson(interfaceId, userName);
+        while(JsonString == ""){
+            JsonString = webServiceManager.getJson(interfaceId, userName);
         }
+        JSONObject Json = null;
+        if(!testSign) Json = new JSONObject(JsonString);
+        JsonUtils.parseInterface3JsonObject(Json,users.get(currentUserId).storeList);
+    }
+    public List<Store> currentStoreList(){
+        return users.get(currentUserId).storeList;
     }
 }

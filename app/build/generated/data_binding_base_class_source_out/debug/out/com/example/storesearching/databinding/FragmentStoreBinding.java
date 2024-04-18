@@ -20,16 +20,16 @@ public final class FragmentStoreBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final TextView textView3;
+  public final TextView textViewStoreDescription;
 
   @NonNull
-  public final TextView textView4;
+  public final TextView textViewStoreName;
 
-  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull TextView textView3,
-      @NonNull TextView textView4) {
+  private FragmentStoreBinding(@NonNull FrameLayout rootView,
+      @NonNull TextView textViewStoreDescription, @NonNull TextView textViewStoreName) {
     this.rootView = rootView;
-    this.textView3 = textView3;
-    this.textView4 = textView4;
+    this.textViewStoreDescription = textViewStoreDescription;
+    this.textViewStoreName = textViewStoreName;
   }
 
   @Override
@@ -59,19 +59,20 @@ public final class FragmentStoreBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.textView3;
-      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
-      if (textView3 == null) {
+      id = R.id.textView_storeDescription;
+      TextView textViewStoreDescription = ViewBindings.findChildViewById(rootView, id);
+      if (textViewStoreDescription == null) {
         break missingId;
       }
 
-      id = R.id.textView4;
-      TextView textView4 = ViewBindings.findChildViewById(rootView, id);
-      if (textView4 == null) {
+      id = R.id.textView_storeName;
+      TextView textViewStoreName = ViewBindings.findChildViewById(rootView, id);
+      if (textViewStoreName == null) {
         break missingId;
       }
 
-      return new FragmentStoreBinding((FrameLayout) rootView, textView3, textView4);
+      return new FragmentStoreBinding((FrameLayout) rootView, textViewStoreDescription,
+          textViewStoreName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

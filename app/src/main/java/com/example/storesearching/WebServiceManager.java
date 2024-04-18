@@ -15,15 +15,18 @@ public class WebServiceManager {
         }
         return instance;
     }
-    public synchronized String getJson(int interfaceId , int userId){
+    public synchronized String getJson(int interfaceId , String userName){
         //xxxxx
         //""
+        if(DataManager.testSign){
+            return "test";
+        }
         return "";
     }
     public synchronized String getJson(){
-        return getJson(0,0);
+        return getJson(0,"");
     }
-    public synchronized void sendJson(int interfaceId , int userId,String Json){
+    public synchronized void sendJson(int interfaceId , String userName, String Json){
         //xxxxx
     }
 }

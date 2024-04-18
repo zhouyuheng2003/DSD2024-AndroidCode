@@ -32,6 +32,10 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_top_bar.xml"
     },
     {
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_store.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_store.xml"
+    },
+    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\layout_shipping_card.xml",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_shipping_card.xml"
     },
@@ -62,10 +66,6 @@
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_gallery.xml",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\fragment_gallery.xml"
-    },
-    {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_home.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_home.xml"
     },
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\layout_circular_loader.xml",

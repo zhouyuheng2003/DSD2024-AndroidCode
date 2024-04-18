@@ -10,7 +10,7 @@ public class Store {
     public String StoreDescription;
     public Store() {
         storeId = 1;
-        storeName = "Red Sun Store";
-        StoreDescription = "Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//";
+        storeName = "";
+        StoreDescription = "";
     }
 }
