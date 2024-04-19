@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_map">Map</string>
 
     <!-- from shopping -->
     <string name="first_fragment_label">First Fragment</string>
@@ -178,4 +179,5 @@
     <string name="price_card_status_label_string">Order Status</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

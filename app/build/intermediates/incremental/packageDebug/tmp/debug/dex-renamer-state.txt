@@ -1,12 +1,12 @@
-#Fri Apr 19 09:42:14 CST 2024
-base.0=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
-base.3=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.4=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.5=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
-base.6=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
-base.7=K\:\\Document\\DSD2024-AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+#Fri Apr 19 04:49:14 WEST 2024
+base.0=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
+base.3=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.4=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.5=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+base.6=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+base.7=D\:\\Repos\\CompUbi\\AndroidCode\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=13/classes.dex
