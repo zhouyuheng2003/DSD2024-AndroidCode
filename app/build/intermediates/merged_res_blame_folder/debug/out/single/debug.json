@@ -100,6 +100,10 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\layout_layout_listitem_store.xml.flat",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_listitem_store.xml"
+    },
+    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-merged_res-44:\\layout_layout_top_bar.xml.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_top_bar.xml"
     },

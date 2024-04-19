@@ -28,6 +28,10 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_price_card.xml"
     },
     {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\layout_listitem_store.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_listitem_store.xml"
+    },
+    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\layout_top_bar.xml",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.0\\com.example.storesearching.app-main-46:\\layout\\layout_top_bar.xml"
     },

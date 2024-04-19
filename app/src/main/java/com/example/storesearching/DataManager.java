@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 public class DataManager {
-    public static boolean testSign = true;
+    public static boolean testSign = true;//whether it is unit test
+    public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
     public int currentUserId;
     public Map< Integer, User> users;

@@ -2865,6 +2865,9 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageButton4
+id imageButton5
+id imageButton6
 id imageView
 id immediateStop
 id included
@@ -3267,7 +3270,7 @@ layout fragment_gallery
 layout fragment_home
 layout fragment_slideshow
 layout fragment_store
-layout layout_listitem
+layout layout_listitem_store
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

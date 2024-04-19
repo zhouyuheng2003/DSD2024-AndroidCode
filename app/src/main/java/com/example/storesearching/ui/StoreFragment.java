@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.storesearching.DataManager;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
-import com.example.storesearching.databinding.FragmentHomeBinding;
 
 import java.util.List;
 

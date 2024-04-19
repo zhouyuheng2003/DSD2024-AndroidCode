@@ -40,6 +40,9 @@ id button
 id button_SwitchSearchMode
 id drawer_layout
 id fab
+id imageButton4
+id imageButton5
+id imageButton6
 id imageView
 id linearlayout_searchresult
 id mainScrollView
@@ -69,7 +72,7 @@ layout fragment_gallery
 layout fragment_home
 layout fragment_slideshow
 layout fragment_store
-layout layout_listitem
+layout layout_listitem_store
 layout nav_header_main
 menu activity_main_drawer
 menu main
