@@ -43,14 +43,15 @@ public class TestLocationActivity {
     }
 
     public Location getLocation(){
-//        // 检查是否已经获取了位置权限
-//        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            // 如果权限未被授予，则请求权限
-//            ActivityCompat.requestPermissions(activity,
-//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-//                    PERMISSION_REQUEST_LOCATION);
-//        }
+        // 检查是否已经获取了位置权限
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // 如果权限未被授予，则请求权限
+            ActivityCompat.requestPermissions(activity,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSION_REQUEST_LOCATION);
+            if(output)Toast.makeText(context, "请求权限", Toast.LENGTH_SHORT).show();
+        }
 
         //1.获取位置管理器
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);

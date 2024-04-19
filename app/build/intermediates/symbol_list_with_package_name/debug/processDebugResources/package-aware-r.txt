@@ -2744,6 +2744,7 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id button
+id button3
 id buttonPanel
 id button_SwitchSearchMode
 id cache_measures
@@ -2866,9 +2867,11 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageButton1
+id imageButton2
+id imageButton3
 id imageButton4
 id imageButton5
-id imageButton6
 id imageView
 id immediateStop
 id included
@@ -3250,6 +3253,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_maps
 layout app_bar_main
 layout content_main
 layout custom_dialog

@@ -1,35 +1,43 @@
 [
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/nav_header_main.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/nav_header_main.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\nav_header_main.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\nav_header_main.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/content_main.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/content_main.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_home.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_slideshow.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_slideshow.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\app_bar_main.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\app_bar_main.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_gallery.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_gallery.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_store.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_store.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/app_bar_main.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/app_bar_main.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_gallery.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_gallery.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/layout_listitem_store.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_store.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\activity_main.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_home.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_home.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\activity_maps.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\activity_maps.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/activity_main.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/activity_main.xml"
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_slideshow.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_slideshow.xml"
+    },
+    {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\content_main.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\content_main.xml"
+    },
+    {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\layout_listitem_store.xml",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\layout_listitem_store.xml"
     },
     {
         "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_store.xml",

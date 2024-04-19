@@ -15,11 +15,7 @@ import com.example.storesearching.Store;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StoreFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class StoreFragment extends Fragment {
 
     private View root;

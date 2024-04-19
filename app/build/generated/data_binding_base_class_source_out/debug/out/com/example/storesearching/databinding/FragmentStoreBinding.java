@@ -4,6 +4,7 @@ package com.example.storesearching.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -21,13 +22,22 @@ public final class FragmentStoreBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
+  public final Button button3;
+
+  @NonNull
+  public final ImageButton imageButton1;
+
+  @NonNull
+  public final ImageButton imageButton2;
+
+  @NonNull
+  public final ImageButton imageButton3;
+
+  @NonNull
   public final ImageButton imageButton4;
 
   @NonNull
   public final ImageButton imageButton5;
-
-  @NonNull
-  public final ImageButton imageButton6;
 
   @NonNull
   public final TextView textViewStoreDescription;
@@ -35,13 +45,18 @@ public final class FragmentStoreBinding implements ViewBinding {
   @NonNull
   public final TextView textViewStoreName;
 
-  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull ImageButton imageButton4,
-      @NonNull ImageButton imageButton5, @NonNull ImageButton imageButton6,
-      @NonNull TextView textViewStoreDescription, @NonNull TextView textViewStoreName) {
+  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button button3,
+      @NonNull ImageButton imageButton1, @NonNull ImageButton imageButton2,
+      @NonNull ImageButton imageButton3, @NonNull ImageButton imageButton4,
+      @NonNull ImageButton imageButton5, @NonNull TextView textViewStoreDescription,
+      @NonNull TextView textViewStoreName) {
     this.rootView = rootView;
+    this.button3 = button3;
+    this.imageButton1 = imageButton1;
+    this.imageButton2 = imageButton2;
+    this.imageButton3 = imageButton3;
     this.imageButton4 = imageButton4;
     this.imageButton5 = imageButton5;
-    this.imageButton6 = imageButton6;
     this.textViewStoreDescription = textViewStoreDescription;
     this.textViewStoreName = textViewStoreName;
   }
@@ -73,6 +88,30 @@ public final class FragmentStoreBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.button3;
+      Button button3 = ViewBindings.findChildViewById(rootView, id);
+      if (button3 == null) {
+        break missingId;
+      }
+
+      id = R.id.imageButton1;
+      ImageButton imageButton1 = ViewBindings.findChildViewById(rootView, id);
+      if (imageButton1 == null) {
+        break missingId;
+      }
+
+      id = R.id.imageButton2;
+      ImageButton imageButton2 = ViewBindings.findChildViewById(rootView, id);
+      if (imageButton2 == null) {
+        break missingId;
+      }
+
+      id = R.id.imageButton3;
+      ImageButton imageButton3 = ViewBindings.findChildViewById(rootView, id);
+      if (imageButton3 == null) {
+        break missingId;
+      }
+
       id = R.id.imageButton4;
       ImageButton imageButton4 = ViewBindings.findChildViewById(rootView, id);
       if (imageButton4 == null) {
@@ -82,12 +121,6 @@ public final class FragmentStoreBinding implements ViewBinding {
       id = R.id.imageButton5;
       ImageButton imageButton5 = ViewBindings.findChildViewById(rootView, id);
       if (imageButton5 == null) {
-        break missingId;
-      }
-
-      id = R.id.imageButton6;
-      ImageButton imageButton6 = ViewBindings.findChildViewById(rootView, id);
-      if (imageButton6 == null) {
         break missingId;
       }
 
@@ -103,8 +136,8 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentStoreBinding((FrameLayout) rootView, imageButton4, imageButton5,
-          imageButton6, textViewStoreDescription, textViewStoreName);
+      return new FragmentStoreBinding((FrameLayout) rootView, button3, imageButton1, imageButton2,
+          imageButton3, imageButton4, imageButton5, textViewStoreDescription, textViewStoreName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
