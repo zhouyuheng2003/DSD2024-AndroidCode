@@ -2744,7 +2744,6 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id button
-id button3
 id buttonPanel
 id button_SwitchSearchMode
 id cache_measures
@@ -2773,6 +2772,7 @@ id clockwise
 id closest
 id collapseActionView
 id compress
+id confirmButton
 id confirm_button
 id constraint
 id container
@@ -2867,11 +2867,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageButton1
-id imageButton2
-id imageButton3
-id imageButton4
-id imageButton5
 id imageView
 id immediateStop
 id included
@@ -3004,6 +2999,11 @@ id postLayout
 id progress_circular
 id progress_horizontal
 id radio
+id ratingButton1
+id ratingButton2
+id ratingButton3
+id ratingButton4
+id ratingButton5
 id ratio
 id rectangles
 id reverseSawtooth

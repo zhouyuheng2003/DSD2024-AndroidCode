@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
         //Interface 2, get location
         TestLocationActivity location = new TestLocationActivity(container.getContext(),getActivity(),true);
         location.getLocation();//return a Location
-
+        Toast.makeText(container.getContext(), "version0420a", Toast.LENGTH_SHORT).show();
 
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);

@@ -22,22 +22,22 @@ public final class FragmentStoreBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final Button button3;
+  public final Button confirmButton;
 
   @NonNull
-  public final ImageButton imageButton1;
+  public final ImageButton ratingButton1;
 
   @NonNull
-  public final ImageButton imageButton2;
+  public final ImageButton ratingButton2;
 
   @NonNull
-  public final ImageButton imageButton3;
+  public final ImageButton ratingButton3;
 
   @NonNull
-  public final ImageButton imageButton4;
+  public final ImageButton ratingButton4;
 
   @NonNull
-  public final ImageButton imageButton5;
+  public final ImageButton ratingButton5;
 
   @NonNull
   public final TextView textViewStoreDescription;
@@ -45,18 +45,18 @@ public final class FragmentStoreBinding implements ViewBinding {
   @NonNull
   public final TextView textViewStoreName;
 
-  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button button3,
-      @NonNull ImageButton imageButton1, @NonNull ImageButton imageButton2,
-      @NonNull ImageButton imageButton3, @NonNull ImageButton imageButton4,
-      @NonNull ImageButton imageButton5, @NonNull TextView textViewStoreDescription,
+  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button confirmButton,
+      @NonNull ImageButton ratingButton1, @NonNull ImageButton ratingButton2,
+      @NonNull ImageButton ratingButton3, @NonNull ImageButton ratingButton4,
+      @NonNull ImageButton ratingButton5, @NonNull TextView textViewStoreDescription,
       @NonNull TextView textViewStoreName) {
     this.rootView = rootView;
-    this.button3 = button3;
-    this.imageButton1 = imageButton1;
-    this.imageButton2 = imageButton2;
-    this.imageButton3 = imageButton3;
-    this.imageButton4 = imageButton4;
-    this.imageButton5 = imageButton5;
+    this.confirmButton = confirmButton;
+    this.ratingButton1 = ratingButton1;
+    this.ratingButton2 = ratingButton2;
+    this.ratingButton3 = ratingButton3;
+    this.ratingButton4 = ratingButton4;
+    this.ratingButton5 = ratingButton5;
     this.textViewStoreDescription = textViewStoreDescription;
     this.textViewStoreName = textViewStoreName;
   }
@@ -88,39 +88,39 @@ public final class FragmentStoreBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button3;
-      Button button3 = ViewBindings.findChildViewById(rootView, id);
-      if (button3 == null) {
+      id = R.id.confirmButton;
+      Button confirmButton = ViewBindings.findChildViewById(rootView, id);
+      if (confirmButton == null) {
         break missingId;
       }
 
-      id = R.id.imageButton1;
-      ImageButton imageButton1 = ViewBindings.findChildViewById(rootView, id);
-      if (imageButton1 == null) {
+      id = R.id.ratingButton1;
+      ImageButton ratingButton1 = ViewBindings.findChildViewById(rootView, id);
+      if (ratingButton1 == null) {
         break missingId;
       }
 
-      id = R.id.imageButton2;
-      ImageButton imageButton2 = ViewBindings.findChildViewById(rootView, id);
-      if (imageButton2 == null) {
+      id = R.id.ratingButton2;
+      ImageButton ratingButton2 = ViewBindings.findChildViewById(rootView, id);
+      if (ratingButton2 == null) {
         break missingId;
       }
 
-      id = R.id.imageButton3;
-      ImageButton imageButton3 = ViewBindings.findChildViewById(rootView, id);
-      if (imageButton3 == null) {
+      id = R.id.ratingButton3;
+      ImageButton ratingButton3 = ViewBindings.findChildViewById(rootView, id);
+      if (ratingButton3 == null) {
         break missingId;
       }
 
-      id = R.id.imageButton4;
-      ImageButton imageButton4 = ViewBindings.findChildViewById(rootView, id);
-      if (imageButton4 == null) {
+      id = R.id.ratingButton4;
+      ImageButton ratingButton4 = ViewBindings.findChildViewById(rootView, id);
+      if (ratingButton4 == null) {
         break missingId;
       }
 
-      id = R.id.imageButton5;
-      ImageButton imageButton5 = ViewBindings.findChildViewById(rootView, id);
-      if (imageButton5 == null) {
+      id = R.id.ratingButton5;
+      ImageButton ratingButton5 = ViewBindings.findChildViewById(rootView, id);
+      if (ratingButton5 == null) {
         break missingId;
       }
 
@@ -136,8 +136,9 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentStoreBinding((FrameLayout) rootView, button3, imageButton1, imageButton2,
-          imageButton3, imageButton4, imageButton5, textViewStoreDescription, textViewStoreName);
+      return new FragmentStoreBinding((FrameLayout) rootView, confirmButton, ratingButton1,
+          ratingButton2, ratingButton3, ratingButton4, ratingButton5, textViewStoreDescription,
+          textViewStoreName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
