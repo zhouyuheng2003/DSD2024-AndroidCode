@@ -8,9 +8,12 @@ public class Store {
 //    public Location location;
 //    public List<Item> items
     public String StoreDescription;
+    public int rating, rating_fixed;
     public Store() {
         storeId = 1;
         storeName = "";
         StoreDescription = "";
+        rating = 0;
+        rating_fixed = 0;
     }
 }

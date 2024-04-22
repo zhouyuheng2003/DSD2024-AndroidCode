@@ -85,7 +85,9 @@ public class HomeFragment extends Fragment {
                 textView_no.setText("Number"+ (i+1) +": ");
                 TextView textView_name = listItemView.findViewById(R.id.textView_name);
                 textView_name.setText(storeList.get(i).storeName);
-
+                TextView textView_des = listItemView.findViewById(R.id.textView_des);
+                textView_des.setText("Description:" + storeList.get(i).StoreDescription);
+                //TODO:Set distance
                 int finalI = i;
                 int finalI1 = i;
                 button.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +97,7 @@ public class HomeFragment extends Fragment {
                         int index = finalI1;
                         bundle.putInt("storeId", index); // 将整数值放入 Bundle 中，使用一个键来标识它
                         Navigation.findNavController(view).navigate(R.id.action_nav_home_to_storeFragment, bundle);
+                        //TODO: set visited
                     }
                 });
                 listItemViews[i] = listItemView;
@@ -120,7 +123,7 @@ public class HomeFragment extends Fragment {
         //Interface 2, get location
         TestLocationActivity location = new TestLocationActivity(container.getContext(),getActivity(),true);
         location.getLocation();//return a Location
-        Toast.makeText(container.getContext(), "version0420a", Toast.LENGTH_SHORT).show();
+        Toast.makeText(container.getContext(), "version0422b", Toast.LENGTH_SHORT).show();
 
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
@@ -156,7 +159,9 @@ public class HomeFragment extends Fragment {
                     }
                     if(SearchMode == 0) dataManager.SearchStore(query);
 //                    else if(HomeSearchMode.SearchMode == 1) dataManager.SearchItem(query);
-                    // TODO: SearchItem
+                    else if(SearchMode == 1){
+                        // TODO: SearchItem
+                    }
                 } catch (JSONException e) {
                     Toast.makeText(container.getContext(), "Fail to parse JSON", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
