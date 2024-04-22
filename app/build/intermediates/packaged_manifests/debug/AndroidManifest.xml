@@ -7,13 +7,10 @@
     <uses-sdk
         android:minSdkVersion="24"
         android:targetSdkVersion="33" />
-    <!-- 粗略的位置权限 -->
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 精确的位置权限 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- Include required permissions for Google Maps API to run. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature
@@ -39,6 +36,14 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.StoreSearching" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCz21KzyO08y64NSAbvRWjVupqEZi7kCXQ" />
+
+        <activity
+            android:name="com.example.storesearching.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
         <activity
             android:name="com.example.storesearching.MainActivity"
             android:exported="true"

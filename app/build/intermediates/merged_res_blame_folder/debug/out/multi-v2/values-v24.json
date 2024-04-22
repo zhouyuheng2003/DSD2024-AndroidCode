@@ -4,17 +4,7 @@
             "outputFile": "com.example.storesearching.app-mergeDebugResources-42:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\4ad317e8caeb934c0a7684a622b18668\\transformed\\appcompat-1.4.1\\res\\values-v24\\values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
-                    }
-                },
-                {
-                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\b79e00459b51debe71c70b38b92dedee\\transformed\\material-1.5.0\\res\\values-v24\\values-v24.xml",
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\b3601b667179aff9e85bcf0cfc745116\\transformed\\material-1.5.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -30,6 +20,16 @@
                         "endLines": "4,5,6,7,10,13,16,19",
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
+                    }
+                },
+                {
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\fb54b3375e833d264af2495166c02314\\transformed\\appcompat-1.4.1\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
                     }
                 }
             ]

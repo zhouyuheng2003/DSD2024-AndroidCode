@@ -45,9 +45,9 @@ public class StoreFragment extends Fragment {
         DataManager dataManager = DataManager.getInstance();
         storeList = dataManager.currentStoreList();
         if(storeList.size() > index){
-            TextView textView_storeName = root.findViewById(R.id.textView_storeName);
+            TextView textView_storeName = root.findViewById(R.id.textView_itemName);
             textView_storeName.setText(storeList.get(index).storeName);
-            TextView textView_storeDescription = root.findViewById(R.id.textView_storeDescription);
+            TextView textView_storeDescription = root.findViewById(R.id.textView_itemDescription);
             textView_storeDescription.setText(storeList.get(index).StoreDescription);
             ratingButton = new ImageButton[5];
             ratingButton[0] = root.findViewById(R.id.ratingButton1);
@@ -96,7 +96,7 @@ public class StoreFragment extends Fragment {
             });
         }
         else{
-            TextView textView_storeName = root.findViewById(R.id.textView_storeName);
+            TextView textView_storeName = root.findViewById(R.id.textView_itemName);
             textView_storeName.setText("Store Not Exists");
         }
         return root;
