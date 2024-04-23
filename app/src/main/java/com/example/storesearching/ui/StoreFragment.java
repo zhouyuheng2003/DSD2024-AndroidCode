@@ -16,8 +16,6 @@ import com.example.storesearching.DataManager;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
 
-import org.json.JSONException;
-
 import java.util.List;
 
 
@@ -51,14 +49,8 @@ public class StoreFragment extends Fragment {
             textView_storeName.setText(storeList.get(index).storeName);
             TextView textView_storeDescription = root.findViewById(R.id.textView_itemDescription);
             textView_storeDescription.setText(storeList.get(index).StoreDescription);
-<<<<<<< Updated upstream
-=======
-            try {
-                dataManager.updateHuntedStoreIdList(index);
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
->>>>>>> Stashed changes
+//            dataManager.updateHuntedStoreIdList(index);
+            //TODO:
             ratingButton = new ImageButton[5];
             ratingButton[0] = root.findViewById(R.id.ratingButton1);
             ratingButton[1] = root.findViewById(R.id.ratingButton2);

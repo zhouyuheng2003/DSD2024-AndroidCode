@@ -64,13 +64,10 @@
         "source": "com.example.storesearching.app-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-<<<<<<< Updated upstream
-=======
         "merged": "com.example.storesearching.app-merged_res-44:/layout_fragment_registration.xml.flat",
         "source": "com.example.storesearching.app-main-46:/layout/fragment_registration.xml"
     },
     {
->>>>>>> Stashed changes
         "merged": "com.example.storesearching.app-merged_res-44:/layout_layout_listitem_store.xml.flat",
         "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_store.xml"
     },
@@ -135,24 +132,6 @@
         "source": "com.example.storesearching.app-main-46:/drawable/ic_menu_gallery.xml"
     },
     {
-<<<<<<< Updated upstream
-        "merged": "com.example.storesearching.app-merged_res-44:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.storesearching.app-main-46:/mipmap-hdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.example.storesearching.app-merged_res-44:/menu_main.xml.flat",
-        "source": "com.example.storesearching.app-main-46:/menu/main.xml"
-    },
-    {
-        "merged": "com.example.storesearching.app-merged_res-44:/layout_nav_header_main.xml.flat",
-        "source": "com.example.storesearching.app-main-46:/layout/nav_header_main.xml"
-    },
-    {
-        "merged": "com.example.storesearching.app-merged_res-44:/layout_app_bar_main.xml.flat",
-        "source": "com.example.storesearching.app-main-46:/layout/app_bar_main.xml"
-    },
-    {
-=======
         "merged": "com.example.storesearching.app-merged_res-44:/layout_fragment_userinfo.xml.flat",
         "source": "com.example.storesearching.app-main-46:/layout/fragment_userinfo.xml"
     },
@@ -177,7 +156,6 @@
         "source": "com.example.storesearching.app-main-46:/layout/app_bar_main.xml"
     },
     {
->>>>>>> Stashed changes
         "merged": "com.example.storesearching.app-merged_res-44:/drawable_side_nav_bar.xml.flat",
         "source": "com.example.storesearching.app-main-46:/drawable/side_nav_bar.xml"
     }

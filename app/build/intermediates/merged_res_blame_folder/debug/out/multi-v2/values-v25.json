@@ -4,7 +4,7 @@
             "outputFile": "com.example.storesearching.app-mergeDebugResources-42:/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\fb54b3375e833d264af2495166c02314\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\fb54b3375e833d264af2495166c02314\\transformed\\appcompat-1.4.1\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

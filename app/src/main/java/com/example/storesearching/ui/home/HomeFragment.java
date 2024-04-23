@@ -97,7 +97,6 @@ public class HomeFragment extends Fragment {
                         int index = finalI1;
                         bundle.putInt("storeId", index); // 将整数值放入 Bundle 中，使用一个键来标识它
                         Navigation.findNavController(view).navigate(R.id.action_nav_home_to_storeFragment, bundle);
-                        //TODO: set visited
                     }
                 });
                 listItemViews[i] = listItemView;
@@ -158,10 +157,7 @@ public class HomeFragment extends Fragment {
                         DataManager.searchMode = SearchMode;
                     }
                     if(SearchMode == 0) dataManager.SearchStore(query);
-//                    else if(HomeSearchMode.SearchMode == 1) dataManager.SearchItem(query);
-                    else if(SearchMode == 1){
-                        // TODO: SearchItem
-                    }
+                    else if(SearchMode == 1) dataManager.SearchItem(query);
                 } catch (JSONException e) {
                     Toast.makeText(container.getContext(), "Fail to parse JSON", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
