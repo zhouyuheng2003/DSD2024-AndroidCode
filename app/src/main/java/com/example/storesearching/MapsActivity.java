@@ -91,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng location = new LatLng(lat, lng);
             mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]));
             
-            if(store[i][0].equals("Store JLU")){/*User Location*/
+            if(store[i][0].equals("User Location")){/*User Location*/
                 userPos = location;
             }
         }
