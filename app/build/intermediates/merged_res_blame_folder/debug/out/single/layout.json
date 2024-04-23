@@ -8,6 +8,22 @@
         "source": "com.example.storesearching.app-main-46:/layout/content_main.xml"
     },
     {
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/layout_listitem_store.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_store.xml"
+    },
+    {
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_item.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_item.xml"
+    },
+    {
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/activity_maps.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/activity_maps.xml"
+    },
+    {
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_store.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_store.xml"
+    },
+    {
         "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_slideshow.xml",
         "source": "com.example.storesearching.app-main-46:/layout/fragment_slideshow.xml"
     },
@@ -20,23 +36,15 @@
         "source": "com.example.storesearching.app-main-46:/layout/app_bar_main.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/layout_listitem_store.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_store.xml"
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/layout_listitem_item.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_item.xml"
     },
     {
         "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_home.xml",
         "source": "com.example.storesearching.app-main-46:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/activity_maps.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/activity_maps.xml"
-    },
-    {
         "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/activity_main.xml",
         "source": "com.example.storesearching.app-main-46:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_store.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_store.xml"
     }
 ]

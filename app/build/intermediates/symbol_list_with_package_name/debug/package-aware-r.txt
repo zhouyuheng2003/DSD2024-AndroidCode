@@ -3109,10 +3109,10 @@ id textView
 id textView_SearchMode
 id textView_des
 id textView_dis
+id textView_itemDescription
+id textView_itemName
 id textView_name
 id textView_no
-id textView_storeDescription
-id textView_storeName
 id text_gallery
 id text_input_end_icon
 id text_input_error_icon
@@ -3274,8 +3274,10 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_gallery
 layout fragment_home
+layout fragment_item
 layout fragment_slideshow
 layout fragment_store
+layout layout_listitem_item
 layout layout_listitem_store
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

@@ -68,6 +68,14 @@
         "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_store.xml"
     },
     {
+        "merged": "com.example.storesearching.app-merged_res-44:/layout_fragment_item.xml.flat",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_item.xml"
+    },
+    {
+        "merged": "com.example.storesearching.app-merged_res-44:/layout_layout_listitem_item.xml.flat",
+        "source": "com.example.storesearching.app-main-46:/layout/layout_listitem_item.xml"
+    },
+    {
         "merged": "com.example.storesearching.app-merged_res-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "com.example.storesearching.app-main-46:/mipmap-hdpi/ic_launcher_round.webp"
     },
