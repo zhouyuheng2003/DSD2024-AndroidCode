@@ -4,6 +4,8 @@ package com.example.storesearching.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,12 +22,38 @@ public final class FragmentGalleryBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final TextView textGallery;
+  public final Button buttonLogin;
 
-  private FragmentGalleryBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView textGallery) {
+  @NonNull
+  public final Button buttonRegistration;
+
+  @NonNull
+  public final EditText editTextUserName;
+
+  @NonNull
+  public final EditText editTextUserPassword;
+
+  @NonNull
+  public final TextView textLogin;
+
+  @NonNull
+  public final TextView textPasswordLabel;
+
+  @NonNull
+  public final TextView textUserNameLabel;
+
+  private FragmentGalleryBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonLogin,
+      @NonNull Button buttonRegistration, @NonNull EditText editTextUserName,
+      @NonNull EditText editTextUserPassword, @NonNull TextView textLogin,
+      @NonNull TextView textPasswordLabel, @NonNull TextView textUserNameLabel) {
     this.rootView = rootView;
-    this.textGallery = textGallery;
+    this.buttonLogin = buttonLogin;
+    this.buttonRegistration = buttonRegistration;
+    this.editTextUserName = editTextUserName;
+    this.editTextUserPassword = editTextUserPassword;
+    this.textLogin = textLogin;
+    this.textPasswordLabel = textPasswordLabel;
+    this.textUserNameLabel = textUserNameLabel;
   }
 
   @Override
@@ -55,13 +83,51 @@ public final class FragmentGalleryBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.text_gallery;
-      TextView textGallery = ViewBindings.findChildViewById(rootView, id);
-      if (textGallery == null) {
+      id = R.id.button_login;
+      Button buttonLogin = ViewBindings.findChildViewById(rootView, id);
+      if (buttonLogin == null) {
         break missingId;
       }
 
-      return new FragmentGalleryBinding((ConstraintLayout) rootView, textGallery);
+      id = R.id.button_Registration;
+      Button buttonRegistration = ViewBindings.findChildViewById(rootView, id);
+      if (buttonRegistration == null) {
+        break missingId;
+      }
+
+      id = R.id.editTextUserName;
+      EditText editTextUserName = ViewBindings.findChildViewById(rootView, id);
+      if (editTextUserName == null) {
+        break missingId;
+      }
+
+      id = R.id.editTextUserPassword;
+      EditText editTextUserPassword = ViewBindings.findChildViewById(rootView, id);
+      if (editTextUserPassword == null) {
+        break missingId;
+      }
+
+      id = R.id.textLogin;
+      TextView textLogin = ViewBindings.findChildViewById(rootView, id);
+      if (textLogin == null) {
+        break missingId;
+      }
+
+      id = R.id.textPasswordLabel;
+      TextView textPasswordLabel = ViewBindings.findChildViewById(rootView, id);
+      if (textPasswordLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.textUserNameLabel;
+      TextView textUserNameLabel = ViewBindings.findChildViewById(rootView, id);
+      if (textUserNameLabel == null) {
+        break missingId;
+      }
+
+      return new FragmentGalleryBinding((ConstraintLayout) rootView, buttonLogin,
+          buttonRegistration, editTextUserName, editTextUserPassword, textLogin, textPasswordLabel,
+          textUserNameLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

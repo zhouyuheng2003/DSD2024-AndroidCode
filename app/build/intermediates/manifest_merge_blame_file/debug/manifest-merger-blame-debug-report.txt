@@ -129,6 +129,7 @@
 73        </provider>
 74
 75        <activity
+<<<<<<< Updated upstream
 75-->[com.google.android.gms:play-services-base:18.3.0] C:\Users\hugop\.gradle\caches\transforms-3\ebee7210e7a9df906cafdf6d78474a14\transformed\play-services-base-18.3.0\AndroidManifest.xml:20:9-22:45
 76            android:name="com.google.android.gms.common.api.GoogleApiActivity"
 76-->[com.google.android.gms:play-services-base:18.3.0] C:\Users\hugop\.gradle\caches\transforms-3\ebee7210e7a9df906cafdf6d78474a14\transformed\play-services-base-18.3.0\AndroidManifest.xml:20:19-85
@@ -143,6 +144,22 @@
 81-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\hugop\.gradle\caches\transforms-3\422264301949b4f04304b44bd24bb660\transformed\play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
 82            android:value="@integer/google_play_services_version" />
 82-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\hugop\.gradle\caches\transforms-3\422264301949b4f04304b44bd24bb660\transformed\play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+=======
+75-->[com.google.android.gms:play-services-base:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\ebee7210e7a9df906cafdf6d78474a14\transformed\play-services-base-18.3.0\AndroidManifest.xml:20:9-22:45
+76            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+76-->[com.google.android.gms:play-services-base:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\ebee7210e7a9df906cafdf6d78474a14\transformed\play-services-base-18.3.0\AndroidManifest.xml:20:19-85
+77            android:exported="false"
+77-->[com.google.android.gms:play-services-base:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\ebee7210e7a9df906cafdf6d78474a14\transformed\play-services-base-18.3.0\AndroidManifest.xml:22:19-43
+78            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+78-->[com.google.android.gms:play-services-base:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\ebee7210e7a9df906cafdf6d78474a14\transformed\play-services-base-18.3.0\AndroidManifest.xml:21:19-78
+79
+80        <meta-data
+80-->[com.google.android.gms:play-services-basement:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\422264301949b4f04304b44bd24bb660\transformed\play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
+81            android:name="com.google.android.gms.version"
+81-->[com.google.android.gms:play-services-basement:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\422264301949b4f04304b44bd24bb660\transformed\play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
+82            android:value="@integer/google_play_services_version" />
+82-->[com.google.android.gms:play-services-basement:18.3.0] D:\Program Files\Java\jdk-1.8\caches\transforms-3\422264301949b4f04304b44bd24bb660\transformed\play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
+>>>>>>> Stashed changes
 83
 84        <uses-library
 84-->[androidx.window:window:1.0.0] C:\Users\hugop\.gradle\caches\transforms-3\2616c132cd09dead9c0fec8780d57f71\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40

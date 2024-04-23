@@ -24,6 +24,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
 //refer to https://blog.csdn.net/Coo123_/article/details/107659139
 public class TestLocationActivity {
@@ -35,13 +36,28 @@ public class TestLocationActivity {
     private Context context;
     private Activity activity;
     private boolean output;//1 means output hint
-    public TestLocationActivity(Context context, Activity activity,boolean output){
+
+    public TestLocationActivity(Context context, Activity activity, boolean output) {
         this.context = context;
         this.activity = activity;
         this.output = output;
+        this.output = false;
         //getLocation();
     }
-
+    public JSONObject getLocationJson(){
+        return null;
+    }//TODO:
+    public double calculateDistance(double longitude, double latitude) {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED) ) {
+            Location location = locationManager.getLastKnownLocation(locationProvider);
+            return DistanceCalculator.calculateDistance(latitude, longitude, location.getLatitude(), location.getLongitude());
+        }
+        return -1.0;
+    }
     public Location getLocation(){
         // 检查是否已经获取了位置权限
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -96,6 +112,7 @@ public class TestLocationActivity {
 
             }else{
                 //监视地理位置变化，第二个和第三个参数分别为更新的最短时间minTime和最短距离minDistace
+                Toast.makeText(context, "开启监控", Toast.LENGTH_SHORT).show();
                 locationManager.requestLocationUpdates(locationProvider, 3000, 1,locationListener);
             }
             return location;
@@ -181,5 +198,34 @@ public class TestLocationActivity {
             e.printStackTrace();
         }
         return result;
+    }
+}
+
+
+class DistanceCalculator {
+
+    // 地球半径（单位：千米）
+    private static final double EARTH_RADIUS = 6371.0;
+
+    // 计算两个位置之间的距离（单位：千米）
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        // 将经纬度转换为弧度
+        double lat1Radians = Math.toRadians(lat1);
+        double lon1Radians = Math.toRadians(lon1);
+        double lat2Radians = Math.toRadians(lat2);
+        double lon2Radians = Math.toRadians(lon2);
+
+        // 计算经纬度差值
+        double deltaLat = lat2Radians - lat1Radians;
+        double deltaLon = lon2Radians - lon1Radians;
+
+        // 使用 Haversine 公式计算大圆距离
+        double a = Math.pow(Math.sin(deltaLat / 2), 2) +
+                Math.cos(lat1Radians) * Math.cos(lat2Radians) *
+                        Math.pow(Math.sin(deltaLon / 2), 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        // 计算距离
+        return EARTH_RADIUS * c;
     }
 }

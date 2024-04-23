@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.List;
 
 public class JsonUtils {
@@ -19,6 +20,49 @@ public class JsonUtils {
             jsonObject.put("StoreName", StoreName);
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+        return jsonObject;
+    }
+    public static JSONObject buildInterface4JsonObject(int interfaceId, String currentUser, List<Integer> huntedStoreIdList) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("InterfaceId", interfaceId);
+            jsonObject.put("CurrentUser", currentUser);
+            JSONArray HuntedStoreIdList = new JSONArray();
+            for (Integer id : huntedStoreIdList) {
+                HuntedStoreIdList.put(id);
+            }
+            jsonObject.put("HuntedStoreIdList", HuntedStoreIdList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+    public static JSONObject buildInterface6JsonObject(int interfaceId, String currentUser, String ItemName) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("InterfaceId", interfaceId);
+            jsonObject.put("CurrentUser", currentUser);
+            jsonObject.put("ItemName", ItemName);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+    public  static  JSONObject buildInterface10JsonObject(int interfaceId, String currentUser, String username, String password, Date Birthday, JSONArray Description)
+    {
+        JSONObject jsonObject = new JSONObject();
+
+        try{
+            jsonObject.put("InterfaceId",interfaceId);
+            jsonObject.put("CurrentUser",currentUser);
+            jsonObject.put("UserName",username);
+            jsonObject.put("PassWord",password);
+            jsonObject.put("Birthday",Birthday);
+            jsonObject.put("Interests",Description);
+
+        }catch (JSONException e){
+            e.printStackTrace();;
         }
         return jsonObject;
     }
@@ -56,6 +100,7 @@ public class JsonUtils {
                 }
             }
             else{
+                storeList.clear();
                 JSONArray storeListArray = jsonObject.getJSONArray("StoreList");
                 for (int i = 0; i < storeListArray.length(); i++) {
                     storeList.add(JSONObjectToStore(storeListArray.getJSONObject(i)));
@@ -65,6 +110,45 @@ public class JsonUtils {
             e.printStackTrace();
         }
     }
+<<<<<<< Updated upstream
+=======
+    public static void parseInterface5JsonObject(JSONObject jsonObject, List<Integer> huntedStoreIdList) {
+        try {
+            if(DataManager.testSign){
+                for (int i = 0; i < 20; i++) {
+                    huntedStoreIdList.add(i);
+                }
+            }
+            else{
+                huntedStoreIdList.clear();
+                JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("array");
+                for (int i = 0; i < huntedStoreIdListArray.length(); i++) {
+                    huntedStoreIdList.add(huntedStoreIdListArray.getInt(i));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void parseInterface6JsonObject(JSONObject jsonObject, List<Item> itemList) {
+        try {
+            if(DataManager.testSign){
+                for (int i = 0; i < 20; i++) {
+                    itemList.add(JSONObjectToItem(null));
+                }
+            }
+            else{
+                itemList.clear();
+                JSONArray itemListArray = jsonObject.getJSONArray("array");
+                for (int i = 0; i < itemListArray.length(); i++) {
+                    itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+>>>>>>> Stashed changes
 
 
     //tempolate:

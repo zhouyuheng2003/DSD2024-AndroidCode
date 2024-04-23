@@ -91,7 +91,62 @@
                     }
                 },
                 {
+<<<<<<< Updated upstream
                     "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\cd4b670fa46f7446b524147743021dbf\\transformed\\core-1.8.0\\res\\values-is\\values-is.xml",
+=======
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\fd77f0bd6a19f23275136bf1b1f1ca77\\transformed\\navigation-ui-2.5.2\\res\\values-is\\values-is.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,158",
+                        "endColumns": "102,113",
+                        "endOffsets": "153,267"
+                    },
+                    "to": {
+                        "startLines": "104,105",
+                        "startColumns": "4,4",
+                        "startOffsets": "9305,9408",
+                        "endColumns": "102,113",
+                        "endOffsets": "9403,9517"
+                    }
+                },
+                {
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\ebee7210e7a9df906cafdf6d78474a14\\transformed\\play-services-base-18.3.0\\res\\values-is\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,295,445,566,671,808,929,1034,1135,1285,1387,1540,1662,1800,1950,2010,2069",
+                        "endColumns": "101,149,120,104,136,120,104,100,149,101,152,121,137,149,59,58,74",
+                        "endOffsets": "294,444,565,670,807,928,1033,1134,1284,1386,1539,1661,1799,1949,2009,2068,2143"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40,41,42,43,44,46,47,48,49,50,51,52,53,54",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3322,3428,3582,3707,3816,3957,4082,4191,4425,4579,4685,4842,4968,5110,5264,5328,5391",
+                        "endColumns": "105,153,124,108,140,124,108,104,153,105,156,125,141,153,63,62,78",
+                        "endOffsets": "3423,3577,3702,3811,3952,4077,4186,4291,4574,4680,4837,4963,5105,5259,5323,5386,5465"
+                    }
+                },
+                {
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\422264301949b4f04304b44bd24bb660\\transformed\\play-services-basement-18.3.0\\res\\values-is\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "124",
+                        "endOffsets": "319"
+                    },
+                    "to": {
+                        "startLines": "45",
+                        "startColumns": "4",
+                        "startOffsets": "4296",
+                        "endColumns": "128",
+                        "endOffsets": "4420"
+                    }
+                },
+                {
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\cd4b670fa46f7446b524147743021dbf\\transformed\\core-1.8.0\\res\\values-is\\values-is.xml",
+>>>>>>> Stashed changes
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

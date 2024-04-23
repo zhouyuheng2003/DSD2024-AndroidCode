@@ -19,7 +19,48 @@
         android:id="@+id/nav_gallery"
         android:name="com.example.storesearching.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_registration"
+            app:destination="@id/nav_registration" />
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_UserInfo"
+            app:destination="@id/nav_UserInfo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_registration"
+        android:name="com.example.storesearching.ui.RegistrationFragment"
+        android:label="Registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_nav_registration_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_UserInfo"
+        android:name="com.example.storesearching.ui.UserinfoFragment"
+        android:label="UserInfo"
+        tools:layout="@layout/fragment_userinfo">
+
+        <action
+            android:id="@+id/action_nav_UserInfo_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+        <action
+            android:id="@+id/action_nav_UserInfo_to_nav_changeInfo"
+            app:destination="@id/nav_changeInfo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_changeInfo"
+        android:name="com.example.storesearching.ui.UserInfoChangeFragment"
+        android:label="ChangeUserInfo"
+        tools:layout="@layout/fragment_userinfochange">
+        <action
+            android:id="@+id/action_nav_changeInfo_to_nav_UserInfo"
+            app:destination="@id/nav_UserInfo" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"

@@ -4,20 +4,24 @@
             "outputFile": "com.example.storesearching.app-mergeDebugResources-42:/values-bn/values-bn.xml",
             "map": [
                 {
+<<<<<<< Updated upstream
                     "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\ebee7210e7a9df906cafdf6d78474a14\\transformed\\play-services-base-18.3.0\\res\\values-bn\\values.xml",
+=======
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\422264301949b4f04304b44bd24bb660\\transformed\\play-services-basement-18.3.0\\res\\values-bn\\values.xml",
+>>>>>>> Stashed changes
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "193,298,453,577,684,816,934,1042,1142,1281,1386,1538,1662,1791,1935,1991,2054",
-                        "endColumns": "104,154,123,106,131,117,107,99,138,104,151,123,128,143,55,62,85",
-                        "endOffsets": "297,452,576,683,815,933,1041,1141,1280,1385,1537,1661,1790,1934,1990,2053,2139"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "147",
+                        "endOffsets": "342"
                     },
                     "to": {
-                        "startLines": "37,38,39,40,41,42,43,44,46,47,48,49,50,51,52,53,54",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3391,3500,3659,3787,3898,4034,4156,4268,4524,4667,4776,4932,5060,5193,5341,5401,5468",
-                        "endColumns": "108,158,127,110,135,121,111,103,142,108,155,127,132,147,59,66,89",
-                        "endOffsets": "3495,3654,3782,3893,4029,4151,4263,4367,4662,4771,4927,5055,5188,5336,5396,5463,5553"
+                        "startLines": "45",
+                        "startColumns": "4",
+                        "startOffsets": "4372",
+                        "endColumns": "151",
+                        "endOffsets": "4519"
                     }
                 },
                 {
@@ -38,7 +42,28 @@
                     }
                 },
                 {
+<<<<<<< Updated upstream
                     "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\422264301949b4f04304b44bd24bb660\\transformed\\play-services-basement-18.3.0\\res\\values-bn\\values.xml",
+=======
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\ebee7210e7a9df906cafdf6d78474a14\\transformed\\play-services-base-18.3.0\\res\\values-bn\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,298,453,577,684,816,934,1042,1142,1281,1386,1538,1662,1791,1935,1991,2054",
+                        "endColumns": "104,154,123,106,131,117,107,99,138,104,151,123,128,143,55,62,85",
+                        "endOffsets": "297,452,576,683,815,933,1041,1141,1280,1385,1537,1661,1790,1934,1990,2053,2139"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40,41,42,43,44,46,47,48,49,50,51,52,53,54",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3391,3500,3659,3787,3898,4034,4156,4268,4524,4667,4776,4932,5060,5193,5341,5401,5468",
+                        "endColumns": "108,158,127,110,135,121,111,103,142,108,155,127,132,147,59,66,89",
+                        "endOffsets": "3495,3654,3782,3893,4029,4151,4263,4367,4662,4771,4927,5055,5188,5336,5396,5463,5553"
+                    }
+                },
+                {
+                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\fd77f0bd6a19f23275136bf1b1f1ca77\\transformed\\navigation-ui-2.5.2\\res\\values-bn\\values-bn.xml",
+>>>>>>> Stashed changes
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -89,6 +114,7 @@
                         "endColumns": "12,82,103,116,80,65,90,65,60,89,66,60,68,61,53,106,58,60,53,73,119,84,83,104,70,69,86,66,65,72,79,94,68,75,79,68,94,82,89,94,73,73,92,53,66,85,84,61,63,62,101,104,92,105,79",
                         "endOffsets": "271,3084,3188,3305,3386,5619,5710,5776,5837,5927,5994,6055,6124,6186,6240,6347,6406,6467,6521,6595,6715,6800,6884,6989,7060,7130,7217,7284,7350,7423,7503,7598,7667,7743,7823,7892,7987,8070,8160,8255,8329,8403,8496,8550,8617,8703,8788,8850,8914,8977,9079,9184,9277,9383,9692"
                     }
+<<<<<<< Updated upstream
                 },
                 {
                     "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\fd77f0bd6a19f23275136bf1b1f1ca77\\transformed\\navigation-ui-2.5.2\\res\\values-bn\\values-bn.xml",
@@ -106,6 +132,8 @@
                         "endColumns": "111,116",
                         "endOffsets": "9495,9612"
                     }
+=======
+>>>>>>> Stashed changes
                 }
             ]
         }

@@ -15,6 +15,11 @@ public class User {
         UserName = "";
         HashedPassword = "";
         storeList = new ArrayList<>();
+<<<<<<< Updated upstream
+=======
+        itemList = new ArrayList<>();
+        huntedStoreIdList = new ArrayList<>();
+>>>>>>> Stashed changes
 //            storeList.add(new Store());
 //            storeList.add(new Store());
 //            storeList.add(new Store());
