@@ -1,6 +1,7 @@
 package com.example.storesearching.util;
 
 import com.example.storesearching.DataManager;
+import com.example.storesearching.Item;
 import com.example.storesearching.Store;
 
 import org.json.JSONArray;
@@ -48,6 +49,37 @@ public class JsonUtils {
 
         return null;
     }
+    public static Item JSONObjectToItem(JSONObject itemObject){
+        try {
+            Item item = new Item();
+            if(DataManager.testSign){
+                item.itemId = 1;
+                item.itemName = "pencil" + count;
+                item.itemPrice = 5;
+                item.itemDescription = "pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//";
+                // TODO: base64picture
+                count = count + 1;
+                item.itemStoreName = "Red sun store";
+                item.itemStoreId = 1;
+                item.customerVisits = 0;
+            }
+            else{
+                item.itemId = itemObject.getInt("ItemId");
+                item.itemName = itemObject.getString("ItemName");
+                item.itemPrice = itemObject.getDouble("ItemPrice");
+                item.itemDescription = itemObject.getString("ItemDescription");
+                // TODO: base64picture
+                item.itemStoreId = itemObject.getInt("ItemStoreId");
+                item.itemStoreName = itemObject.getString("ItemStoreName");
+                item.customerVisits = itemObject.getInt("customerVisits");
+            }
+            return item;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
     public static void parseInterface3JsonObject(JSONObject jsonObject, List<Store> storeList) {
         try {
             if(DataManager.testSign){
@@ -59,6 +91,23 @@ public class JsonUtils {
                 JSONArray storeListArray = jsonObject.getJSONArray("StoreList");
                 for (int i = 0; i < storeListArray.length(); i++) {
                     storeList.add(JSONObjectToStore(storeListArray.getJSONObject(i)));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void parseInterface6JsonObject(JSONObject jsonObject, List<Item> itemList) {
+        try {
+            if(DataManager.testSign){
+                for (int i = 0; i < 20; i++) {
+                    itemList.add(JSONObjectToItem(null));
+                }
+            }
+            else{
+                JSONArray itemListArray = jsonObject.getJSONArray("array");
+                for (int i = 0; i < itemListArray.length(); i++) {
+                    itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
                 }
             }
         } catch (JSONException e) {

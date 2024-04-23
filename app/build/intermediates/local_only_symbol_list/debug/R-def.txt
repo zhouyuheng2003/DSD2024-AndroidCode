@@ -63,10 +63,10 @@ id textView
 id textView_SearchMode
 id textView_des
 id textView_dis
+id textView_itemDescription
+id textView_itemName
 id textView_name
 id textView_no
-id textView_storeDescription
-id textView_storeName
 id text_gallery
 id text_slideshow
 id toolbar
@@ -76,8 +76,10 @@ layout app_bar_main
 layout content_main
 layout fragment_gallery
 layout fragment_home
+layout fragment_item
 layout fragment_slideshow
 layout fragment_store
+layout layout_listitem_item
 layout layout_listitem_store
 layout nav_header_main
 menu activity_main_drawer

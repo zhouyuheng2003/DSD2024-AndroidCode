@@ -4,6 +4,8 @@ public class Item {
     public int itemId;
     public String itemName;
     public double itemPrice;
+
+    public String itemDescription;
     //TODO:base64 image
     public int itemStoreId;
     public String itemStoreName;

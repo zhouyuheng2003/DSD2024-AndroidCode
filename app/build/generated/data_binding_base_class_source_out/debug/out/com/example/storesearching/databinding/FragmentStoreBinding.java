@@ -40,16 +40,16 @@ public final class FragmentStoreBinding implements ViewBinding {
   public final ImageButton ratingButton5;
 
   @NonNull
-  public final TextView textViewStoreDescription;
+  public final TextView textViewItemDescription;
 
   @NonNull
-  public final TextView textViewStoreName;
+  public final TextView textViewItemName;
 
   private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button confirmButton,
       @NonNull ImageButton ratingButton1, @NonNull ImageButton ratingButton2,
       @NonNull ImageButton ratingButton3, @NonNull ImageButton ratingButton4,
-      @NonNull ImageButton ratingButton5, @NonNull TextView textViewStoreDescription,
-      @NonNull TextView textViewStoreName) {
+      @NonNull ImageButton ratingButton5, @NonNull TextView textViewItemDescription,
+      @NonNull TextView textViewItemName) {
     this.rootView = rootView;
     this.confirmButton = confirmButton;
     this.ratingButton1 = ratingButton1;
@@ -57,8 +57,8 @@ public final class FragmentStoreBinding implements ViewBinding {
     this.ratingButton3 = ratingButton3;
     this.ratingButton4 = ratingButton4;
     this.ratingButton5 = ratingButton5;
-    this.textViewStoreDescription = textViewStoreDescription;
-    this.textViewStoreName = textViewStoreName;
+    this.textViewItemDescription = textViewItemDescription;
+    this.textViewItemName = textViewItemName;
   }
 
   @Override
@@ -124,21 +124,21 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView_storeDescription;
-      TextView textViewStoreDescription = ViewBindings.findChildViewById(rootView, id);
-      if (textViewStoreDescription == null) {
+      id = R.id.textView_itemDescription;
+      TextView textViewItemDescription = ViewBindings.findChildViewById(rootView, id);
+      if (textViewItemDescription == null) {
         break missingId;
       }
 
-      id = R.id.textView_storeName;
-      TextView textViewStoreName = ViewBindings.findChildViewById(rootView, id);
-      if (textViewStoreName == null) {
+      id = R.id.textView_itemName;
+      TextView textViewItemName = ViewBindings.findChildViewById(rootView, id);
+      if (textViewItemName == null) {
         break missingId;
       }
 
       return new FragmentStoreBinding((FrameLayout) rootView, confirmButton, ratingButton1,
-          ratingButton2, ratingButton3, ratingButton4, ratingButton5, textViewStoreDescription,
-          textViewStoreName);
+          ratingButton2, ratingButton3, ratingButton4, ratingButton5, textViewItemDescription,
+          textViewItemName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

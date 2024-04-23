@@ -18,14 +18,14 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView_storeName"
+                android:id="@+id/textView_itemName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Red Sun Store"
                 android:textSize="48sp" />
 
             <TextView
-                android:id="@+id/textView_storeDescription"
+                android:id="@+id/textView_itemDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//" />

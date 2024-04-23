@@ -49,6 +49,8 @@ public class StoreFragment extends Fragment {
             textView_storeName.setText(storeList.get(index).storeName);
             TextView textView_storeDescription = root.findViewById(R.id.textView_itemDescription);
             textView_storeDescription.setText(storeList.get(index).StoreDescription);
+//            dataManager.updateHuntedStoreIdList(index);
+            //TODO:
             ratingButton = new ImageButton[5];
             ratingButton[0] = root.findViewById(R.id.ratingButton1);
             ratingButton[1] = root.findViewById(R.id.ratingButton2);
