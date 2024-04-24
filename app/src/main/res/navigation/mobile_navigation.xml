@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_storeFragment_to_itemFragment"
             app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_map"
+            app:destination="@id/map" />
     </fragment>
     <activity
         android:id="@+id/map"

@@ -100,10 +100,10 @@
     <string name="login_switch_remember_text">Remember Me</string>
     <string name="login_welcome">Welcome Back,</string>
     <string name="login_welcome_text">Log In!</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Profile</string>
+    <string name="menu_home">Explore</string>
     <string name="menu_map">Map</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">About</string>
     <string name="minus_btn_desc">Decrease Button</string>
     <string name="more_app_bar_title">More</string>
     <string name="nav_header_desc">Navigation header</string>

@@ -46,6 +46,7 @@ public class TestLocationActivity {
         }
         return instance;
     }
+
     private TestLocationActivity(Context context, Activity activity, boolean output, HomeFragment homefragment) {
         this.context = context;
         this.activity = activity;
@@ -80,6 +81,7 @@ public class TestLocationActivity {
         return null;
     }//TODO:
     public double calculateDistance(double longitude, double latitude) {
+        getLocation();//Fix an unknown bug
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED ||
@@ -87,6 +89,30 @@ public class TestLocationActivity {
                                 != PackageManager.PERMISSION_GRANTED) ) {
             Location location = locationManager.getLastKnownLocation(locationProvider);
             return DistanceCalculator.calculateDistance(latitude, longitude, location.getLatitude(), location.getLongitude());
+        }
+        return -1.0;
+    }
+    public double getLongitude() {
+        getLocation();//Fix an unknown bug
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED) ) {
+            Location location = locationManager.getLastKnownLocation(locationProvider);
+            return location.getLongitude();
+        }
+        return -1.0;
+    }
+    public double getLatitude() {
+        getLocation();//Fix an unknown bug
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED) ) {
+            Location location = locationManager.getLastKnownLocation(locationProvider);
+            return location.getLatitude();
         }
         return -1.0;
     }

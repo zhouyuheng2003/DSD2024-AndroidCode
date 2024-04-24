@@ -89,6 +89,12 @@
                     android:text="Confirm" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/button_visitStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Visit Store On Map" />
+
             <LinearLayout
                 android:id="@+id/storeItemLayout"
                 android:layout_width="match_parent"

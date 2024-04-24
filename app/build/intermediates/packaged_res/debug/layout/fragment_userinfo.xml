@@ -56,12 +56,12 @@
         android:id="@+id/ChangeButton"
         android:layout_width="141dp"
         android:layout_height="51dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:text="Change Infomation"
         app:layout_constraintBottom_toTopOf="@+id/UserInfoLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintVertical_bias="0.84" />
 
     <Button
         android:id="@+id/ExitButton"
@@ -70,9 +70,9 @@
         android:text="Exit"
         app:layout_constraintBottom_toTopOf="@+id/UserInfoLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintHorizontal_bias="0.778"
         app:layout_constraintStart_toEndOf="@+id/ChangeButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintVertical_bias="0.84" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

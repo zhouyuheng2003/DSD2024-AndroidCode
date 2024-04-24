@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import com.example.storesearching.DataManager;
 import com.example.storesearching.Item;
+import com.example.storesearching.MapsActivity;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
+import com.example.storesearching.util.TestLocationActivity;
 
 import org.json.JSONException;
 
@@ -110,7 +112,31 @@ public class StoreFragment extends Fragment {
 
                     }
                 }
-            });
+            }
+            );
+
+            Button button_visitStore = root.findViewById(R.id.button_visitStore);
+            button_visitStore.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false,null);
+                     MapsActivity.DataFromHome = new String[][]{
+                             {"User Location", String.valueOf(testLocationActivity.getLatitude()),
+                                     String.valueOf(testLocationActivity.getLongitude())},
+                             {"Store " + storeList.get(index).storeName, String.valueOf(storeList.get(index).location.latitude),
+                                     String.valueOf(storeList.get(index).location.longitude)}};
+//                     {
+//                         {"User Location(" + testLocationActivity.getLatitude() +","+ testLocationActivity.getLongitude() +")", String.valueOf(testLocationActivity.getLatitude()),
+//                                 String.valueOf(testLocationActivity.getLongitude())},
+//                         {"Store " + storeList.get(index).storeName, String.valueOf(storeList.get(index).location.latitude),
+//                                 String.valueOf(storeList.get(index).location.longitude)}};
+                     Navigation.findNavController(v).navigate(R.id.action_storeFragment_to_map);
+
+                 }
+             }
+            );
+
+
 
             View[] listItemViews = new View[20];
             List<Item> itemList = storeList.get(index).itemList;

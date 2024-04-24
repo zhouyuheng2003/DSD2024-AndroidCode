@@ -23,6 +23,9 @@ public final class FragmentStoreBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
+  public final Button buttonVisitStore;
+
+  @NonNull
   public final Button confirmButton;
 
   @NonNull
@@ -52,13 +55,14 @@ public final class FragmentStoreBinding implements ViewBinding {
   @NonNull
   public final TextView textViewItemName;
 
-  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button confirmButton,
-      @NonNull LinearLayout mainStoreLayout, @NonNull ImageButton ratingButton1,
-      @NonNull ImageButton ratingButton2, @NonNull ImageButton ratingButton3,
-      @NonNull ImageButton ratingButton4, @NonNull ImageButton ratingButton5,
-      @NonNull LinearLayout storeItemLayout, @NonNull TextView textViewItemDescription,
-      @NonNull TextView textViewItemName) {
+  private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button buttonVisitStore,
+      @NonNull Button confirmButton, @NonNull LinearLayout mainStoreLayout,
+      @NonNull ImageButton ratingButton1, @NonNull ImageButton ratingButton2,
+      @NonNull ImageButton ratingButton3, @NonNull ImageButton ratingButton4,
+      @NonNull ImageButton ratingButton5, @NonNull LinearLayout storeItemLayout,
+      @NonNull TextView textViewItemDescription, @NonNull TextView textViewItemName) {
     this.rootView = rootView;
+    this.buttonVisitStore = buttonVisitStore;
     this.confirmButton = confirmButton;
     this.mainStoreLayout = mainStoreLayout;
     this.ratingButton1 = ratingButton1;
@@ -98,6 +102,12 @@ public final class FragmentStoreBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.button_visitStore;
+      Button buttonVisitStore = ViewBindings.findChildViewById(rootView, id);
+      if (buttonVisitStore == null) {
+        break missingId;
+      }
+
       id = R.id.confirmButton;
       Button confirmButton = ViewBindings.findChildViewById(rootView, id);
       if (confirmButton == null) {
@@ -158,9 +168,9 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentStoreBinding((FrameLayout) rootView, confirmButton, mainStoreLayout,
-          ratingButton1, ratingButton2, ratingButton3, ratingButton4, ratingButton5,
-          storeItemLayout, textViewItemDescription, textViewItemName);
+      return new FragmentStoreBinding((FrameLayout) rootView, buttonVisitStore, confirmButton,
+          mainStoreLayout, ratingButton1, ratingButton2, ratingButton3, ratingButton4,
+          ratingButton5, storeItemLayout, textViewItemDescription, textViewItemName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

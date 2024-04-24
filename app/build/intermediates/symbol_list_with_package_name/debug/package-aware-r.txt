@@ -2737,6 +2737,7 @@ id action_nav_home_to_storeFragment
 id action_nav_registration_to_nav_gallery
 id action_settings
 id action_storeFragment_to_itemFragment
+id action_storeFragment_to_map
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2777,6 +2778,7 @@ id buttonPanel
 id button_Registration
 id button_SwitchSearchMode
 id button_login
+id button_visitStore
 id cache_measures
 id callMeasure
 id cancel_button

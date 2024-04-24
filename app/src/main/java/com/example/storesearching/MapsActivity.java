@@ -66,11 +66,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+    public static String[][] DataFromHome;
     public String[][] getData() {
         String[][] data ={
                 {"User Location", String.valueOf(currentLocation.getLatitude()), String.valueOf(currentLocation.getLongitude())},
                 {"Store UTAD", "41.28678538409359", "-7.740637471808735"},
                 {"Store JLU", "43.82572225983296", "125.28501566529455"}};
+        if(DataFromHome != null){
+            data = DataFromHome;
+        }
 
         return data;
     }

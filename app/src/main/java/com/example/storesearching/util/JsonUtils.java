@@ -162,6 +162,8 @@ public class JsonUtils {
                 store.storeName = "Red Sun Store" + count;
                 count = count + 1;
                 store.StoreDescription = "Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//Department Store//";
+                store.location.latitude = 43.82572225983296;
+                store.location.longitude = 125.28501566529455;
                 for (int i = 0; i < 20; i++) {
                     store.itemList.add(JSONObjectToItem(null));
                 }
