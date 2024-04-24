@@ -88,6 +88,38 @@ public class DataManager {
             );
         }
     }
+    public void ratingStore(int storeId,int rating,String comment) throws JSONException {
+        WebServiceManager webServiceManager = WebServiceManager.getInstance();
+        int interfaceId = 8;
+        String userName = users.get(currentUserId).UserName;
+        webServiceManager.sendJson(interfaceId, userName,
+                JsonUtils.buildInterface8JsonObject(interfaceId, userName,storeId,comment,rating).toString()
+        );
+
+        String JsonString = webServiceManager.getJson(interfaceId, userName);
+        while(JsonString == ""){
+            JsonString = webServiceManager.getJson(interfaceId, userName);
+        }
+        JSONObject Json = null;
+        if(!testSign) Json = new JSONObject(JsonString);
+        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
+    }
+    public void ratingItem(int itemId,int rating,String comment) throws JSONException {
+        WebServiceManager webServiceManager = WebServiceManager.getInstance();
+        int interfaceId = 9;
+        String userName = users.get(currentUserId).UserName;
+        webServiceManager.sendJson(interfaceId, userName,
+                JsonUtils.buildInterface9JsonObject(interfaceId, userName,itemId,comment,rating).toString()
+        );
+
+        String JsonString = webServiceManager.getJson(interfaceId, userName);
+        while(JsonString == ""){
+            JsonString = webServiceManager.getJson(interfaceId, userName);
+        }
+        JSONObject Json = null;
+        if(!testSign) Json = new JSONObject(JsonString);
+        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
+    }
     public void getRecommendStoreList() throws JSONException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 7;

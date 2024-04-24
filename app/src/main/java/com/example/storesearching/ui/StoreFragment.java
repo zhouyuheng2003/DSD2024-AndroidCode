@@ -97,7 +97,13 @@ public class StoreFragment extends Fragment {
                         storeList.get(index).rating_fixed = 1;
                         Button confirmButton = root.findViewById(R.id.confirmButton);
                         confirmButton.setText("CONFIRMED ");
-                        //TODO:发送
+                        DataManager dataManager = DataManager.getInstance();
+                        try{
+                            dataManager.ratingStore(storeList.get(index).storeId,storeList.get(index).rating,"");
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
             });

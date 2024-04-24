@@ -81,6 +81,32 @@ public class JsonUtils {
         }
         return jsonObject;
     }
+    public static JSONObject buildInterface8JsonObject(int interfaceId, String currentUser, int StoreId, String comment, int rating) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("InterfaceId", interfaceId);
+            jsonObject.put("CurrentUser", currentUser);
+            jsonObject.put("StoreId", StoreId);
+            jsonObject.put("comment", comment);
+            jsonObject.put("rating", rating);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+    public static JSONObject buildInterface9JsonObject(int interfaceId, String currentUser, int ItemId, String comment, int rating) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("InterfaceId", interfaceId);
+            jsonObject.put("CurrentUser", currentUser);
+            jsonObject.put("ItemId", ItemId);
+            jsonObject.put("comment", comment);
+            jsonObject.put("rating", rating);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
 
     public  static  JSONObject buildInterface10JsonObject(int interfaceId, String currentUser, String username, String password, Date Birthday, JSONArray Description)
     {

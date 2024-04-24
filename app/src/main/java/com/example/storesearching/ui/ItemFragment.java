@@ -17,6 +17,8 @@ import com.example.storesearching.Item;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 
@@ -91,7 +93,11 @@ public class ItemFragment extends Fragment {
                         itemList.get(index).rating_fixed = 1;
                         Button confirmButton = root.findViewById(R.id.confirmButton);
                         confirmButton.setText("CONFIRMED ");
-                        //TODO:发送
+                        try{
+                            dataManager.ratingItem(itemList.get(index).itemId,itemList.get(index).rating,"");
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             });
