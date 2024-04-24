@@ -92,7 +92,8 @@ public class GalleryFragment extends Fragment {
                             }
                         }
                         else {
-                            new Handler().postDelayed(this, 300);
+//                            new Handler().postDelayed(this, 300);
+                            AlertDialogUtils.ShowAlertDialog(getActivity(),"","Waiting for server response");
                         }
                     }
                 };

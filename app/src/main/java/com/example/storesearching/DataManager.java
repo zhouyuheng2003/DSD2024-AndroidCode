@@ -2,6 +2,7 @@ package com.example.storesearching;
 
 
 import com.example.storesearching.util.JsonUtils;
+import com.example.storesearching.util.TestLocationActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DataManager {
+    public static double distanceLimit = 2;
     public static boolean testSign = true;//whether it is unit test
     public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
@@ -34,7 +36,7 @@ public class DataManager {
         String userName = users.get(currentUserId).UserName;
         webServiceManager.sendJson(interfaceId, userName,
                 JsonUtils.buildInterface3JsonObject(interfaceId, userName,query).toString()
-        );
+                );
         String JsonString = webServiceManager.getJson(interfaceId, userName);
         while(JsonString == ""){
             JsonString = webServiceManager.getJson(interfaceId, userName);
@@ -47,10 +49,9 @@ public class DataManager {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 6;
         String userName = users.get(currentUserId).UserName;
-//        webServiceManager.sendJson(interfaceId, userName,
-//                JsonUtils.buildInterface6JsonObject(interfaceId, userName,query).toString()
-//        );
-        //TODO:
+        webServiceManager.sendJson(interfaceId, userName,
+                JsonUtils.buildInterface6JsonObject(interfaceId, userName, query).toString()
+        );
         String JsonString = webServiceManager.getJson(interfaceId, userName);
         while(JsonString == ""){
             JsonString = webServiceManager.getJson(interfaceId, userName);
@@ -71,8 +72,7 @@ public class DataManager {
         }
         JSONObject Json = null;
         if(!testSign) Json = new JSONObject(JsonString);
-//        JsonUtils.parseInterface5JsonObject(Json,users.get(currentUserId).huntedStoreIdList);
-        //TODO:
+        JsonUtils.parseInterface5JsonObject(Json,users.get(currentUserId).huntedStoreIdList);
         List<Integer> huntedStoreIdList = users.get(currentUserId).huntedStoreIdList;
         for(int i = 0; i < huntedStoreIdList.size(); i++){
             if(huntedStoreIdList.get(i) == currentId){
@@ -83,13 +83,33 @@ public class DataManager {
             huntedStoreIdList.add(currentId);
 
             interfaceId = 4;
-//            webServiceManager.sendJson(interfaceId, userName,
-//                    JsonUtils.buildInterface4JsonObject(interfaceId, userName,huntedStoreIdList).toString()
-//            );
-            //TODO:
+            webServiceManager.sendJson(interfaceId, userName,
+                    JsonUtils.buildInterface4JsonObject(interfaceId, userName,huntedStoreIdList).toString()
+            );
         }
     }
+    public void getRecommendStoreList() throws JSONException {
+        WebServiceManager webServiceManager = WebServiceManager.getInstance();
+        int interfaceId = 7;
+        String userName = users.get(currentUserId).UserName;
+        TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false);
+        webServiceManager.sendJson(interfaceId, userName,
+                JsonUtils.buildInterface7JsonObject(interfaceId, userName,testLocationActivity.getLocationJson(),2).toString()
+        );
+
+        String JsonString = webServiceManager.getJson(interfaceId, userName);
+        while(JsonString == ""){
+            JsonString = webServiceManager.getJson(interfaceId, userName);
+        }
+        JSONObject Json = null;
+        if(!testSign) Json = new JSONObject(JsonString);
+        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
+    }
+
     public List<Store> currentStoreList(){
         return users.get(currentUserId).storeList;
+    }
+    public List<Item> currentItemList(){
+        return users.get(currentUserId).itemList;
     }
 }

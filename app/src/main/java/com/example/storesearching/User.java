@@ -11,6 +11,8 @@ public class User {
     public List<Store> storeList;
     public List<Item> itemList;
     public List<Integer> huntedStoreIdList;
+
+    public List<Store> recommendStoreList;
     public User(int userId){
         this.userId = userId;
         UserEmail = "1287121642@qq.com";
@@ -18,15 +20,7 @@ public class User {
         HashedPassword = "";
         storeList = new ArrayList<>();
         itemList = new ArrayList<>();
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
-//            storeList.add(new Store());
+        huntedStoreIdList = new ArrayList<>();
+        recommendStoreList = new ArrayList<>();
     }
 }

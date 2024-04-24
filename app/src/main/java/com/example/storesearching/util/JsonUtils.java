@@ -3,6 +3,7 @@ package com.example.storesearching.util;
 import com.example.storesearching.DataManager;
 import com.example.storesearching.Item;
 import com.example.storesearching.Store;
+import com.example.storesearching.myLocation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,8 +12,26 @@ import org.json.JSONObject;
 import java.util.Date;
 import java.util.List;
 
+import android.location.Address;
 public class JsonUtils {
+    public static JSONObject buildLocation(Address myAddress){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("latitude", myAddress.getLatitude());
+            jsonObject.put("longitude", myAddress.getLongitude());
+            jsonObject.put("country", myAddress.getCountryName());
+            jsonObject.put("state", myAddress.getAdminArea());
+            jsonObject.put("city", myAddress.getLocality());
+            jsonObject.put("street", myAddress.getThoroughfare());
+            jsonObject.put("number", null);
+            jsonObject.put("floor", null);
+            jsonObject.put("zipcode", myAddress.getPostalCode());
 
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
     public static JSONObject buildInterface3JsonObject(int interfaceId, String currentUser, String StoreName) {
         JSONObject jsonObject = new JSONObject();
         try {
@@ -50,6 +69,19 @@ public class JsonUtils {
         }
         return jsonObject;
     }
+    public static JSONObject buildInterface7JsonObject(int interfaceId, String currentUser, JSONObject MyLocation,int RequestType) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("InterfaceId", interfaceId);
+            jsonObject.put("CurrentUser", currentUser);
+            jsonObject.put("MyLocation", MyLocation);
+            jsonObject.put("RequestType", RequestType);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
     public  static  JSONObject buildInterface10JsonObject(int interfaceId, String currentUser, String username, String password, Date Birthday, JSONArray Description)
     {
         JSONObject jsonObject = new JSONObject();
@@ -67,6 +99,32 @@ public class JsonUtils {
         }
         return jsonObject;
     }
+
+    public static myLocation JSONObjectToLocation(JSONObject myLocationObject){
+        try {
+            myLocation location = new myLocation();
+            if(DataManager.testSign){
+                location.longitude = 0;
+                location.latitude = 0;
+            }
+            else{
+                location.latitude = myLocationObject.getDouble("latitude");
+                location.longitude = myLocationObject.getDouble("longitude");
+                location.country = myLocationObject.getString("country");
+                location.state = myLocationObject.getString("state");
+                location.city = myLocationObject.getString("city");
+                location.street = myLocationObject.getString("street");
+                location.number = myLocationObject.getString("number");
+                location.floor = myLocationObject.getString("floor");
+                location.zipcode = myLocationObject.getString("zipcode");
+            }
+            return location;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
     private static int count = 0;
     public static Store JSONObjectToStore(JSONObject storeObject){
         try {
@@ -79,7 +137,7 @@ public class JsonUtils {
             else{
                 store.storeId = storeObject.getInt("storeId");
                 store.storeName = storeObject.getString("storeName");
-//            store.location = JSONObjectToLocation(storeObject.getJSONObject("location"));
+                store.location = JSONObjectToLocation(storeObject.getJSONObject("location"));
                 JSONArray itemListArray = storeObject.getJSONArray("items");
                 for (int i = 0; i < itemListArray.length(); i++) {
 //                store.itemList.add(JSONObjectToStore(itemListArray.getJSONObject(i)));
@@ -178,7 +236,24 @@ public class JsonUtils {
             e.printStackTrace();
         }
     }
-
+    public static void parseInterface7JsonObject(JSONObject jsonObject, List<Store> recommendStoreList) {
+        try {
+            if(DataManager.testSign){
+                for (int i = 0; i < 20; i++) {
+                    recommendStoreList.add(JSONObjectToStore(null));
+                }
+            }
+            else{
+                recommendStoreList.clear();
+                JSONArray storeListArray = jsonObject.getJSONArray("array");
+                for (int i = 0; i < storeListArray.length(); i++) {
+                    recommendStoreList.add(JSONObjectToStore(storeListArray.getJSONObject(i)));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     //tempolate:
     // 构建 JSON 对象

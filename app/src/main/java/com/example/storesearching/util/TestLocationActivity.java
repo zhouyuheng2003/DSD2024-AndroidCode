@@ -36,8 +36,14 @@ public class TestLocationActivity {
     private Context context;
     private Activity activity;
     private boolean output;//1 means output hint
-
-    public TestLocationActivity(Context context, Activity activity, boolean output) {
+    private static TestLocationActivity instance;
+    public static TestLocationActivity getInstance(Context context, Activity activity, boolean output){
+        if(instance == null){
+            instance = new TestLocationActivity(context, activity, output);
+        }
+        return instance;
+    }
+    private TestLocationActivity(Context context, Activity activity, boolean output) {
         this.context = context;
         this.activity = activity;
         this.output = output;
@@ -45,6 +51,28 @@ public class TestLocationActivity {
         //getLocation();
     }
     public JSONObject getLocationJson(){
+        getLocation();//Fix an unknown bug
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED) ) {
+            Location location = locationManager.getLastKnownLocation(locationProvider);
+            if (location != null) {
+                List<Address> result = null;
+                Geocoder gc = new Geocoder(context, Locale.getDefault());
+                try{
+                    result = gc.getFromLocation(location.getLatitude(),
+                            location.getLongitude(), 1);
+                    JsonUtils.buildLocation(result.get(0));
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
         return null;
     }//TODO:
     public double calculateDistance(double longitude, double latitude) {

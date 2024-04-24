@@ -10,6 +10,7 @@ public class Item {
     public int itemStoreId;
     public String itemStoreName;
     public int customerVisits;
+    public int rating, rating_fixed;
     public Item(){
         itemId = 1;
         itemName = "pencil";
@@ -17,5 +18,7 @@ public class Item {
         itemStoreId = 1;
         itemStoreName = "Red sun";
         customerVisits = 0;
+        rating = 0;
+        rating_fixed = 0;
     }
 }

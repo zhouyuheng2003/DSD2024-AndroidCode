@@ -1,6 +1,7 @@
 package com.example.storesearching.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.example.storesearching.util.AlertDialogUtils;
 import com.example.storesearching.util.JsonUtils;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
@@ -70,21 +72,36 @@ public class UserInfoChangeFragment extends Fragment {
                         else if(Birthday.contains(".")){date = dateFormat_2.parse(Birthday);}
                             else if(Birthday.contains("/")) {date = dateFormat_3.parse(Birthday);}
 
-                    String[] Descriptions = DescriptionText.split(";");
-                    JSONArray Description_array = new JSONArray();
-                    for (String Description : Descriptions) {Description_array.put(Description);}
+                        String[] Descriptions = DescriptionText.split(";");
+                        JSONArray Description_array = new JSONArray();
+                        for (String Description : Descriptions) {Description_array.put(Description);}
 
-                    JSONObject ChangeInfo = JsonUtils.buildInterface10JsonObject(10,userName,userName,password,date,Description_array);
+                        JSONObject ChangeInfo = JsonUtils.buildInterface10JsonObject(10,userName,userName,password,date,Description_array);
 
-                    WebServiceManager webServiceManager = WebServiceManager.getInstance();
-                    webServiceManager.sendJson(10,userName,ChangeInfo.toString());
+                        WebServiceManager webServiceManager = WebServiceManager.getInstance();
+                        webServiceManager.sendJson(10,userName,ChangeInfo.toString());
 
-                    Bundle bundle = new Bundle();
+                    Runnable handleJsonResponse = new Runnable() {
+                        @Override
+                        public void run() {
+                            String ChangeRespose = webServiceManager.getJson(11,userName);
 
-                    bundle.putString("LoginRespose",ChangeInfo.toString());
-                    Navigation.findNavController(view).navigate(R.id.action_nav_changeInfo_to_nav_UserInfo,bundle);
+                            if(!ChangeRespose.isEmpty())
+                            {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("LoginRespose", ChangeRespose);
+                                Navigation.findNavController(view).navigate(R.id.action_nav_changeInfo_to_nav_UserInfo,bundle);
+                            }
+                            else {
+                                AlertDialogUtils.ShowAlertDialog(getActivity(),"","Waiting for server response");
+//                                new Handler().postDelayed(this, 300);
+                            }
+                        }
+                    };
+                    handleJsonResponse.run();
 
                 }catch (ParseException e){
+                    AlertDialogUtils.ShowAlertDialog(getActivity(),"Input error","Incorrect input format");
                     e.printStackTrace();
                 }
             }

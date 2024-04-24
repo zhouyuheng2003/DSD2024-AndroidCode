@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_storeFragment"
             app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_itemFragment"
+            app:destination="@id/itemFragment" />
     </fragment>
 
     <fragment
@@ -77,4 +80,9 @@
         android:name="com.example.storesearching.MapsActivity"
         android:label="@string/menu_map"
         tools:layout="@layout/activity_maps"/>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.storesearching.ui.ItemFragment"
+        android:label="fragment_item"
+        tools:layout="@layout/fragment_item" />
 </navigation>

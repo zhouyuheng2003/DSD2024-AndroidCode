@@ -2732,6 +2732,7 @@ id action_nav_UserInfo_to_nav_gallery
 id action_nav_changeInfo_to_nav_UserInfo
 id action_nav_gallery_to_nav_UserInfo
 id action_nav_gallery_to_nav_registration
+id action_nav_home_to_itemFragment
 id action_nav_home_to_storeFragment
 id action_nav_registration_to_nav_gallery
 id action_settings
@@ -2905,6 +2906,7 @@ id info
 id invisible
 id inward
 id italic
+id itemFragment
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart

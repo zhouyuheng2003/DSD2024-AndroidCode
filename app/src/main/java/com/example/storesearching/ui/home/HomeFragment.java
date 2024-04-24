@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.storesearching.DataManager;
+import com.example.storesearching.Item;
 import com.example.storesearching.Store;
 import com.example.storesearching.databinding.FragmentHomeBinding;
 import android.widget.SearchView;
@@ -29,6 +30,7 @@ import androidx.navigation.Navigation;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -87,7 +89,9 @@ public class HomeFragment extends Fragment {
                 textView_name.setText(storeList.get(i).storeName);
                 TextView textView_des = listItemView.findViewById(R.id.textView_des);
                 textView_des.setText("Description:" + storeList.get(i).StoreDescription);
-                //TODO:Set distance
+
+                TextView textView_dis = listItemView.findViewById(R.id.textView_dis);
+                textView_dis.setText(storeList.get(i).location.getDistance()+"km");
                 int finalI = i;
                 int finalI1 = i;
                 button.setOnClickListener(new View.OnClickListener() {
@@ -104,25 +108,88 @@ public class HomeFragment extends Fragment {
             }
         }
         else if(SearchMode == 1){
-            //TODO:search Item
+            List<Item> itemList = dataManager.currentItemList();
+            for (int i = 0; i < 20; i++) {
+                if(i >= itemList.size())break;
+                View listItemView = inflater.inflate(R.layout.layout_listitem_item, null);
+                Button button = listItemView.findViewById(R.id.button);
+                TextView textView_no = listItemView.findViewById(R.id.textView_no);
+                textView_no.setText("Number"+ (i+1) +": ");
+                TextView textView_name = listItemView.findViewById(R.id.textView_name);
+                textView_name.setText(itemList.get(i).itemName);
+                TextView textView_des = listItemView.findViewById(R.id.textView_des);
+                textView_des.setText("Description:" + itemList.get(i).itemDescription);
+                int finalI = i;
+                int finalI1 = i;
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Bundle bundle = new Bundle();
+                        int index = finalI1;
+                        bundle.putInt("itemId", index); // 将整数值放入 Bundle 中，使用一个键来标识它
+                        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_itemFragment, bundle);
+                    }
+                });
+                listItemViews[i] = listItemView;
+                linearlayout_searchresult.addView(listItemView);
+            }
         }
         else if(SearchMode == 2){
-            //TODO:automatically get store recommendations
+            try{
+                dataManager.getRecommendStoreList();
+                Toast.makeText(container.getContext(), "ok2", Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            List<Store> recommendStoreList = dataManager.users.get(dataManager.currentUserId).recommendStoreList;
+            Toast.makeText(container.getContext(), "ok3", Toast.LENGTH_SHORT).show();
+            for (int i = 0; i < 20; i++) {
+                if(i >= recommendStoreList.size())break;
+                double dis = recommendStoreList.get(i).location.getDistance();
+                if(dis>DataManager.distanceLimit)continue;
+
+                View listItemView = inflater.inflate(R.layout.layout_listitem_store, null);
+                Button button = listItemView.findViewById(R.id.button);
+                TextView textView_no = listItemView.findViewById(R.id.textView_no);
+                textView_no.setText("Number"+ (i+1) +": ");
+                TextView textView_name = listItemView.findViewById(R.id.textView_name);
+                textView_name.setText(recommendStoreList.get(i).storeName);
+                TextView textView_des = listItemView.findViewById(R.id.textView_des);
+                textView_des.setText("Description:" + recommendStoreList.get(i).StoreDescription);
+
+                TextView textView_dis = listItemView.findViewById(R.id.textView_dis);
+                textView_dis.setText(dis+"km");
+                int finalI = i;
+                int finalI1 = i;
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Bundle bundle = new Bundle();
+                        int index = finalI1;
+                        bundle.putInt("storeId", index); // 将整数值放入 Bundle 中，使用一个键来标识它
+                        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_storeFragment, bundle);
+                    }
+                });
+                listItemViews[i] = listItemView;
+                linearlayout_searchresult.addView(listItemView);
+            }
         }
     }
     public void onResume() {
         super.onResume();
         updateSearchResult();
     }
+    private ViewGroup container;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         //updateUserId;
 
         //Interface 2, get location
-        TestLocationActivity location = new TestLocationActivity(container.getContext(),getActivity(),true);
+        TestLocationActivity location = TestLocationActivity.getInstance(container.getContext(),getActivity(),true);
         location.getLocation();//return a Location
         Toast.makeText(container.getContext(), "version0422b", Toast.LENGTH_SHORT).show();
+        this.container = container;
 
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
