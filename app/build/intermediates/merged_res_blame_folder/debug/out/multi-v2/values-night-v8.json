@@ -4,7 +4,7 @@
             "outputFile": "com.example.storesearching.app-mergeDebugResources-42:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\b3601b667179aff9e85bcf0cfc745116\\transformed\\material-1.5.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\b3601b667179aff9e85bcf0cfc745116\\transformed\\material-1.5.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Program Files\\Java\\jdk-1.8\\caches\\transforms-3\\fb54b3375e833d264af2495166c02314\\transformed\\appcompat-1.4.1\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\hugop\\.gradle\\caches\\transforms-3\\fb54b3375e833d264af2495166c02314\\transformed\\appcompat-1.4.1\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "K:\\Document\\DSD2024-AndroidCode\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "D:\\Repos\\CompUbi\\AndroidCode_V3\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

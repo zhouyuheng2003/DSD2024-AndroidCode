@@ -20,12 +20,13 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.storesearching.databinding.ActivityMapsBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -45,8 +46,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         getLastLocation();
     }
 
-    //private String[][] data;
-
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
@@ -56,7 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if(location != null){
+                if (location != null) {
                     currentLocation = location;
 
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -67,11 +66,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public static String[][] DataFromHome;
+
     public String[][] getData() {
-        String[][] data ={
-//                {"User Location", String.valueOf(currentLocation.getLatitude()), String.valueOf(currentLocation.getLongitude())},
+        String[][] data = {
                 {"Store UTAD", "41.28678538409359", "-7.740637471808735"},
                 {"Store JLU", "43.82572225983296", "125.28501566529455"}};
+
         if(DataFromHome != null){
             data = DataFromHome;
         }
@@ -86,18 +86,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng userPos = null;
         String[][] store = getData();
 
-        for(int i = 0; i < store.length; i++) {
+        for (int i = 0; i < store.length; i++) {
             double lat = stringToDouble(store[i][1]);
             double lng = stringToDouble(store[i][2]);
             LatLng location = new LatLng(lat, lng);
-            mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]));
-            
-            if(store[i][0].equals("User Location")){/*User Location*/
-                userPos = location;
-            }
+            Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]));
+            String[] storeInfo = store[i];
+            marker.setTag(storeInfo);
         }
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
@@ -108,12 +105,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()), 12.0f));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(userPos));
+
+        mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
     }
-    /*private void getDirections(String from, String to){
-        from = String.valueOf(currentLocation);
+
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        String[] storeInfo = (String[]) marker.getTag();
+        Toast.makeText(this, marker.getTitle() + ": " + storeInfo[1] + " / " + storeInfo[2], Toast.LENGTH_SHORT).show();
+
+        getDirections(storeInfo[1], storeInfo[2]);
+        return false;
+    }
+
+    private void getDirections(String toLat, String toLng){
+        //from = String.valueOf(currentLocation);
+        double fromLat = currentLocation.getLatitude();
+        double fromLng = currentLocation.getLongitude();
         try {
-            Uri uri = Uri.parse("https://www.google.com/maps/dir/" + from + "/" + to);
+            Uri uri = Uri.parse("https://www.google.com/maps/dir/" + fromLat + "," + fromLng + "/" + toLat + "," + toLng);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setPackage("com.google.android.apps.maps");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -124,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-    }*/
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -4,7 +4,7 @@
             "outputFile": "com.example.storesearching.app-mergeDebugResources-42:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "K:\\Document\\DSD2024-AndroidCode\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
+                    "source": "D:\\Repos\\CompUbi\\AndroidCode_V3\\app\\src\\main\\res\\values-w600dp\\dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
