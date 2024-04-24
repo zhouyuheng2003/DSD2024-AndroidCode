@@ -124,7 +124,7 @@ public class DataManager {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 7;
         String userName = users.get(currentUserId).UserName;
-        TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false);
+        TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false, null);
         webServiceManager.sendJson(interfaceId, userName,
                 JsonUtils.buildInterface7JsonObject(interfaceId, userName,testLocationActivity.getLocationJson(),2).toString()
         );

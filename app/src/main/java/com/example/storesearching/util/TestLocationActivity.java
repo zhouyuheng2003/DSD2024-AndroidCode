@@ -23,6 +23,8 @@ import java.util.Locale;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.storesearching.ui.home.HomeFragment;
+
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
@@ -37,17 +39,19 @@ public class TestLocationActivity {
     private Activity activity;
     private boolean output;//1 means output hint
     private static TestLocationActivity instance;
-    public static TestLocationActivity getInstance(Context context, Activity activity, boolean output){
+    HomeFragment homeFragment;
+    public static TestLocationActivity getInstance(Context context, Activity activity, boolean output, HomeFragment homefragment){
         if(instance == null){
-            instance = new TestLocationActivity(context, activity, output);
+            instance = new TestLocationActivity(context, activity, output, homefragment);
         }
         return instance;
     }
-    private TestLocationActivity(Context context, Activity activity, boolean output) {
+    private TestLocationActivity(Context context, Activity activity, boolean output, HomeFragment homefragment) {
         this.context = context;
         this.activity = activity;
         this.output = output;
         this.output = false;
+        this.homeFragment = homefragment;
         //getLocation();
     }
     public JSONObject getLocationJson(){
@@ -169,6 +173,7 @@ public class TestLocationActivity {
                 if(output)Toast.makeText(context, location.getLongitude() + " " +
                         location.getLatitude() + "", Toast.LENGTH_SHORT).show();
                 Log.v("TAG", "监视地理位置变化-经纬度："+location.getLongitude()+"   "+location.getLatitude());
+                homeFragment.updateRecommendStoreList();
             }
         }
     };

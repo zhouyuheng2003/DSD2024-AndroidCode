@@ -3,16 +3,20 @@ package com.example.storesearching.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.storesearching.DataManager;
+import com.example.storesearching.Item;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
 
@@ -107,6 +111,41 @@ public class StoreFragment extends Fragment {
                     }
                 }
             });
+
+            View[] listItemViews = new View[20];
+            List<Item> itemList = storeList.get(index).itemList;
+            LinearLayout storeItemLayout = root.findViewById(R.id.storeItemLayout);
+            storeItemLayout.removeAllViews();
+            for (int i = 0; i < 20; i++) {
+                if(i >= itemList.size())break;
+                View listItemView = inflater.inflate(R.layout.layout_listitem_item, null);
+                Button button = listItemView.findViewById(R.id.button);
+                TextView textView_no = listItemView.findViewById(R.id.textView_no);
+                textView_no.setText("Number"+ (i+1) +": ");
+                TextView textView_name = listItemView.findViewById(R.id.textView_name);
+                textView_name.setText(itemList.get(i).itemName);
+                TextView textView_des = listItemView.findViewById(R.id.textView_des);
+                textView_des.setText("Description:" + itemList.get(i).itemDescription);
+                ImageView imageView_smallItem = listItemView.findViewById(R.id.imageView_smallItem);
+                imageView_smallItem.setImageBitmap(itemList.get(i).image);
+
+
+                int finalI = i;
+                int finalI1 = i;
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Bundle bundle = new Bundle();
+                        int Index = finalI1;
+                        bundle.putInt("storeId",index);
+                        bundle.putInt("itemId", Index); // 将整数值放入 Bundle 中，使用一个键来标识它
+                        Navigation.findNavController(view).navigate(R.id.action_storeFragment_to_itemFragment, bundle);
+                    }
+                });
+                listItemViews[i] = listItemView;
+                storeItemLayout.addView(listItemView);
+            }
+
         }
         else{
             TextView textView_storeName = root.findViewById(R.id.textView_itemName);

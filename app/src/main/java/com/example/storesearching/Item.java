@@ -1,4 +1,5 @@
 package com.example.storesearching;
+import android.graphics.Bitmap;
 
 public class Item {
     public int itemId;
@@ -6,7 +7,7 @@ public class Item {
     public double itemPrice;
 
     public String itemDescription;
-    //TODO:base64 image
+    public Bitmap image;
     public int itemStoreId;
     public String itemStoreName;
     public int customerVisits;
@@ -20,5 +21,6 @@ public class Item {
         customerVisits = 0;
         rating = 0;
         rating_fixed = 0;
+        image = null;
     }
 }

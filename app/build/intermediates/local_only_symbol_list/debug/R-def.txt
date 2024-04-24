@@ -64,6 +64,7 @@ id action_nav_home_to_itemFragment
 id action_nav_home_to_storeFragment
 id action_nav_registration_to_nav_gallery
 id action_settings
+id action_storeFragment_to_itemFragment
 id app_bar_main
 id button
 id button_Registration
@@ -75,10 +76,13 @@ id editTextUserName
 id editTextUserPassword
 id fab
 id imageView
+id imageView_item
+id imageView_smallItem
 id itemFragment
 id linearlayout_searchresult
 id mainScrollView
 id mainSearchView
+id mainStoreLayout
 id map
 id mobile_navigation
 id nav_UserInfo
@@ -96,6 +100,7 @@ id ratingButton3
 id ratingButton4
 id ratingButton5
 id storeFragment
+id storeItemLayout
 id textLogin
 id textPasswordLabel
 id textUserNameLabel

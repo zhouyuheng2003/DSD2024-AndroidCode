@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -70,6 +71,11 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+    public void updateRecommendStoreList(){
+        if(SearchMode == 2){
+            updateSearchResult();
+        }
+    }
     private void updateSearchResult(){//update the content of ScrollView
         LinearLayout linearlayout_searchresult = root.findViewById(R.id.linearlayout_searchresult);
         linearlayout_searchresult.removeAllViews();
@@ -119,6 +125,10 @@ public class HomeFragment extends Fragment {
                 textView_name.setText(itemList.get(i).itemName);
                 TextView textView_des = listItemView.findViewById(R.id.textView_des);
                 textView_des.setText("Description:" + itemList.get(i).itemDescription);
+                ImageView imageView_smallItem = listItemView.findViewById(R.id.imageView_smallItem);
+                imageView_smallItem.setImageBitmap(itemList.get(i).image);
+
+
                 int finalI = i;
                 int finalI1 = i;
                 button.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +136,7 @@ public class HomeFragment extends Fragment {
                     public void onClick(View view) {
                         Bundle bundle = new Bundle();
                         int index = finalI1;
+                        bundle.putInt("storeId",-1);
                         bundle.putInt("itemId", index); // 将整数值放入 Bundle 中，使用一个键来标识它
                         Navigation.findNavController(view).navigate(R.id.action_nav_home_to_itemFragment, bundle);
                     }
@@ -137,12 +148,12 @@ public class HomeFragment extends Fragment {
         else if(SearchMode == 2){
             try{
                 dataManager.getRecommendStoreList();
-                Toast.makeText(container.getContext(), "ok2", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(container.getContext(), "ok2", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             List<Store> recommendStoreList = dataManager.users.get(dataManager.currentUserId).recommendStoreList;
-            Toast.makeText(container.getContext(), "ok3", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(container.getContext(), "ok3", Toast.LENGTH_SHORT).show();
             for (int i = 0; i < 20; i++) {
                 if(i >= recommendStoreList.size())break;
                 double dis = recommendStoreList.get(i).location.getDistance();
@@ -186,7 +197,7 @@ public class HomeFragment extends Fragment {
         //updateUserId;
 
         //Interface 2, get location
-        TestLocationActivity location = TestLocationActivity.getInstance(container.getContext(),getActivity(),true);
+        TestLocationActivity location = TestLocationActivity.getInstance(container.getContext(),getActivity(),true,this);
         location.getLocation();//return a Location
         Toast.makeText(container.getContext(), "version0422b", Toast.LENGTH_SHORT).show();
         this.container = container;

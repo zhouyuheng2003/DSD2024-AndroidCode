@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,9 @@ public final class FragmentStoreBinding implements ViewBinding {
   public final Button confirmButton;
 
   @NonNull
+  public final LinearLayout mainStoreLayout;
+
+  @NonNull
   public final ImageButton ratingButton1;
 
   @NonNull
@@ -40,23 +44,29 @@ public final class FragmentStoreBinding implements ViewBinding {
   public final ImageButton ratingButton5;
 
   @NonNull
+  public final LinearLayout storeItemLayout;
+
+  @NonNull
   public final TextView textViewItemDescription;
 
   @NonNull
   public final TextView textViewItemName;
 
   private FragmentStoreBinding(@NonNull FrameLayout rootView, @NonNull Button confirmButton,
-      @NonNull ImageButton ratingButton1, @NonNull ImageButton ratingButton2,
-      @NonNull ImageButton ratingButton3, @NonNull ImageButton ratingButton4,
-      @NonNull ImageButton ratingButton5, @NonNull TextView textViewItemDescription,
+      @NonNull LinearLayout mainStoreLayout, @NonNull ImageButton ratingButton1,
+      @NonNull ImageButton ratingButton2, @NonNull ImageButton ratingButton3,
+      @NonNull ImageButton ratingButton4, @NonNull ImageButton ratingButton5,
+      @NonNull LinearLayout storeItemLayout, @NonNull TextView textViewItemDescription,
       @NonNull TextView textViewItemName) {
     this.rootView = rootView;
     this.confirmButton = confirmButton;
+    this.mainStoreLayout = mainStoreLayout;
     this.ratingButton1 = ratingButton1;
     this.ratingButton2 = ratingButton2;
     this.ratingButton3 = ratingButton3;
     this.ratingButton4 = ratingButton4;
     this.ratingButton5 = ratingButton5;
+    this.storeItemLayout = storeItemLayout;
     this.textViewItemDescription = textViewItemDescription;
     this.textViewItemName = textViewItemName;
   }
@@ -94,6 +104,12 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.mainStoreLayout;
+      LinearLayout mainStoreLayout = ViewBindings.findChildViewById(rootView, id);
+      if (mainStoreLayout == null) {
+        break missingId;
+      }
+
       id = R.id.ratingButton1;
       ImageButton ratingButton1 = ViewBindings.findChildViewById(rootView, id);
       if (ratingButton1 == null) {
@@ -124,6 +140,12 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.storeItemLayout;
+      LinearLayout storeItemLayout = ViewBindings.findChildViewById(rootView, id);
+      if (storeItemLayout == null) {
+        break missingId;
+      }
+
       id = R.id.textView_itemDescription;
       TextView textViewItemDescription = ViewBindings.findChildViewById(rootView, id);
       if (textViewItemDescription == null) {
@@ -136,9 +158,9 @@ public final class FragmentStoreBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentStoreBinding((FrameLayout) rootView, confirmButton, ratingButton1,
-          ratingButton2, ratingButton3, ratingButton4, ratingButton5, textViewItemDescription,
-          textViewItemName);
+      return new FragmentStoreBinding((FrameLayout) rootView, confirmButton, mainStoreLayout,
+          ratingButton1, ratingButton2, ratingButton3, ratingButton4, ratingButton5,
+          storeItemLayout, textViewItemDescription, textViewItemName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

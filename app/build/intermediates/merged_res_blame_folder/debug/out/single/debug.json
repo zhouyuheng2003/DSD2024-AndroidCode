@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\layout_app_bar_main.xml.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\drawable-v24_ic_launcher_foreground.xml.flat",
@@ -20,12 +20,12 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\layout_activity_main.xml.flat",
-        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\activity_main.xml"
-    },
-    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\layout_fragment_slideshow.xml.flat",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_slideshow.xml"
+    },
+    {
+        "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\layout_activity_main.xml.flat",
+        "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\activity_main.xml"
     },
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\menu_activity_main_drawer.xml.flat",

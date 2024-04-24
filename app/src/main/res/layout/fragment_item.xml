@@ -30,6 +30,12 @@ tools:context=".ui.ItemFragment">
             android:layout_height="wrap_content"
             android:text="pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//pen//" />
 
+        <ImageView
+            android:id="@+id/imageView_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

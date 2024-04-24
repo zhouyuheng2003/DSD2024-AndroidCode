@@ -2736,6 +2736,7 @@ id action_nav_home_to_itemFragment
 id action_nav_home_to_storeFragment
 id action_nav_registration_to_nav_gallery
 id action_settings
+id action_storeFragment_to_itemFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2900,6 +2901,8 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView_item
+id imageView_smallItem
 id immediateStop
 id included
 id info
@@ -2926,6 +2929,7 @@ id locale
 id ltr
 id mainScrollView
 id mainSearchView
+id mainStoreLayout
 id map
 id masked
 id match_constraint
@@ -3112,6 +3116,7 @@ id staticLayout
 id staticPostLayout
 id stop
 id storeFragment
+id storeItemLayout
 id stretch
 id submenuarrow
 id submit_area

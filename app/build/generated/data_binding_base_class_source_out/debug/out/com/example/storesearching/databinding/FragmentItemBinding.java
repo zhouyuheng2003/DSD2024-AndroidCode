@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +24,9 @@ public final class FragmentItemBinding implements ViewBinding {
 
   @NonNull
   public final Button confirmButton;
+
+  @NonNull
+  public final ImageView imageViewItem;
 
   @NonNull
   public final ImageButton ratingButton1;
@@ -46,12 +50,13 @@ public final class FragmentItemBinding implements ViewBinding {
   public final TextView textViewItemName;
 
   private FragmentItemBinding(@NonNull FrameLayout rootView, @NonNull Button confirmButton,
-      @NonNull ImageButton ratingButton1, @NonNull ImageButton ratingButton2,
-      @NonNull ImageButton ratingButton3, @NonNull ImageButton ratingButton4,
-      @NonNull ImageButton ratingButton5, @NonNull TextView textViewItemDescription,
-      @NonNull TextView textViewItemName) {
+      @NonNull ImageView imageViewItem, @NonNull ImageButton ratingButton1,
+      @NonNull ImageButton ratingButton2, @NonNull ImageButton ratingButton3,
+      @NonNull ImageButton ratingButton4, @NonNull ImageButton ratingButton5,
+      @NonNull TextView textViewItemDescription, @NonNull TextView textViewItemName) {
     this.rootView = rootView;
     this.confirmButton = confirmButton;
+    this.imageViewItem = imageViewItem;
     this.ratingButton1 = ratingButton1;
     this.ratingButton2 = ratingButton2;
     this.ratingButton3 = ratingButton3;
@@ -91,6 +96,12 @@ public final class FragmentItemBinding implements ViewBinding {
       id = R.id.confirmButton;
       Button confirmButton = ViewBindings.findChildViewById(rootView, id);
       if (confirmButton == null) {
+        break missingId;
+      }
+
+      id = R.id.imageView_item;
+      ImageView imageViewItem = ViewBindings.findChildViewById(rootView, id);
+      if (imageViewItem == null) {
         break missingId;
       }
 
@@ -136,9 +147,9 @@ public final class FragmentItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentItemBinding((FrameLayout) rootView, confirmButton, ratingButton1,
-          ratingButton2, ratingButton3, ratingButton4, ratingButton5, textViewItemDescription,
-          textViewItemName);
+      return new FragmentItemBinding((FrameLayout) rootView, confirmButton, imageViewItem,
+          ratingButton1, ratingButton2, ratingButton3, ratingButton4, ratingButton5,
+          textViewItemDescription, textViewItemName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

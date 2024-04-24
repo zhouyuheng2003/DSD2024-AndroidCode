@@ -13,7 +13,7 @@ public class myLocation {
     public String floor;
     public String zipcode;
     public double getDistance(){
-        TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false);
+        TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false,null);
         if(latitude == 0 && longitude == 0){
             return 1;
         }

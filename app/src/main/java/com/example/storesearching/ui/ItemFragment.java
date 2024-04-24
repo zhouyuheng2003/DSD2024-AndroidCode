@@ -20,12 +20,14 @@ import com.example.storesearching.Store;
 import org.json.JSONException;
 
 import java.util.List;
-
-
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
 public class ItemFragment extends Fragment {
 
     private View root;
 
+    private int fromStore;
     private int index;
     private ImageButton[] ratingButton;
     @Override
@@ -35,6 +37,7 @@ public class ItemFragment extends Fragment {
         Bundle bundle = getArguments();
         index = 0;
         if (bundle != null) {
+            fromStore = bundle.getInt("storeId");
             index = bundle.getInt("itemId");
         }
     }
@@ -46,12 +49,23 @@ public class ItemFragment extends Fragment {
         this.container = container;
         root = inflater.inflate(R.layout.fragment_item, container, false);
         DataManager dataManager = DataManager.getInstance();
-        itemList = dataManager.currentItemList();
+        if(fromStore == -1){
+            itemList = dataManager.currentItemList();
+        }
+        else{
+            itemList = dataManager.currentStoreList().get(fromStore).itemList;
+        }
         if(itemList.size() > index){
             TextView textView_itemName = root.findViewById(R.id.textView_itemName);
             textView_itemName.setText(itemList.get(index).itemName);
             TextView textView_itemDescription = root.findViewById(R.id.textView_itemDescription);
             textView_itemDescription.setText(itemList.get(index).itemDescription);
+            ImageView imageView_item = root.findViewById(R.id.imageView_item);
+            if(itemList.get(index).image != null){
+                imageView_item.setImageBitmap(itemList.get(index).image);
+            }
+
+
             ratingButton = new ImageButton[5];
             ratingButton[0] = root.findViewById(R.id.ratingButton1);
             ratingButton[1] = root.findViewById(R.id.ratingButton2);

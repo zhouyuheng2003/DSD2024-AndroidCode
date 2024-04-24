@@ -74,7 +74,11 @@
         android:id="@+id/storeFragment"
         android:name="com.example.storesearching.ui.StoreFragment"
         android:label="fragment_store"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_store" >
+        <action
+            android:id="@+id/action_storeFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
     <activity
         android:id="@+id/map"
         android:name="com.example.storesearching.MapsActivity"

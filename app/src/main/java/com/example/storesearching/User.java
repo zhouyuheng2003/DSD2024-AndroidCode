@@ -10,6 +10,7 @@ public class User {
     public String HashedPassword;
     public List<Store> storeList;
     public List<Item> itemList;
+    public List<Item> myItemList;
     public List<Integer> huntedStoreIdList;
 
     public List<Store> recommendStoreList;
@@ -22,5 +23,6 @@ public class User {
         itemList = new ArrayList<>();
         huntedStoreIdList = new ArrayList<>();
         recommendStoreList = new ArrayList<>();
+        myItemList = new ArrayList<>();
     }
 }

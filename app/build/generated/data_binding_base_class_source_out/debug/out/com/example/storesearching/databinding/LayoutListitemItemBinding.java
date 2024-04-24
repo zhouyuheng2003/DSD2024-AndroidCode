@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -24,6 +25,9 @@ public final class LayoutListitemItemBinding implements ViewBinding {
   public final Button button;
 
   @NonNull
+  public final ImageView imageViewSmallItem;
+
+  @NonNull
   public final TextView textViewDes;
 
   @NonNull
@@ -36,10 +40,11 @@ public final class LayoutListitemItemBinding implements ViewBinding {
   public final TextView textViewNo;
 
   private LayoutListitemItemBinding(@NonNull LinearLayout rootView, @NonNull Button button,
-      @NonNull TextView textViewDes, @NonNull TextView textViewDis, @NonNull TextView textViewName,
-      @NonNull TextView textViewNo) {
+      @NonNull ImageView imageViewSmallItem, @NonNull TextView textViewDes,
+      @NonNull TextView textViewDis, @NonNull TextView textViewName, @NonNull TextView textViewNo) {
     this.rootView = rootView;
     this.button = button;
+    this.imageViewSmallItem = imageViewSmallItem;
     this.textViewDes = textViewDes;
     this.textViewDis = textViewDis;
     this.textViewName = textViewName;
@@ -79,6 +84,12 @@ public final class LayoutListitemItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imageView_smallItem;
+      ImageView imageViewSmallItem = ViewBindings.findChildViewById(rootView, id);
+      if (imageViewSmallItem == null) {
+        break missingId;
+      }
+
       id = R.id.textView_des;
       TextView textViewDes = ViewBindings.findChildViewById(rootView, id);
       if (textViewDes == null) {
@@ -103,8 +114,8 @@ public final class LayoutListitemItemBinding implements ViewBinding {
         break missingId;
       }
 
-      return new LayoutListitemItemBinding((LinearLayout) rootView, button, textViewDes,
-          textViewDis, textViewName, textViewNo);
+      return new LayoutListitemItemBinding((LinearLayout) rootView, button, imageViewSmallItem,
+          textViewDes, textViewDis, textViewName, textViewNo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
