@@ -69,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public static String[][] DataFromHome;
     public String[][] getData() {
         String[][] data ={
-                {"User Location", String.valueOf(currentLocation.getLatitude()), String.valueOf(currentLocation.getLongitude())},
+//                {"User Location", String.valueOf(currentLocation.getLatitude()), String.valueOf(currentLocation.getLongitude())},
                 {"Store UTAD", "41.28678538409359", "-7.740637471808735"},
                 {"Store JLU", "43.82572225983296", "125.28501566529455"}};
         if(DataFromHome != null){
@@ -102,6 +102,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()), 12.0f));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(userPos));
     }
     /*private void getDirections(String from, String to){

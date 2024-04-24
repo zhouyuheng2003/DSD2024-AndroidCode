@@ -40,10 +40,6 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\layout_listitem_store.xml"
     },
     {
-        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_store.xml",
-        "source": "com.example.storesearching.app-main-46:/layout/fragment_store.xml"
-    },
-    {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_item.xml",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_item.xml"
     },
@@ -62,5 +58,9 @@
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-mergeDebugResources-43:\\layout\\fragment_userinfo.xml",
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\fragment_userinfo.xml"
+    },
+    {
+        "merged": "com.example.storesearching.app-mergeDebugResources-43:/layout/fragment_registration.xml",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_registration.xml"
     }
 ]

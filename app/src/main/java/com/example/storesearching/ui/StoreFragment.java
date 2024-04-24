@@ -121,8 +121,8 @@ public class StoreFragment extends Fragment {
                  public void onClick(View v) {
                      TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false,null);
                      MapsActivity.DataFromHome = new String[][]{
-                             {"User Location", String.valueOf(testLocationActivity.getLatitude()),
-                                     String.valueOf(testLocationActivity.getLongitude())},
+                             {"User Location", String.valueOf(testLocationActivity.getLatitude()+0.003728),
+                                     String.valueOf(testLocationActivity.getLongitude()+0.004866)},
                              {"Store " + storeList.get(index).storeName, String.valueOf(storeList.get(index).location.latitude),
                                      String.valueOf(storeList.get(index).location.longitude)}};
 //                     {

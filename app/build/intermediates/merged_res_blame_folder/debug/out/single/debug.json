@@ -40,8 +40,8 @@
         "source": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-main-46:\\layout\\layout_listitem_item.xml"
     },
     {
-        "merged": "com.example.storesearching.app-merged_res-44:/navigation_mobile_navigation.xml.flat",
-        "source": "com.example.storesearching.app-main-46:/navigation/mobile_navigation.xml"
+        "merged": "com.example.storesearching.app-merged_res-44:/layout_fragment_registration.xml.flat",
+        "source": "com.example.storesearching.app-main-46:/layout/fragment_registration.xml"
     },
     {
         "merged": "D:\\Program Files\\Java\\jdk-1.8\\daemon\\8.4\\com.example.storesearching.app-merged_res-44:\\mipmap-xhdpi_ic_launcher.webp.flat",
