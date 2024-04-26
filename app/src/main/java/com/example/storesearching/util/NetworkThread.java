@@ -10,7 +10,7 @@ import java.net.URL;
 public class NetworkThread extends Thread {
 
     private static final String TAG = "NetworkThread";
-    private static final String apiUrl = "https://u216558-8612-8fda9034.westc.gpuhub.com:8443/Interface1";
+    private static final String apiUrl = "https://u216558-8612-8fda9034.westc.gpuhub.com:8443/interface";
     private int interfaceId;
     private String Json;
 

@@ -16,6 +16,7 @@ import java.util.List;
 import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.util.Base64;
+import android.util.Log;
 
 public class JsonUtils {
     public static JSONObject buildLocation(Address myAddress){
@@ -191,7 +192,7 @@ public class JsonUtils {
                 store.location = JSONObjectToLocation(storeObject.getJSONObject("location"));
                 JSONArray itemListArray = storeObject.getJSONArray("items");
                 for (int i = 0; i < itemListArray.length(); i++) {
-                    store.itemList.add(JSONObjectToItem(null));
+                    store.itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
                 }
                 store.StoreDescription = storeObject.getString("StoreDescription");
             }
@@ -220,8 +221,15 @@ public class JsonUtils {
                 item.customerVisits = 0;
             }
             else{
+
+//                Log.d("LastGetContent", "LastGet content: " + itemObject);
                 item.itemId = itemObject.getInt("ItemId");
+
+
                 item.itemName = itemObject.getString("ItemName");
+                if(item.itemName == null){
+                    Log.d("WA", "json item name: " + itemObject);
+                }
                 item.itemPrice = itemObject.getDouble("ItemPrice");
                 item.itemDescription = itemObject.getString("ItemDescription");
                 String base64String = itemObject.getString("ItemImage");

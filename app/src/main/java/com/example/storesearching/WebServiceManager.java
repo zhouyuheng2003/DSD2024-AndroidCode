@@ -1,5 +1,7 @@
 package com.example.storesearching;
 
+import android.util.Log;
+
 import com.example.storesearching.util.NetworkThread;
 
 import org.json.JSONArray;

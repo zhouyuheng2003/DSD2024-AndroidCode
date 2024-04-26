@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class DataManager {
     public static double distanceLimit = 2;
-    public static boolean testSign = true;//whether it is unit test
+    public static boolean testSign = false;//whether it is unit test
     public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
     public int currentUserId, usedUserId;
@@ -36,7 +36,7 @@ public class DataManager {
         return instance;
     }
     public void update(String userName){
-        if(userNameToId.get(userName) == 0){
+        if(userNameToId.get(userName) == null){
             usedUserId = usedUserId + 1;
             users.put(usedUserId, new User(usedUserId,userName));
             userNameToId.put(userName, usedUserId);
@@ -54,6 +54,7 @@ public class DataManager {
         while(JsonString == ""){
             JsonString = webServiceManager.getJson(interfaceId, userName);
         }
+
         JSONObject Json = null;
         if(!testSign) Json = new JSONObject(JsonString);
         JsonUtils.parseInterface3JsonObject(Json,users.get(currentUserId).storeList);
