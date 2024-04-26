@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.storesearching.DataManager;
 import com.example.storesearching.databinding.FragmentRegistrationBinding;
 import com.example.storesearching.databinding.FragmentUserinfoBinding;
 
@@ -46,6 +47,10 @@ public class UserinfoFragment extends Fragment{
             JSONObject LoginJsonRespose = new JSONObject(LoginRespose);
 
             String username = LoginJsonRespose.getString("CurrentUser");
+
+            DataManager dataManager = DataManager.getInstance();
+            dataManager.update(username);
+
 //            String password = LoginJsonRespose.get("Interests");
             JSONArray  description = LoginJsonRespose.getJSONArray("Interests");
 
@@ -74,6 +79,8 @@ public class UserinfoFragment extends Fragment{
         ExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DataManager dataManager = DataManager.getInstance();
+                dataManager.update("");
                 Navigation.findNavController(view).navigate(R.id.action_nav_UserInfo_to_nav_gallery);
             }
         });

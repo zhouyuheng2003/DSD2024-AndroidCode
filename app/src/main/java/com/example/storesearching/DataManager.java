@@ -17,18 +17,30 @@ public class DataManager {
     public static boolean testSign = true;//whether it is unit test
     public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
-    public int currentUserId;
+    public int currentUserId, usedUserId;
     public Map< Integer, User> users;
+    public Map< String, Integer> userNameToId;
     private DataManager() {
         users = new HashMap<Integer, User>();
+        userNameToId = new HashMap<String, Integer>();
         currentUserId = 0;
-        users.put(0, new User(0));
+        usedUserId = 0;
+        users.put(1, new User(1,""));
+        userNameToId.put("",1);
     }
     public static synchronized DataManager getInstance() {
         if (instance == null) {
             instance = new DataManager();
         }
         return instance;
+    }
+    public void update(String userName){
+        if(userNameToId.get(userName) == 0){
+            usedUserId = usedUserId + 1;
+            users.put(usedUserId, new User(usedUserId,userName));
+            userNameToId.put(userName, usedUserId);
+        }
+        currentUserId = userNameToId.get(userName);
     }
     public void SearchStore(String query) throws JSONException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();

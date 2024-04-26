@@ -14,10 +14,10 @@ public class User {
     public List<Integer> huntedStoreIdList;
 
     public List<Store> recommendStoreList;
-    public User(int userId){
+    public User(int userId, String userName){
         this.userId = userId;
         UserEmail = "1287121642@qq.com";
-        UserName = "";
+        UserName = userName;
         HashedPassword = "";
         storeList = new ArrayList<>();
         itemList = new ArrayList<>();
