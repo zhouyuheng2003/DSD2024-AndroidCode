@@ -57,6 +57,7 @@ public class TestLocationActivity {
     }
     public JSONObject getLocationJson(){
         getLocation();//Fix an unknown bug
+        if(locationManager == null)return null;
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED ||
@@ -82,18 +83,21 @@ public class TestLocationActivity {
     }//TODO:
     public double calculateDistance(double longitude, double latitude) {
         getLocation();//Fix an unknown bug
+        if(locationManager == null)return -1.0;
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED ||
                         ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
                                 != PackageManager.PERMISSION_GRANTED) ) {
             Location location = locationManager.getLastKnownLocation(locationProvider);
+            if(location == null)return -1.0;
             return DistanceCalculator.calculateDistance(latitude, longitude, location.getLatitude(), location.getLongitude());
         }
         return -1.0;
     }
     public double getLongitude() {
         getLocation();//Fix an unknown bug
+        if(locationManager == null)return 0;
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED ||
@@ -106,6 +110,7 @@ public class TestLocationActivity {
     }
     public double getLatitude() {
         getLocation();//Fix an unknown bug
+        if(locationManager == null)return 0;
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED ||
@@ -135,6 +140,7 @@ public class TestLocationActivity {
             //如果是GPS
             locationProvider = LocationManager.GPS_PROVIDER;
             Log.v("TAG", "定位方式GPS");
+
         } else if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
             //如果是Network
             locationProvider = LocationManager.NETWORK_PROVIDER;
@@ -162,7 +168,10 @@ public class TestLocationActivity {
         {
             //3.获取上次的位置，一般第一次运行，此值为null
             Location location = locationManager.getLastKnownLocation(locationProvider);
+//            if(locationManager == null)Log.i("TAG", "empty");
+//            else Log.i("TAG", "not empty");
             if (location!=null){
+
                 if(output)Toast.makeText(context, location.getLongitude() + " " +
                         location.getLatitude() + "", Toast.LENGTH_SHORT).show();
                 Log.v("TAG", "获取上次的位置-经纬度："+location.getLongitude()+"   "+location.getLatitude());
@@ -170,6 +179,7 @@ public class TestLocationActivity {
 
             }else{
                 //监视地理位置变化，第二个和第三个参数分别为更新的最短时间minTime和最短距离minDistace
+
                 Toast.makeText(context, "开启监控", Toast.LENGTH_SHORT).show();
                 locationManager.requestLocationUpdates(locationProvider, 3000, 1,locationListener);
             }
