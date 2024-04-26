@@ -3,6 +3,7 @@ package com.example.storesearching;
 
 import com.example.storesearching.util.JsonUtils;
 import com.example.storesearching.util.TestLocationActivity;
+import com.example.storesearching.util.Time;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,14 +86,14 @@ public class DataManager {
         JSONObject Json = null;
         if(!testSign) Json = new JSONObject(JsonString);
         JsonUtils.parseInterface5JsonObject(Json,users.get(currentUserId).huntedStoreIdList);
-        List<Integer> huntedStoreIdList = users.get(currentUserId).huntedStoreIdList;
+        List<HistoryVisit> huntedStoreIdList = users.get(currentUserId).huntedStoreIdList;
         for(int i = 0; i < huntedStoreIdList.size(); i++){
-            if(huntedStoreIdList.get(i) == currentId){
+            if(huntedStoreIdList.get(i).storeId == currentId){
                 updateFlag = false;
             }
         }
         if(updateFlag){
-            huntedStoreIdList.add(currentId);
+            huntedStoreIdList.add(new HistoryVisit(currentId, Time.getTime()));
 
             interfaceId = 4;
             webServiceManager.sendJson(interfaceId, userName,

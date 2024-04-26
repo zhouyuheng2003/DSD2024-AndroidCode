@@ -1,6 +1,7 @@
 package com.example.storesearching.util;
 
 import com.example.storesearching.DataManager;
+import com.example.storesearching.HistoryVisit;
 import com.example.storesearching.Item;
 import com.example.storesearching.Store;
 import com.example.storesearching.myLocation;
@@ -46,14 +47,18 @@ public class JsonUtils {
         }
         return jsonObject;
     }
-    public static JSONObject buildInterface4JsonObject(int interfaceId, String currentUser, List<Integer> huntedStoreIdList) {
+    public static JSONObject buildInterface4JsonObject(int interfaceId, String currentUser, List<HistoryVisit> huntedStoreIdList) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("InterfaceId", interfaceId);
             jsonObject.put("CurrentUser", currentUser);
             JSONArray HuntedStoreIdList = new JSONArray();
-            for (Integer id : huntedStoreIdList) {
-                HuntedStoreIdList.put(id);
+            for (HistoryVisit id : huntedStoreIdList) {
+//                HuntedStoreIdList.put(id);
+                JSONObject HistoryVisit = new JSONObject();
+                HistoryVisit.put("StoreId", id.storeId);
+                HistoryVisit.put("VisitTime",id.dataTime);
+                HuntedStoreIdList.put(HistoryVisit);
             }
             jsonObject.put("HuntedStoreIdList", HuntedStoreIdList);
         } catch (JSONException e) {
@@ -89,9 +94,14 @@ public class JsonUtils {
         try {
             jsonObject.put("InterfaceId", interfaceId);
             jsonObject.put("CurrentUser", currentUser);
-            jsonObject.put("StoreId", StoreId);
-            jsonObject.put("comment", comment);
-            jsonObject.put("rating", rating);
+            JSONObject Feedback2Store = new JSONObject();
+
+            Feedback2Store.put("StoreId", StoreId);
+            Feedback2Store.put("comment", comment);
+            Feedback2Store.put("rating", rating);
+            Feedback2Store.put("UserName", currentUser);
+
+            jsonObject.put("Feedback", Feedback2Store);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -102,9 +112,16 @@ public class JsonUtils {
         try {
             jsonObject.put("InterfaceId", interfaceId);
             jsonObject.put("CurrentUser", currentUser);
-            jsonObject.put("ItemId", ItemId);
-            jsonObject.put("comment", comment);
-            jsonObject.put("rating", rating);
+
+
+            JSONObject Feedback2Item = new JSONObject();
+
+            Feedback2Item.put("StoreId", ItemId);
+            Feedback2Item.put("comment", comment);
+            Feedback2Item.put("rating", rating);
+            Feedback2Item.put("UserName", currentUser);
+
+            jsonObject.put("Feedback", Feedback2Item);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -239,18 +256,18 @@ public class JsonUtils {
             e.printStackTrace();
         }
     }
-    public static void parseInterface5JsonObject(JSONObject jsonObject, List<Integer> huntedStoreIdList) {
+    public static void parseInterface5JsonObject(JSONObject jsonObject, List<HistoryVisit> huntedStoreIdList) {
         try {
             if(DataManager.testSign){
                 for (int i = 0; i < 20; i++) {
-                    huntedStoreIdList.add(i);
+                    huntedStoreIdList.add(new HistoryVisit(i, "2024:4:26 18:41:41"));
                 }
             }
             else{
                 huntedStoreIdList.clear();
                 JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("array");
                 for (int i = 0; i < huntedStoreIdListArray.length(); i++) {
-                    huntedStoreIdList.add(huntedStoreIdListArray.getInt(i));
+                    huntedStoreIdList.add(new HistoryVisit(huntedStoreIdListArray.getJSONObject(i).getInt("StoreId"),huntedStoreIdListArray.getJSONObject(i).getString("VisitTime")));
                 }
             }
         } catch (JSONException e) {
