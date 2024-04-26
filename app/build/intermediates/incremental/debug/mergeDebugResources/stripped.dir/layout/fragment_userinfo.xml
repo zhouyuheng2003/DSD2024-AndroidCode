@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/UserInfoLabel"
+        android:layout_width="345dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="164dp"
+        android:text="User Infomation"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/UserNameLabel"
+        android:layout_width="345dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserInfoLabel" />
+
+    <TextView
+        android:id="@+id/UserpreferenceLabel"
+        android:layout_width="345dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="64dp"
+        android:text="Favorite description (if you still haven't filled it out, please fill it out as soon as possible so that we can provide you with accurate recommendations)"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserNameLabel" />
+
+    <TextView
+        android:id="@+id/DescriptionTextLabel"
+        android:layout_width="345dp"
+        android:layout_height="146dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserpreferenceLabel"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/ChangeButton"
+        android:layout_width="141dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:text="Change Infomation"
+        app:layout_constraintBottom_toTopOf="@+id/UserInfoLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84" />
+
+    <Button
+        android:id="@+id/ExitButton"
+        android:layout_width="141dp"
+        android:layout_height="51dp"
+        android:text="Exit"
+        app:layout_constraintBottom_toTopOf="@+id/UserInfoLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintStart_toEndOf="@+id/ChangeButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.84" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
