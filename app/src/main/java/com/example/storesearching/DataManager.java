@@ -23,8 +23,8 @@ public class DataManager {
     private DataManager() {
         users = new HashMap<Integer, User>();
         userNameToId = new HashMap<String, Integer>();
-        currentUserId = 0;
-        usedUserId = 0;
+        currentUserId = 1;
+        usedUserId = 1;
         users.put(1, new User(1,""));
         userNameToId.put("",1);
     }
