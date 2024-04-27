@@ -22,15 +22,26 @@ public class JsonUtils {
     public static JSONObject buildLocation(Address myAddress){
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("latitude", myAddress.getLatitude());
-            jsonObject.put("longitude", myAddress.getLongitude());
-            jsonObject.put("country", myAddress.getCountryName());
-            jsonObject.put("state", myAddress.getAdminArea());
-            jsonObject.put("city", myAddress.getLocality());
-            jsonObject.put("street", myAddress.getThoroughfare());
+//            jsonObject.put("latitude", myAddress.getLatitude());
+//            jsonObject.put("longitude", myAddress.getLongitude());
+//            jsonObject.put("country", myAddress.getCountryName());
+//            jsonObject.put("state", myAddress.getAdminArea());
+//            jsonObject.put("city", myAddress.getLocality());
+//            jsonObject.put("street", myAddress.getThoroughfare());
+//            jsonObject.put("number", "");
+//            jsonObject.put("floor", "");
+//            jsonObject.put("zipcode", myAddress.getPostalCode());
+
+            jsonObject.put("latitude", "myAddress.getLatitude()");
+            jsonObject.put("longitude", "myAddress.getLongitude()");
+            jsonObject.put("country"," myAddress.getCountryName()");
+            jsonObject.put("state", "myAddress.getAdminArea()");
+            jsonObject.put("city", "myAddress.getLocality()");
+            jsonObject.put("street", "myAddress.getThoroughfare()");
             jsonObject.put("number", "");
             jsonObject.put("floor", "");
-            jsonObject.put("zipcode", myAddress.getPostalCode());
+            jsonObject.put("zipcode"," myAddress.getPostalCode()");
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -84,7 +95,7 @@ public class JsonUtils {
             jsonObject.put("InterfaceId", interfaceId);
             jsonObject.put("CurrentUser", currentUser);
             jsonObject.put("MyLocation", MyLocation);
-//            Log.d("LastGetContent", "LastSend content: " + MyLocation);
+            Log.d("LastGetContent", "LastSend content: " + MyLocation);
             jsonObject.put("RequestType", RequestType);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -304,6 +315,7 @@ public class JsonUtils {
     }
     public static void parseInterface7JsonObject(JSONObject jsonObject, List<Store> recommendStoreList) {
         try {
+            Log.d("LastGetContent", "LastGet content: " + jsonObject);
             if(DataManager.testSign){
                 for (int i = 0; i < 20; i++) {
                     recommendStoreList.add(JSONObjectToStore(null));
@@ -311,7 +323,7 @@ public class JsonUtils {
             }
             else{
                 recommendStoreList.clear();
-                JSONArray storeListArray = jsonObject.getJSONArray("array");
+                JSONArray storeListArray = jsonObject.getJSONArray("StoreList");
                 for (int i = 0; i < storeListArray.length(); i++) {
                     recommendStoreList.add(JSONObjectToStore(storeListArray.getJSONObject(i)));
                 }
