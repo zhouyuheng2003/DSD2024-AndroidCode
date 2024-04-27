@@ -273,7 +273,7 @@ public class JsonUtils {
             }
             else{
                 huntedStoreIdList.clear();
-                JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("array");
+                JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("HuntedStoreIdList");
                 for (int i = 0; i < huntedStoreIdListArray.length(); i++) {
                     huntedStoreIdList.add(new HistoryVisit(huntedStoreIdListArray.getJSONObject(i).getInt("StoreId"),huntedStoreIdListArray.getJSONObject(i).getString("VisitTime")));
                 }
@@ -290,8 +290,9 @@ public class JsonUtils {
                 }
             }
             else{
+//                Log.d("LastGetContent", "LastGet content: " + jsonObject);
                 itemList.clear();
-                JSONArray itemListArray = jsonObject.getJSONArray("array");
+                JSONArray itemListArray = jsonObject.getJSONArray("ItemList");
                 for (int i = 0; i < itemListArray.length(); i++) {
                     itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
                 }
