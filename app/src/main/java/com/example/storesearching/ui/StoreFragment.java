@@ -52,7 +52,8 @@ public class StoreFragment extends Fragment {
         this.container = container;
         root = inflater.inflate(R.layout.fragment_store, container, false);
         DataManager dataManager = DataManager.getInstance();
-        storeList = dataManager.currentStoreList();
+        if(DataManager.searchMode == 0) storeList = dataManager.currentStoreList();
+        else storeList = dataManager.currentRecommendStoreList();
         if(storeList.size() > index){
             TextView textView_storeName = root.findViewById(R.id.textView_itemName);
             textView_storeName.setText(storeList.get(index).storeName);

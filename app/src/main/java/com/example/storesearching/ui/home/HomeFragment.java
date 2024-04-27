@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment {
                 if(i >= recommendStoreList.size())break;
                 double dis = recommendStoreList.get(i).location.getDistance();
                 if(dis>DataManager.distanceLimit)continue;
-
+//                Log.d("val",recommendStoreList.get(i).storeId+"id");
                 View listItemView = inflater.inflate(R.layout.layout_listitem_store, null);
                 Button button = listItemView.findViewById(R.id.button);
                 TextView textView_no = listItemView.findViewById(R.id.textView_no);

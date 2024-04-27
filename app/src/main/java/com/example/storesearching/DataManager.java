@@ -1,6 +1,8 @@
 package com.example.storesearching;
 
 
+import android.provider.ContactsContract;
+
 import com.example.storesearching.util.JsonUtils;
 import com.example.storesearching.util.TestLocationActivity;
 import com.example.storesearching.util.Time;
@@ -75,7 +77,9 @@ public class DataManager {
         JsonUtils.parseInterface6JsonObject(Json,users.get(currentUserId).itemList);
     }
     public void updateHuntedStoreIdList(int index) throws JSONException {
-        Integer currentId = users.get(currentUserId).storeList.get(index).storeId;
+        Integer currentId;
+        if(DataManager.searchMode ==0) currentId = users.get(currentUserId).storeList.get(index).storeId;
+        else currentId = users.get(currentUserId).recommendStoreList.get(index).storeId;
         boolean updateFlag = true;
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 5;
@@ -157,5 +161,9 @@ public class DataManager {
     }
     public List<Item> currentItemList(){
         return users.get(currentUserId).itemList;
+    }
+
+    public List<Store> currentRecommendStoreList(){
+        return users.get(currentUserId).recommendStoreList;
     }
 }
