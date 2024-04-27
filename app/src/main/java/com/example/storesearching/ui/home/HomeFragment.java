@@ -226,7 +226,7 @@ public class HomeFragment extends Fragment {
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         //Search mode manager, init information
-        SearchMode = 0;
+//        SearchMode = 0;
         DataManager.searchMode = SearchMode;
         textView_SearchMode_content = new String[2];
         button_SwitchSearchMode_content = new String[2];
@@ -247,6 +247,7 @@ public class HomeFragment extends Fragment {
                     if(SearchMode == 2){
                         SearchMode = 0;
                         DataManager.searchMode = SearchMode;
+                        update();
                     }
                     if(SearchMode == 0) dataManager.SearchStore(query);
                     else if(SearchMode == 1) dataManager.SearchItem(query);
