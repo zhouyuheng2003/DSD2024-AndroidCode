@@ -84,6 +84,7 @@ public class JsonUtils {
             jsonObject.put("InterfaceId", interfaceId);
             jsonObject.put("CurrentUser", currentUser);
             jsonObject.put("MyLocation", MyLocation);
+//            Log.d("LastGetContent", "LastSend content: " + MyLocation);
             jsonObject.put("RequestType", RequestType);
         } catch (JSONException e) {
             e.printStackTrace();

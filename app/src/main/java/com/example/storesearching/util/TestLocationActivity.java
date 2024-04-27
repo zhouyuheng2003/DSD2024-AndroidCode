@@ -58,6 +58,7 @@ public class TestLocationActivity {
     public JSONObject getLocationJson(){
         getLocation();//Fix an unknown bug
         if(locationManager == null)return null;
+
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED ||
@@ -70,7 +71,7 @@ public class TestLocationActivity {
                 try{
                     result = gc.getFromLocation(location.getLatitude(),
                             location.getLongitude(), 1);
-                    JsonUtils.buildLocation(result.get(0));
+                    return JsonUtils.buildLocation(result.get(0));
                 }
                 catch (Exception e) {
                     e.printStackTrace();
