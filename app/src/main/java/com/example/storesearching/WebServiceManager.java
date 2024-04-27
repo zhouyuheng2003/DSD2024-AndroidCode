@@ -97,6 +97,13 @@ public class WebServiceManager {
     private static String lastGet;
     public synchronized String getJson(int interfaceId , String userName){
         if(lastGet == null){
+            JSONObject head = new JSONObject();
+            try {
+                head.put("InterfaceId",interfaceId);
+                head.put("CurrentUser",userName);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             return uploadJson(interfaceId, userName, "");
         }
         String nowGet = lastGet;

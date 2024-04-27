@@ -72,11 +72,11 @@ public class UserInfoChangeFragment extends Fragment {
                         else if(Birthday.contains(".")){date = dateFormat_2.parse(Birthday);}
                             else if(Birthday.contains("/")) {date = dateFormat_3.parse(Birthday);}
 
-                        String[] Descriptions = DescriptionText.split(";");
-                        JSONArray Description_array = new JSONArray();
-                        for (String Description : Descriptions) {Description_array.put(Description);}
+//                        String[] Descriptions = DescriptionText.split(";");
+//                        JSONArray Description_array = new JSONArray();
+//                        for (String Description : Descriptions) {Description_array.put(Description);}
 
-                        JSONObject ChangeInfo = JsonUtils.buildInterface10JsonObject(10,userName,userName,password,date,Description_array);
+                        JSONObject ChangeInfo = JsonUtils.buildInterface10JsonObject(10,userName,userName,password,date,DescriptionText);
 
                         WebServiceManager webServiceManager = WebServiceManager.getInstance();
                         webServiceManager.sendJson(10,userName,ChangeInfo.toString());
@@ -89,7 +89,7 @@ public class UserInfoChangeFragment extends Fragment {
                             if(!ChangeRespose.isEmpty())
                             {
                                 Bundle bundle = new Bundle();
-                                bundle.putString("LoginRespose", ChangeRespose);
+                                bundle.putString("LoginRespose", ChangeInfo.toString());
                                 Navigation.findNavController(view).navigate(R.id.action_nav_changeInfo_to_nav_UserInfo,bundle);
                             }
                             else {

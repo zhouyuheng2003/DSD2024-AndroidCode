@@ -129,7 +129,7 @@ public class JsonUtils {
         return jsonObject;
     }
 
-    public  static  JSONObject buildInterface10JsonObject(int interfaceId, String currentUser, String username, String password, Date Birthday, JSONArray Description)
+    public  static  JSONObject buildInterface10JsonObject(int interfaceId, String currentUser, String username, String password, Date Birthday, String Description)
     {
         JSONObject jsonObject = new JSONObject();
 
