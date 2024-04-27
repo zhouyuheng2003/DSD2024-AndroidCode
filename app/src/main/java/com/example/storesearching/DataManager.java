@@ -110,13 +110,13 @@ public class DataManager {
                 JsonUtils.buildInterface8JsonObject(interfaceId, userName,storeId,comment,rating).toString()
         );
 
-        String JsonString = webServiceManager.getJson(interfaceId, userName);
-        while(JsonString == ""){
-            JsonString = webServiceManager.getJson(interfaceId, userName);
-        }
-        JSONObject Json = null;
-        if(!testSign) Json = new JSONObject(JsonString);
-        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
+//        String JsonString = webServiceManager.getJson(interfaceId, userName);
+//        while(JsonString == ""){
+//            JsonString = webServiceManager.getJson(interfaceId, userName);
+//        }
+//        JSONObject Json = null;
+//        if(!testSign) Json = new JSONObject(JsonString);
+//        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
     }
     public void ratingItem(int itemId,int rating,String comment) throws JSONException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
@@ -126,13 +126,13 @@ public class DataManager {
                 JsonUtils.buildInterface9JsonObject(interfaceId, userName,itemId,comment,rating).toString()
         );
 
-        String JsonString = webServiceManager.getJson(interfaceId, userName);
-        while(JsonString == ""){
-            JsonString = webServiceManager.getJson(interfaceId, userName);
-        }
-        JSONObject Json = null;
-        if(!testSign) Json = new JSONObject(JsonString);
-        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
+//        String JsonString = webServiceManager.getJson(interfaceId, userName);
+//        while(JsonString == ""){
+//            JsonString = webServiceManager.getJson(interfaceId, userName);
+//        }
+//        JSONObject Json = null;
+//        if(!testSign) Json = new JSONObject(JsonString);
+//        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
     }
     public void getRecommendStoreList() throws JSONException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
