@@ -2,6 +2,7 @@ package com.example.storesearching;
 
 
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import com.example.storesearching.util.JsonUtils;
 import com.example.storesearching.util.TestLocationActivity;
@@ -110,6 +111,7 @@ public class DataManager {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 8;
         String userName = users.get(currentUserId).UserName;
+//        Log.v("val",JsonUtils.buildInterface8JsonObject(interfaceId, userName,storeId,comment,rating).toString());
         webServiceManager.sendJson(interfaceId, userName,
                 JsonUtils.buildInterface8JsonObject(interfaceId, userName,storeId,comment,rating).toString()
         );

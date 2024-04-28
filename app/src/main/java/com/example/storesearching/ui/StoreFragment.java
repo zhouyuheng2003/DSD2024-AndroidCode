@@ -104,10 +104,10 @@ public class StoreFragment extends Fragment {
                     else{
                         storeList.get(index).rating_fixed = 1;
                         Button confirmButton = root.findViewById(R.id.confirmButton);
-                        confirmButton.setText("Rated ");
+                        confirmButton.setText("Rated");
                         DataManager dataManager = DataManager.getInstance();
                         try{
-                            dataManager.ratingStore(storeList.get(index).storeId,storeList.get(index).rating,"");
+                            dataManager.ratingStore(storeList.get(index).storeId,storeList.get(index).rating,"empty");
                         }catch (JSONException e) {
                             e.printStackTrace();
                         }

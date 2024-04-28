@@ -27,8 +27,12 @@ public class NetworkThread extends Thread {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("POST");
+            boolean recieveSign = false;
+            if(interfaceId == 8)Log.v("vis","true");
             if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
-                    interfaceId == 11 || interfaceId == 12)connection.setDoOutput(true);
+                    interfaceId == 11 || interfaceId == 12)recieveSign = true;
+//            recieveSign = true;//This sign is for testing the interface without output
+            if(recieveSign)connection.setDoOutput(true);
             else connection.setDoOutput(false);
             connection.setRequestProperty("Content-Type", "application/json");
 
@@ -39,8 +43,7 @@ public class NetworkThread extends Thread {
             outputStream.flush();
             outputStream.close();
 
-            if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
-                    interfaceId == 11 || interfaceId == 12){
+            if(recieveSign){
                 int responseCode = connection.getResponseCode();
 //                result = "res is " + responseCode;
                 StringBuilder response = new StringBuilder();
@@ -51,6 +54,7 @@ public class NetworkThread extends Thread {
                         response.append(inputLine);
                     }
                     in.close();
+                    result = response.toString();
                 } else {
                     BufferedReader in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
                     String inputLine;
@@ -59,9 +63,14 @@ public class NetworkThread extends Thread {
                     }
                     in.close();
                     result = "Error";
-                    return;
                 }
-                result = response.toString();
+
+                if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
+                        interfaceId == 11 || interfaceId == 12);
+                else {
+                    Log.v("val","get"+result);
+                    result = null;
+                }
                 return;
             }
             else return;

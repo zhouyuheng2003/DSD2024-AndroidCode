@@ -9,14 +9,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/mainStoreLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/textView_itemName"
@@ -107,7 +107,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Visit Store On Map"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp" />
 
             <LinearLayout
                 android:id="@+id/storeItemLayout"
