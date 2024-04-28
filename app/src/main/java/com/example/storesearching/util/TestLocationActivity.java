@@ -23,6 +23,7 @@ import java.util.Locale;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.storesearching.MapsActivity;
 import com.example.storesearching.ui.home.HomeFragment;
 
 import org.jetbrains.annotations.Nullable;
@@ -40,8 +41,9 @@ public class TestLocationActivity {
     private boolean output;//1 means output hint
     private static TestLocationActivity instance;
     HomeFragment homeFragment;
-    public static TestLocationActivity getInstance(Context context, Activity activity, boolean output, HomeFragment homefragment){
-        if(instance == null){
+
+    public static TestLocationActivity getInstance(Context context, Activity activity, boolean output, HomeFragment homefragment) {
+        if (instance == null) {
             instance = new TestLocationActivity(context, activity, output, homefragment);
         }
         return instance;
@@ -51,76 +53,100 @@ public class TestLocationActivity {
         this.context = context;
         this.activity = activity;
         this.output = output;
-        this.output = false;
+        this.output = true;
         this.homeFragment = homefragment;
         //getLocation();
     }
-    public JSONObject getLocationJson(){
+
+    private Location location;
+
+    public JSONObject getLocationJson() {
         getLocation();//Fix an unknown bug
-        if(locationManager == null)return null;
-
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED ||
-                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
-                                != PackageManager.PERMISSION_GRANTED) ) {
-            Location location = locationManager.getLastKnownLocation(locationProvider);
-            if (location != null) {
-                List<Address> result = null;
-                Geocoder gc = new Geocoder(context, Locale.getDefault());
-                try{
-                    result = gc.getFromLocation(location.getLatitude(),
-                            location.getLongitude(), 1);
-                    return JsonUtils.buildLocation(result.get(0));
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+        if (location == null && locationManager != null && locationProvider != null) {
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED ||
+                            ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                    != PackageManager.PERMISSION_GRANTED) ) {
+                location = locationManager.getLastKnownLocation(locationProvider);
             }
         }
-
+        if(location == null){
+            MapsActivity myactivity = new MapsActivity();
+            myactivity.getLastLocation();
+            location = myactivity.currentLocation;
+        }
+        if (location != null) {
+            List<Address> result = null;
+            Geocoder gc = new Geocoder(context, Locale.getDefault());
+            try{
+                result = gc.getFromLocation(location.getLatitude(),
+                        location.getLongitude(), 1);
+                return JsonUtils.buildLocation(result.get(0));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return null;
     }//TODO:
     public double calculateDistance(double longitude, double latitude) {
         getLocation();//Fix an unknown bug
-        if(locationManager == null)return -1.0;
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED ||
-                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
-                                != PackageManager.PERMISSION_GRANTED) ) {
-            Location location = locationManager.getLastKnownLocation(locationProvider);
-            if(location == null)return -1.0;
-            return DistanceCalculator.calculateDistance(latitude, longitude, location.getLatitude(), location.getLongitude());
+        if (location == null && locationManager != null && locationProvider != null) {
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED ||
+                            ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                    != PackageManager.PERMISSION_GRANTED) ) {
+                location = locationManager.getLastKnownLocation(locationProvider);
+            }
         }
-        return -1.0;
+        if(location == null){
+            MapsActivity myactivity = new MapsActivity();
+            myactivity.getLastLocation();
+            location = myactivity.currentLocation;
+        }
+        if(location == null)return -1.0;
+        return DistanceCalculator.calculateDistance(latitude, longitude, location.getLatitude(), location.getLongitude());
+
     }
     public double getLongitude() {
         getLocation();//Fix an unknown bug
-        if(locationManager == null)return 0;
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED ||
-                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
-                                != PackageManager.PERMISSION_GRANTED) ) {
-            Location location = locationManager.getLastKnownLocation(locationProvider);
-            return location.getLongitude();
+        if (location == null && locationManager != null && locationProvider != null) {
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED ||
+                            ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                    != PackageManager.PERMISSION_GRANTED) ) {
+                location = locationManager.getLastKnownLocation(locationProvider);
+            }
         }
-        return -1.0;
+        if(location == null){
+            MapsActivity myactivity = new MapsActivity();
+            myactivity.getLastLocation();
+            location = myactivity.currentLocation;
+        }
+        if(location == null)return -1.0;
+        return location.getLongitude();
     }
     public double getLatitude() {
         getLocation();//Fix an unknown bug
-        if(locationManager == null)return 0;
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED ||
-                        ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
-                                != PackageManager.PERMISSION_GRANTED) ) {
-            Location location = locationManager.getLastKnownLocation(locationProvider);
-            return location.getLatitude();
+        if (location == null && locationManager != null && locationProvider != null) {
+            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !(ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED ||
+                            ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                                    != PackageManager.PERMISSION_GRANTED) ) {
+                location = locationManager.getLastKnownLocation(locationProvider);
+            }
         }
-        return -1.0;
+        if(location == null){
+            MapsActivity myactivity = new MapsActivity();
+            myactivity.getLastLocation();
+            location = myactivity.currentLocation;
+        }
+        if(location == null)return -1.0;
+        return location.getLatitude();
     }
     public Location getLocation(){
         // 检查是否已经获取了位置权限

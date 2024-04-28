@@ -80,7 +80,7 @@ public class StoreFragment extends Fragment {
                     }
                 }
                 Button confirmButton = root.findViewById(R.id.confirmButton);
-                confirmButton.setText("CONFIRMED ");
+                confirmButton.setText("Rated ");
             }
             for (int i = 0; i < ratingButton.length; i++) {
                 final int rating = i + 1;
@@ -104,7 +104,7 @@ public class StoreFragment extends Fragment {
                     else{
                         storeList.get(index).rating_fixed = 1;
                         Button confirmButton = root.findViewById(R.id.confirmButton);
-                        confirmButton.setText("CONFIRMED ");
+                        confirmButton.setText("Rated ");
                         DataManager dataManager = DataManager.getInstance();
                         try{
                             dataManager.ratingStore(storeList.get(index).storeId,storeList.get(index).rating,"");
