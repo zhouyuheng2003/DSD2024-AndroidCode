@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.storesearching.MyCustomException;
 import com.example.storesearching.R;
 import com.example.storesearching.WebServiceManager;
 import com.example.storesearching.databinding.FragmentGalleryBinding;
@@ -84,8 +85,12 @@ public class UserInfoChangeFragment extends Fragment {
                     Runnable handleJsonResponse = new Runnable() {
                         @Override
                         public void run() {
-                            String ChangeRespose = webServiceManager.getJson(11,userName);
+                            String ChangeRespose = null;
+                            try{
+                                ChangeRespose = webServiceManager.getJson(11,userName);
+                            }catch(MyCustomException e){
 
+                            }
                             if(!ChangeRespose.isEmpty())
                             {
                                 Bundle bundle = new Bundle();

@@ -22,16 +22,16 @@ public class NetworkThread extends Thread {
     public String result;
     @Override
     public void run() {
+        boolean recieveSign = false;
+        if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
+                interfaceId == 11 || interfaceId == 12)recieveSign = true;
+//      recieveSign = true;//This sign is for testing the interface without output
         try {
             URL url = new URL(apiUrl + interfaceId);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
             connection.setRequestMethod("POST");
-            boolean recieveSign = false;
             if(interfaceId == 8)Log.v("vis","true");
-            if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
-                    interfaceId == 11 || interfaceId == 12)recieveSign = true;
-//            recieveSign = true;//This sign is for testing the interface without output
+
             if(recieveSign)connection.setDoOutput(true);
             else connection.setDoOutput(false);
             connection.setRequestProperty("Content-Type", "application/json");
@@ -76,7 +76,8 @@ public class NetworkThread extends Thread {
             else return;
         } catch (Exception e) {
             e.printStackTrace();
-            result = "null";
+            if(recieveSign)result = "Error";
+            else result = null;
             return;
         }
     }

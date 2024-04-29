@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.storesearching.DataManager;
 import com.example.storesearching.Item;
+import com.example.storesearching.MyCustomException;
 import com.example.storesearching.Store;
 import com.example.storesearching.WebServiceManager;
 import com.example.storesearching.databinding.FragmentHomeBinding;
@@ -153,6 +154,8 @@ public class HomeFragment extends Fragment {
 //                Toast.makeText(container.getContext(), "ok2", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
+            }catch (MyCustomException e) {
+                Toast.makeText(container.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
             }
             List<Store> recommendStoreList = dataManager.users.get(dataManager.currentUserId).recommendStoreList;
 //            Toast.makeText(container.getContext(), "ok3", Toast.LENGTH_SHORT).show();
@@ -201,18 +204,18 @@ public class HomeFragment extends Fragment {
         //Interface 2, get location
         TestLocationActivity location = TestLocationActivity.getInstance(container.getContext(),getActivity(),true,this);
         location.getLocation();//return a Location
-        Toast.makeText(container.getContext(), "version0426a", Toast.LENGTH_SHORT).show();
-        try {
-            WebServiceManager webServiceManager = WebServiceManager.getInstance();
-            JSONObject postData = new JSONObject();
-            postData.put("InterfaceId", 6);
-            postData.put("CurrentUser", "current_user_name");
-            postData.put("ItemName", "user_name");
-            String res = WebServiceManager.uploadJson(1, "me", postData.toString());
-            Toast.makeText(container.getContext(), res == null ? "empty": res, Toast.LENGTH_SHORT).show();
-        }catch (Exception e){
-
-        }
+        Toast.makeText(container.getContext(), "version0429a", Toast.LENGTH_SHORT).show();
+//        try {
+//            WebServiceManager webServiceManager = WebServiceManager.getInstance();
+//            JSONObject postData = new JSONObject();
+//            postData.put("InterfaceId", 6);
+//            postData.put("CurrentUser", "current_user_name");
+//            postData.put("ItemName", "user_name");
+//            String res = WebServiceManager.uploadJson(1, "me", postData.toString());
+//            Toast.makeText(container.getContext(), res == null ? "empty": res, Toast.LENGTH_SHORT).show();
+//        }catch (Exception e){
+//
+//        }
 
         this.container = container;
 
@@ -254,6 +257,8 @@ public class HomeFragment extends Fragment {
                 } catch (JSONException e) {
                     Toast.makeText(container.getContext(), "Fail to parse JSON", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
+                }catch (MyCustomException e) {
+                    Toast.makeText(container.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
                 updateSearchResult();
                 return false;

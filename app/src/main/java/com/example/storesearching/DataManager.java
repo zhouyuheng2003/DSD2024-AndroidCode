@@ -46,7 +46,7 @@ public class DataManager {
         }
         currentUserId = userNameToId.get(userName);
     }
-    public void SearchStore(String query) throws JSONException {
+    public void SearchStore(String query) throws JSONException,MyCustomException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 3;
         String userName = users.get(currentUserId).UserName;
@@ -62,7 +62,7 @@ public class DataManager {
         if(!testSign) Json = new JSONObject(JsonString);
         JsonUtils.parseInterface3JsonObject(Json,users.get(currentUserId).storeList);
     }
-    public void SearchItem(String query) throws JSONException {
+    public void SearchItem(String query) throws JSONException,MyCustomException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 6;
         String userName = users.get(currentUserId).UserName;
@@ -77,7 +77,7 @@ public class DataManager {
         if(!testSign) Json = new JSONObject(JsonString);
         JsonUtils.parseInterface6JsonObject(Json,users.get(currentUserId).itemList);
     }
-    public void updateHuntedStoreIdList(int index) throws JSONException {
+    public void updateHuntedStoreIdList(int index) throws JSONException,MyCustomException {
         Integer currentId;
         if(DataManager.searchMode ==0) currentId = users.get(currentUserId).storeList.get(index).storeId;
         else currentId = users.get(currentUserId).recommendStoreList.get(index).storeId;
@@ -140,7 +140,7 @@ public class DataManager {
 //        if(!testSign) Json = new JSONObject(JsonString);
 //        JsonUtils.parseInterface7JsonObject(Json,users.get(currentUserId).recommendStoreList);
     }
-    public void getRecommendStoreList() throws JSONException {
+    public void getRecommendStoreList() throws JSONException,MyCustomException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 7;
         String userName = users.get(currentUserId).UserName;

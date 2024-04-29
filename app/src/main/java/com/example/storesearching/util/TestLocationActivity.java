@@ -287,7 +287,7 @@ public class TestLocationActivity {
                 Geocoder gc = new Geocoder(context, Locale.getDefault());
                 result = gc.getFromLocation(location.getLatitude(),
                         location.getLongitude(), 1);
-                if(output)Toast.makeText(context, "获取地址信息："+result.toString(), Toast.LENGTH_LONG).show();
+//                if(output)Toast.makeText(context, "获取地址信息："+result.toString(), Toast.LENGTH_LONG).show();
                 Log.v("TAG", "获取地址信息："+result.toString());
             }
         } catch (Exception e) {

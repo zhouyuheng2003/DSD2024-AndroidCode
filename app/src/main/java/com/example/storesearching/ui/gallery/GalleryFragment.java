@@ -67,7 +67,13 @@ public class GalleryFragment extends Fragment {
                 Runnable handleJsonResponse = new Runnable() {
                     @Override
                     public void run() {
-                        String LoginRespose = webServiceManager.getJson(1,name);
+                        String LoginRespose = null;
+                        try{
+                            LoginRespose = webServiceManager.getJson(1,name);
+                        }catch(MyCustomException e){
+
+                        }
+
 
                         if(!LoginRespose.isEmpty())
                         {

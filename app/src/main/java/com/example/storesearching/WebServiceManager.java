@@ -95,7 +95,8 @@ public class WebServiceManager {
 
 
     private static String lastGet;
-    public synchronized String getJson(int interfaceId , String userName){
+    public synchronized String getJson(int interfaceId , String userName)throws MyCustomException{
+        String nowGet = lastGet;
         if(lastGet == null){
             JSONObject head = new JSONObject();
             try {
@@ -104,10 +105,12 @@ public class WebServiceManager {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return uploadJson(interfaceId, userName, "");
+            nowGet = uploadJson(interfaceId, userName, "");
         }
-        String nowGet = lastGet;
-        lastGet = null;
+        else lastGet = null;
+        if(nowGet == "Error"){
+            throw new MyCustomException("Internet Error.");
+        }
         return nowGet;
     }
     public synchronized void sendJson(int interfaceId , String userName, String Json){

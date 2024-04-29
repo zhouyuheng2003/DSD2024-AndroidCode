@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.storesearching.DataManager;
 import com.example.storesearching.Item;
 import com.example.storesearching.MapsActivity;
+import com.example.storesearching.MyCustomException;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
 import com.example.storesearching.util.TestLocationActivity;
@@ -63,6 +64,8 @@ public class StoreFragment extends Fragment {
                 dataManager.updateHuntedStoreIdList(index);
             } catch (JSONException e) {
                 e.printStackTrace();
+            }catch (MyCustomException e) {
+                Toast.makeText(container.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
             }
             ratingButton = new ImageButton[5];
             ratingButton[0] = root.findViewById(R.id.ratingButton1);
