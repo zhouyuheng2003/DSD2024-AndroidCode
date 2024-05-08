@@ -34,6 +34,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private final int FINE_PERMISSION_CODE = 1;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    private long lastClickTime = 0;
+    private static long ClickTimeInterval = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +113,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(@NonNull Marker marker) {
+        long currentTime = System.currentTimeMillis();
+        long clickInterval = currentTime - lastClickTime;
+
+        if(clickInterval < ClickTimeInterval) {
+            onDoubleClick(marker);
+        }
+
+        lastClickTime = currentTime;
+
+        return false;
+    }
+
+    public void onDoubleClick(@NonNull Marker marker){
         String[] storeInfo = (String[]) marker.getTag();
         Toast.makeText(this, marker.getTitle() + ": " + storeInfo[1] + " / " + storeInfo[2], Toast.LENGTH_SHORT).show();
 
         getDirections(storeInfo[1], storeInfo[2]);
-        return false;
     }
 
     private void getDirections(String toLat, String toLng){
