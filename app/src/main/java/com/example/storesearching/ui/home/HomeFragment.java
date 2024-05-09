@@ -79,14 +79,18 @@ public class HomeFragment extends Fragment {
 
     public String ShowDistance(double dis) {
         //If it is under 1KM, it will show as meters, without the ".x"
-        if(dis < 1000)
-            return (String.format("%.0f", dis) + " m");
+        if(dis < 0.95)
+            return (String.format("%.0f", dis * 1000) + " m");
 
-        String dist = String.format("%.1f", dis/1000);
+        //If between 950 m and 1 Km, it wil show just as 1 Km
+        if(dis < 1)
+            return "1 Km";
+
+        String dist = String.format("%.1f", dis);
 
         //It will show as KM, without the ".x"
         if(dist.endsWith(",0") || dist.endsWith(".0"))
-            return (String.format("%.0f", dis / 1000) + " km");
+            return (String.format("%.0f", dis) + " km");
 
         //It will show as KM, with the ".x"
         return (dist + " km");
