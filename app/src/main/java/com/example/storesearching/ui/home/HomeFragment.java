@@ -76,6 +76,22 @@ public class HomeFragment extends Fragment {
             updateSearchResult();
         }
     }
+
+    public String ShowDistance(double dis) {
+        //If it is under 1KM, it will show as meters, without the ".x"
+        if(dis < 1000)
+            return (String.format("%.0f", dis) + " m");
+
+        String dist = String.format("%.1f", dis/1000);
+
+        //It will show as KM, without the ".x"
+        if(dist.endsWith(",0") || dist.endsWith(".0"))
+            return (String.format("%.0f", dis / 1000) + " km");
+
+        //It will show as KM, with the ".x"
+        return (dist + " km");
+    }
+
     private void updateSearchResult(){//update the content of ScrollView
         LinearLayout linearlayout_searchresult = root.findViewById(R.id.linearlayout_searchresult);
         linearlayout_searchresult.removeAllViews();
@@ -97,7 +113,8 @@ public class HomeFragment extends Fragment {
                 textView_des.setText("Description:" + storeList.get(i).StoreDescription);
 
                 TextView textView_dis = listItemView.findViewById(R.id.textView_dis);
-                textView_dis.setText(storeList.get(i).location.getDistance()+"km");
+                textView_dis.setText(ShowDistance(storeList.get(i).location.getDistance()));
+                //textView_dis.setText(storeList.get(i).location.getDistance()+"km"); //HERE
                 int finalI = i;
                 int finalI1 = i;
                 button.setOnClickListener(new View.OnClickListener() {

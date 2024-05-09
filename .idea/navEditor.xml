@@ -259,6 +259,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_storeFragment_to_map">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>

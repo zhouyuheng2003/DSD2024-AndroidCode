@@ -286,5 +286,6 @@ class DistanceCalculator {
 
         // 计算距离
         return EARTH_RADIUS * c;
+        //return 1474;
     }
 }
