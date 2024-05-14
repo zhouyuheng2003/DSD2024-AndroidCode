@@ -135,6 +135,7 @@ public class StoreFragment extends Fragment {
 //                                 String.valueOf(testLocationActivity.getLongitude())},
 //                         {"Store " + storeList.get(index).storeName, String.valueOf(storeList.get(index).location.latitude),
 //                                 String.valueOf(storeList.get(index).location.longitude)}};
+//                     Navigation.findNavController(v).navigate(R.id.action_storeFragment_to_tencentMapActivity);
                      Navigation.findNavController(v).navigate(R.id.action_storeFragment_to_map);
 
                  }

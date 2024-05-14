@@ -81,6 +81,9 @@
         <action
             android:id="@+id/action_storeFragment_to_map"
             app:destination="@id/map" />
+        <action
+            android:id="@+id/action_storeFragment_to_tencentMapActivity"
+            app:destination="@id/tencentMapActivity" />
     </fragment>
     <activity
         android:id="@+id/map"
@@ -92,4 +95,9 @@
         android:name="com.example.storesearching.ui.ItemFragment"
         android:label="fragment_item"
         tools:layout="@layout/fragment_item" />
+    <activity
+        android:id="@+id/tencentMapActivity"
+        android:name="com.example.storesearching.TencentMap.TencentMapActivity"
+        android:label="activity_tencent_map"
+        tools:layout="@layout/activity_tencent_map" />
 </navigation>

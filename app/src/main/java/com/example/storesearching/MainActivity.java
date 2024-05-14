@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.storesearching.databinding.ActivityMainBinding;
+import com.tencent.tencentmap.mapsdk.maps.TencentMapInitializer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TencentMapInitializer.setAgreePrivacy(true);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

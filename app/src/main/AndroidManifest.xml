@@ -5,7 +5,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 腾讯地图 SDK 要求的权限(开始) -->
+    <!-- 访问网络获取地图服务 -->
+    <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
+    <!-- 检查网络可用性 -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> -->
+    <!-- 访问WiFi状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 需要外部存储写权限用于保存地图缓存 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 获取 device id 辨别设备 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -17,10 +25,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoreSearching"
         tools:targetApi="31">
+        <activity
+            android:name=".TencentMap.TencentMapActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCz21KzyO08y64NSAbvRWjVupqEZi7kCXQ" />
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="MFGBZ-VPSWT-XMYXQ-LGJB7-SY4A5-5KBUG" />
 
         <activity
             android:name=".MapsActivity"
