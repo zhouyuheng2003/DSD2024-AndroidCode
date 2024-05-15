@@ -30,9 +30,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
+
     private final int FINE_PERMISSION_CODE = 1;
-    public Location currentLocation;
+    Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    private long lastClickTime = 0;
+    private static long ClickTimeInterval = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         getLastLocation();
     }
 
-    public void getLastLocation() {
+    private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
             return;
@@ -68,8 +71,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public String[][] getData() {
         String[][] data = {
-                {"Store UTAD", "41.28678538409359", "-7.740637471808735"},
-                {"Store JLU", "43.82572225983296", "125.28501566529455"}};
+                {"Store UTAD", "41.28678538409359", "-7.740637471808735", "Store in Portugal.\nThis is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it!"},
+                {"Store JLU",  "43.82572225983296", "125.28501566529455", "Store in China"}};
 
         if(DataFromHome != null){
             data = DataFromHome;
@@ -91,10 +94,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double lat = stringToDouble(store[i][1]);
             double lng = stringToDouble(store[i][2]);
             LatLng location = new LatLng(lat, lng);
-            Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]));
+            Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]).snippet(store[i][3]));
             String[] storeInfo = store[i];
             marker.setTag(storeInfo);
         }
+
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
@@ -110,11 +115,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(@NonNull Marker marker) {
+        long currentTime = System.currentTimeMillis();
+        long clickInterval = currentTime - lastClickTime;
+
+        if(clickInterval < ClickTimeInterval) {
+            onDoubleClick(marker);
+        }
+
+        lastClickTime = currentTime;
+
+        return false;
+    }
+
+    public void onDoubleClick(@NonNull Marker marker){
         String[] storeInfo = (String[]) marker.getTag();
         Toast.makeText(this, marker.getTitle() + ": " + storeInfo[1] + " / " + storeInfo[2], Toast.LENGTH_SHORT).show();
 
         getDirections(storeInfo[1], storeInfo[2]);
-        return false;
     }
 
     private void getDirections(String toLat, String toLng){

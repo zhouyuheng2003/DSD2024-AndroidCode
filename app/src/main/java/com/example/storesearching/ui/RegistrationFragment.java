@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.storesearching.MyCustomException;
 import com.example.storesearching.R;
 import com.example.storesearching.WebServiceManager;
 import com.example.storesearching.databinding.FragmentGalleryBinding;
@@ -67,12 +66,8 @@ public class RegistrationFragment extends Fragment {
                     @Override
                     public void run() {
 
-                        String RegResponse = null;
-                        try{
-                            RegResponse = webServiceManager.getJson(12,userName);
-                        }catch(MyCustomException e){
+                        String RegResponse = webServiceManager.getJson(12,userName);
 
-                        }
                         if(!RegResponse.isEmpty())
                         {
                             try {

@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.storesearching.MyCustomException;
 import com.example.storesearching.R;
 import com.example.storesearching.WebServiceManager;
 import com.example.storesearching.databinding.FragmentGalleryBinding;
@@ -73,11 +72,11 @@ public class UserInfoChangeFragment extends Fragment {
                         else if(Birthday.contains(".")){date = dateFormat_2.parse(Birthday);}
                             else if(Birthday.contains("/")) {date = dateFormat_3.parse(Birthday);}
 
-//                        String[] Descriptions = DescriptionText.split(";");
-//                        JSONArray Description_array = new JSONArray();
-//                        for (String Description : Descriptions) {Description_array.put(Description);}
+                        String[] Descriptions = DescriptionText.split(";");
+                        JSONArray Description_array = new JSONArray();
+                        for (String Description : Descriptions) {Description_array.put(Description);}
 
-                        JSONObject ChangeInfo = JsonUtils.buildInterface10JsonObject(10,userName,userName,password,date,DescriptionText);
+                        JSONObject ChangeInfo = JsonUtils.buildInterface10JsonObject(10,userName,userName,password,date,Description_array);
 
                         WebServiceManager webServiceManager = WebServiceManager.getInstance();
                         webServiceManager.sendJson(10,userName,ChangeInfo.toString());
@@ -85,16 +84,12 @@ public class UserInfoChangeFragment extends Fragment {
                     Runnable handleJsonResponse = new Runnable() {
                         @Override
                         public void run() {
-                            String ChangeRespose = null;
-                            try{
-                                ChangeRespose = webServiceManager.getJson(11,userName);
-                            }catch(MyCustomException e){
+                            String ChangeRespose = webServiceManager.getJson(11,userName);
 
-                            }
                             if(!ChangeRespose.isEmpty())
                             {
                                 Bundle bundle = new Bundle();
-                                bundle.putString("LoginRespose", ChangeInfo.toString());
+                                bundle.putString("LoginRespose", ChangeRespose);
                                 Navigation.findNavController(view).navigate(R.id.action_nav_changeInfo_to_nav_UserInfo,bundle);
                             }
                             else {

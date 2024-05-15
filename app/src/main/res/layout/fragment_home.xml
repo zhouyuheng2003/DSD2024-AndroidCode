@@ -15,11 +15,10 @@
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156"
-        android:padding="16dp"/>
+        app:layout_constraintVertical_bias="0.156" />
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="342dp"
         android:layout_height="56dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/mainSearchView"
@@ -29,7 +28,7 @@
 
         <TextView
             android:id="@+id/textView_SearchMode"
-            android:layout_width="220dp"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="Search For Stores"
@@ -59,8 +58,7 @@
             android:id="@+id/linearlayout_searchresult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"/>
+            android:orientation="vertical" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

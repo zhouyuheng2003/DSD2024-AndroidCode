@@ -14,9 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.storesearching.DataManager;
 import com.example.storesearching.Item;
-import com.example.storesearching.MyCustomException;
 import com.example.storesearching.Store;
-import com.example.storesearching.WebServiceManager;
 import com.example.storesearching.databinding.FragmentHomeBinding;
 import android.widget.SearchView;
 import android.widget.LinearLayout;
@@ -32,7 +30,6 @@ import android.widget.Toast;
 import androidx.navigation.Navigation;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +76,26 @@ public class HomeFragment extends Fragment {
             updateSearchResult();
         }
     }
+
+    public String ShowDistance(double dis) {
+        //If it is under 1KM, it will show as meters, without the ".x"
+        if(dis < 0.95)
+            return (String.format("%.0f", dis * 1000) + " m");
+
+        //If between 950 m and 1 Km, it wil show just as 1 Km
+        if(dis < 1)
+            return "1 Km";
+
+        String dist = String.format("%.1f", dis);
+
+        //It will show as KM, without the ".x"
+        if(dist.endsWith(",0") || dist.endsWith(".0"))
+            return (String.format("%.0f", dis) + " km");
+
+        //It will show as KM, with the ".x"
+        return (dist + " km");
+    }
+
     private void updateSearchResult(){//update the content of ScrollView
         LinearLayout linearlayout_searchresult = root.findViewById(R.id.linearlayout_searchresult);
         linearlayout_searchresult.removeAllViews();
@@ -100,7 +117,8 @@ public class HomeFragment extends Fragment {
                 textView_des.setText("Description:" + storeList.get(i).StoreDescription);
 
                 TextView textView_dis = listItemView.findViewById(R.id.textView_dis);
-                textView_dis.setText(storeList.get(i).location.getDistance()+"km");
+                textView_dis.setText(ShowDistance(storeList.get(i).location.getDistance()));
+                //textView_dis.setText(storeList.get(i).location.getDistance()+"km"); //HERE
                 int finalI = i;
                 int finalI1 = i;
                 button.setOnClickListener(new View.OnClickListener() {
@@ -154,8 +172,6 @@ public class HomeFragment extends Fragment {
 //                Toast.makeText(container.getContext(), "ok2", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
                 e.printStackTrace();
-            }catch (MyCustomException e) {
-                Toast.makeText(container.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
             }
             List<Store> recommendStoreList = dataManager.users.get(dataManager.currentUserId).recommendStoreList;
 //            Toast.makeText(container.getContext(), "ok3", Toast.LENGTH_SHORT).show();
@@ -163,7 +179,7 @@ public class HomeFragment extends Fragment {
                 if(i >= recommendStoreList.size())break;
                 double dis = recommendStoreList.get(i).location.getDistance();
                 if(dis>DataManager.distanceLimit)continue;
-//                Log.d("val",recommendStoreList.get(i).storeId+"id");
+
                 View listItemView = inflater.inflate(R.layout.layout_listitem_store, null);
                 Button button = listItemView.findViewById(R.id.button);
                 TextView textView_no = listItemView.findViewById(R.id.textView_no);
@@ -204,19 +220,7 @@ public class HomeFragment extends Fragment {
         //Interface 2, get location
         TestLocationActivity location = TestLocationActivity.getInstance(container.getContext(),getActivity(),true,this);
         location.getLocation();//return a Location
-        Toast.makeText(container.getContext(), "version0429a", Toast.LENGTH_SHORT).show();
-//        try {
-//            WebServiceManager webServiceManager = WebServiceManager.getInstance();
-//            JSONObject postData = new JSONObject();
-//            postData.put("InterfaceId", 6);
-//            postData.put("CurrentUser", "current_user_name");
-//            postData.put("ItemName", "user_name");
-//            String res = WebServiceManager.uploadJson(1, "me", postData.toString());
-//            Toast.makeText(container.getContext(), res == null ? "empty": res, Toast.LENGTH_SHORT).show();
-//        }catch (Exception e){
-//
-//        }
-
+        Toast.makeText(container.getContext(), "version0426a                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ", Toast.LENGTH_SHORT).show();
         this.container = container;
 
         HomeViewModel homeViewModel =
@@ -229,7 +233,7 @@ public class HomeFragment extends Fragment {
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         //Search mode manager, init information
-//        SearchMode = 0;
+        SearchMode = 0;
         DataManager.searchMode = SearchMode;
         textView_SearchMode_content = new String[2];
         button_SwitchSearchMode_content = new String[2];
@@ -250,15 +254,12 @@ public class HomeFragment extends Fragment {
                     if(SearchMode == 2){
                         SearchMode = 0;
                         DataManager.searchMode = SearchMode;
-                        update();
                     }
                     if(SearchMode == 0) dataManager.SearchStore(query);
                     else if(SearchMode == 1) dataManager.SearchItem(query);
                 } catch (JSONException e) {
                     Toast.makeText(container.getContext(), "Fail to parse JSON", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
-                }catch (MyCustomException e) {
-                    Toast.makeText(container.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
                 updateSearchResult();
                 return false;
