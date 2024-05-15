@@ -30,7 +30,7 @@ import com.example.storesearching.databinding.ActivityMapsBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
     public static MapsActivity instance;
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -103,7 +103,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String[] storeInfo = store[i];
             marker.setTag(storeInfo);
         }
-        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
+        //mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(getLayoutInflater()));
+        mMap.setOnInfoWindowClickListener(this);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         if(TestLocationActivity.TencentSign && DataManager.ChinaSign) {
@@ -148,6 +150,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         updateMap(1);
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker){
+        onDoubleClick(marker);
     }
 
     @Override

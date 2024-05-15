@@ -13,12 +13,17 @@ import com.google.android.gms.maps.model.Marker;
 
 public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     private final View mWindow;
-    private Context mContext;
+
+    public CustomInfoWindowAdapter(LayoutInflater inflater){
+        mWindow = inflater.inflate(R.layout.custom_info_window, null);
+    }
+
+    /*private Context mContext;
 
     public CustomInfoWindowAdapter(Context context){
         mContext = context;
         mWindow = LayoutInflater.from(context).inflate(R.layout.custom_info_window, null);
-    }
+    }*/
 
     private void renderWindowText(Marker marker, View view){
         String title = marker.getTitle();
