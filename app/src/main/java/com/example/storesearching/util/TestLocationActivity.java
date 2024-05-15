@@ -17,14 +17,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import android.os.HandlerThread;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.storesearching.MapsActivity;
 import com.example.storesearching.ui.home.HomeFragment;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.map.geolocation.TencentLocationRequest;
 
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
@@ -47,6 +53,68 @@ public class TestLocationActivity {
             instance = new TestLocationActivity(context, activity, output, homefragment);
         }
         return instance;
+    }
+    public static double TencentLatitude,TencentLongtitude,TencentAccuracy;
+    public static boolean TencentSign;
+    public void TencentLocationActivity(){
+        // 检查定位权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // 请求权限
+                ActivityCompat.requestPermissions((Activity) context,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                        1);
+                return;
+            }
+        }
+        HandlerThread mLocHandlerThread = new HandlerThread("demo");
+        mLocHandlerThread.start();
+
+        TencentLocationManager.setUserAgreePrivacy(true);
+        TencentLocationManager mLocMr = TencentLocationManager.getInstance(context);
+
+        // 定位请求相关参数设置
+        TencentLocationRequest mLocRequest = TencentLocationRequest.create().setInterval(5000);
+
+        Log.v("TAG", "访问成功2");
+        // 连续定位回调Listener
+        TencentLocationListener mLocListener = new TencentLocationListener() {
+            @Override
+            public void onLocationChanged(TencentLocation location, int error, String reason) {
+                Log.v("TAG", "onLocationChanged called");
+                // showMsgInTextview("curThread:" + Thread.currentThread().getName(), UIHandler.MSG_SHOW_STRING_LOCATION);
+                String str = "周期回调---"  + Thread.currentThread().getName() + "\n";
+                if (location != null) {
+                    if (error == TencentLocation.ERROR_OK) {
+                        str += String.format("%.6f,%.6f,%.2f,%s,%s,%d", location.getLatitude(), location.getLongitude(),
+                                location.getAccuracy(), location.getProvider(), location.getIndoorBuildingFloor(), location.getTime());
+                        TencentSign = true;
+                        TencentLatitude=location.getLatitude();
+                        TencentLongtitude=location.getLongitude();
+                        TencentAccuracy=location.getAccuracy();
+                        if(MapsActivity.instance!=null){
+                            MapsActivity.instance.updateMap(0);
+                        }
+                    } else {
+                        str += "(*," + error + "," + reason + ")";
+                    }
+                } else {
+                    str += "(null," + error + "," + reason + ")";
+                }
+                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+                Log.v("TAG", "访问成功");
+            }
+
+            @Override
+            public void onStatusUpdate(String name, int status, String desc) {
+                String str = name + "," + status + "," + desc + "," + Thread.currentThread().getName();
+                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+                Log.v("TAG", "访问成功3");
+            }
+        };
+        mLocMr.requestLocationUpdates(mLocRequest, mLocListener, mLocHandlerThread.getLooper());
+//        mLocMr.requestSingleFreshLocation(mLocRequest , mLocListener, mLocHandlerThread.getLooper());
     }
 
     private TestLocationActivity(Context context, Activity activity, boolean output, HomeFragment homefragment) {

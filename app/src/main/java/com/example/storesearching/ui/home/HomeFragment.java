@@ -223,7 +223,7 @@ public class HomeFragment extends Fragment {
         //Interface 2, get location
         TestLocationActivity location = TestLocationActivity.getInstance(container.getContext(),getActivity(),true,this);
         location.getLocation();//return a Location
-        Toast.makeText(container.getContext(), "version0429a", Toast.LENGTH_SHORT).show();
+        Toast.makeText(container.getContext(), "version0515a", Toast.LENGTH_SHORT).show();
 //        try {
 //            WebServiceManager webServiceManager = WebServiceManager.getInstance();
 //            JSONObject postData = new JSONObject();
@@ -235,7 +235,7 @@ public class HomeFragment extends Fragment {
 //        }catch (Exception e){
 //
 //        }
-
+        location.TencentLocationActivity();
         this.container = container;
 
         HomeViewModel homeViewModel =

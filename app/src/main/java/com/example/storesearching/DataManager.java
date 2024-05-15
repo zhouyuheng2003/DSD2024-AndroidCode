@@ -19,6 +19,7 @@ import java.util.Map;
 public class DataManager {
     public static double distanceLimit = 2;
     public static boolean testSign = false;//whether it is unit test
+    public static boolean ChinaSign = false;
     public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
     public int currentUserId, usedUserId;
@@ -50,17 +51,24 @@ public class DataManager {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 3;
         String userName = users.get(currentUserId).UserName;
-        webServiceManager.sendJson(interfaceId, userName,
-                JsonUtils.buildInterface3JsonObject(interfaceId, userName,query).toString()
-                );
-        String JsonString = webServiceManager.getJson(interfaceId, userName);
-        while(JsonString == ""){
-            JsonString = webServiceManager.getJson(interfaceId, userName);
-        }
 
-        JSONObject Json = null;
-        if(!testSign) Json = new JSONObject(JsonString);
-        JsonUtils.parseInterface3JsonObject(Json,users.get(currentUserId).storeList);
+        if(testSign){
+            JSONObject Json = null;
+            JsonUtils.parseInterface3JsonObject(Json,users.get(currentUserId).storeList);
+        }
+        else{
+            webServiceManager.sendJson(interfaceId, userName,
+                    JsonUtils.buildInterface3JsonObject(interfaceId, userName,query).toString()
+            );
+            String JsonString = webServiceManager.getJson(interfaceId, userName);
+            while(JsonString == ""){
+                JsonString = webServiceManager.getJson(interfaceId, userName);
+            }
+
+            JSONObject Json = null;
+            if(!testSign) Json = new JSONObject(JsonString);
+            JsonUtils.parseInterface3JsonObject(Json,users.get(currentUserId).storeList);
+        }
     }
     public void SearchItem(String query) throws JSONException,MyCustomException {
         WebServiceManager webServiceManager = WebServiceManager.getInstance();

@@ -8,17 +8,21 @@ import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.storesearching.util.TestLocationActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -27,7 +31,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
-
+    public static MapsActivity instance;
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private final int FINE_PERMISSION_CODE = 1;
@@ -44,6 +48,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getLastLocation();
+
+        instance = this;
     }
 
     public void getLastLocation() {
@@ -86,9 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return Double.parseDouble(str);
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public void updateMap(int flag){
         String[][] store = getData();
 
         for (int i = 0; i < store.length; i++) {
@@ -102,14 +106,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
+        if(TestLocationActivity.TencentSign && DataManager.ChinaSign) {
+            LatLng customLocation = new LatLng(TestLocationActivity.TencentLatitude, TestLocationActivity.TencentLongtitude); // 示例经纬度，需替换为实际自定义位置
+            double accuracy = TestLocationActivity.TencentAccuracy;
+            // 添加自定义位置标记
+            mMap.addMarker(new MarkerOptions()
+                    .position(customLocation)
+                    .title("Custom Location")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_dot))
+                    .anchor(0.5f, 0.5f)); // 使用自定义的蓝色圆圈图标
+
+            // 添加精度圆圈
+            CircleOptions circleOptions = new CircleOptions()
+                    .center(customLocation)
+                    .radius(accuracy) // 单位为米
+                    .strokeColor(Color.BLUE)
+                    .fillColor(0x220000FF) // 半透明蓝色
+                    .strokeWidth(5);
+            mMap.addCircle(circleOptions);
+
+            // 移动相机到自定义位置
+            if(flag==1){
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(customLocation, 12.0f));
+            }
+
+
+            mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
         }
-        mMap.setMyLocationEnabled(true);
+        else{
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            mMap.setMyLocationEnabled(true);
 
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()), 12.0f));
-
-        mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()), 12.0f));
+            //TestLocationActivity
+            mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
+        }
+    }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        updateMap(1);
     }
 
     @Override
