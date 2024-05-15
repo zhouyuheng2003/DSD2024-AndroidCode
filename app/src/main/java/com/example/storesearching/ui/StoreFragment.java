@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.storesearching.DataManager;
 import com.example.storesearching.Item;
 import com.example.storesearching.MapsActivity;
+import com.example.storesearching.MyCustomException;
 import com.example.storesearching.R;
 import com.example.storesearching.Store;
 import com.example.storesearching.util.TestLocationActivity;
@@ -51,7 +53,8 @@ public class StoreFragment extends Fragment {
         this.container = container;
         root = inflater.inflate(R.layout.fragment_store, container, false);
         DataManager dataManager = DataManager.getInstance();
-        storeList = dataManager.currentStoreList();
+        if(DataManager.searchMode == 0) storeList = dataManager.currentStoreList();
+        else storeList = dataManager.currentRecommendStoreList();
         if(storeList.size() > index){
             TextView textView_storeName = root.findViewById(R.id.textView_itemName);
             textView_storeName.setText(storeList.get(index).storeName);
@@ -61,6 +64,8 @@ public class StoreFragment extends Fragment {
                 dataManager.updateHuntedStoreIdList(index);
             } catch (JSONException e) {
                 e.printStackTrace();
+            }catch (MyCustomException e) {
+                Toast.makeText(container.getContext(), e.toString(), Toast.LENGTH_SHORT).show();
             }
             ratingButton = new ImageButton[5];
             ratingButton[0] = root.findViewById(R.id.ratingButton1);
@@ -78,7 +83,7 @@ public class StoreFragment extends Fragment {
                     }
                 }
                 Button confirmButton = root.findViewById(R.id.confirmButton);
-                confirmButton.setText("CONFIRMED ");
+                confirmButton.setText("Rated ");
             }
             for (int i = 0; i < ratingButton.length; i++) {
                 final int rating = i + 1;
@@ -102,10 +107,10 @@ public class StoreFragment extends Fragment {
                     else{
                         storeList.get(index).rating_fixed = 1;
                         Button confirmButton = root.findViewById(R.id.confirmButton);
-                        confirmButton.setText("CONFIRMED ");
+                        confirmButton.setText("Rated");
                         DataManager dataManager = DataManager.getInstance();
                         try{
-                            dataManager.ratingStore(storeList.get(index).storeId,storeList.get(index).rating,"");
+                            dataManager.ratingStore(storeList.get(index).storeId,storeList.get(index).rating,"empty");
                         }catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -121,8 +126,8 @@ public class StoreFragment extends Fragment {
                  public void onClick(View v) {
                      TestLocationActivity testLocationActivity = TestLocationActivity.getInstance(null,null,false,null);
                      MapsActivity.DataFromHome = new String[][]{
-                             {"User Location", String.valueOf(testLocationActivity.getLatitude()+0.003728),
-                                     String.valueOf(testLocationActivity.getLongitude()+0.004866)},
+//                             {"User Location", String.valueOf(testLocationActivity.getLatitude()+0.003728),
+//                                     String.valueOf(testLocationActivity.getLongitude()+0.004866)},
                              {"Store " + storeList.get(index).storeName, String.valueOf(storeList.get(index).location.latitude),
                                      String.valueOf(storeList.get(index).location.longitude)}};
 //                     {

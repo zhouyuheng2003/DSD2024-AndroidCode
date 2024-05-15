@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#CCF2ED">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/textView_no"
@@ -43,7 +45,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/textView_des"
@@ -63,6 +66,6 @@
         android:layout_height="20dp"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black"/>
+        android:layout_height="16dp"
+        android:background="@android:color/white"/>
 </LinearLayout>

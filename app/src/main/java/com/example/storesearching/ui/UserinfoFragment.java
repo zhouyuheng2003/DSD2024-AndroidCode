@@ -52,23 +52,23 @@ public class UserinfoFragment extends Fragment{
             dataManager.update(username);
 
 //            String password = LoginJsonRespose.get("Interests");
-            JSONArray  description = LoginJsonRespose.getJSONArray("Interests");
+            String  description = LoginJsonRespose.getString("Interests");
 
-            String depcriptionText = "";
-
-            for(int i = 0 ; i < description.length(); i++)
-            {
-                depcriptionText +=  description.getString(i) + ";";
-
-                if( (i+1) % 5==0) depcriptionText += "\n";
-            }
+//            String depcriptionText = "";
+//
+//            for(int i = 0 ; i < description.length(); i++)
+//            {
+//                depcriptionText +=  description.getString(i) + ";";
+//
+//                if( (i+1) % 5==0) depcriptionText += "\n";
+//            }
 
             userName.setTextSize(30);
 //            userName.setGravity();
             userDescription.setTextSize(30);
 
             userName.setText("UserName:"+username);
-            userDescription.setText(depcriptionText);
+            userDescription.setText(description);
 
         }catch (JSONException e){
             e.printStackTrace();

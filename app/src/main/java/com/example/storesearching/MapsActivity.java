@@ -30,13 +30,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
-
     private final int FINE_PERMISSION_CODE = 1;
-    Location currentLocation;
+    public Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     private long lastClickTime = 0;
     private static long ClickTimeInterval = 3000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         getLastLocation();
     }
 
-    private void getLastLocation() {
+    public void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, FINE_PERMISSION_CODE);
             return;
@@ -74,6 +72,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 {"Store UTAD", "41.28678538409359", "-7.740637471808735", "Store in Portugal.\nThis is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it! This is some long text to test it!"},
                 {"Store JLU",  "43.82572225983296", "125.28501566529455", "Store in China"}};
 
+//                {"Store UTAD", "41.28678538409359", "-7.740637471808735"},
+//                {"Store JLU", "43.82572225983296", "125.28501566529455"}};
+
         if(DataFromHome != null){
             data = DataFromHome;
         }
@@ -98,9 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String[] storeInfo = store[i];
             marker.setTag(storeInfo);
         }
-
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
-
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

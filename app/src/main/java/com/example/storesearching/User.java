@@ -11,7 +11,7 @@ public class User {
     public List<Store> storeList;
     public List<Item> itemList;
     public List<Item> myItemList;
-    public List<Integer> huntedStoreIdList;
+    public List<HistoryVisit> huntedStoreIdList;
 
     public List<Store> recommendStoreList;
     public User(int userId, String userName){
