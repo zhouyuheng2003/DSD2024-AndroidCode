@@ -18,8 +18,10 @@ import java.util.Map;
 
 public class DataManager {
     public static double distanceLimit = 2;
-    public static boolean testSign = false;//whether it is unit test
+    public static boolean testSign = false;//false means use unit test server, true means use local data
     public static boolean ChinaSign = false;
+
+    public static boolean IntegrationTestingSign = true;//true means use database server
     public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
     public int currentUserId, usedUserId;
@@ -60,7 +62,9 @@ public class DataManager {
             webServiceManager.sendJson(interfaceId, userName,
                     JsonUtils.buildInterface3JsonObject(interfaceId, userName,query).toString()
             );
+            Log.v("val",JsonUtils.buildInterface3JsonObject(interfaceId, userName,query).toString());
             String JsonString = webServiceManager.getJson(interfaceId, userName);
+            Log.v("val",JsonString);
             while(JsonString == ""){
                 JsonString = webServiceManager.getJson(interfaceId, userName);
             }

@@ -93,6 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void updateMap(int flag){
+        mMap.clear();
         String[][] store = getData();
 
         for (int i = 0; i < store.length; i++) {
