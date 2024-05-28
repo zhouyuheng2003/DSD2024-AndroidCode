@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.storesearching.DataManager;
+import com.example.storesearching.MyCustomException;
+import com.example.storesearching.WebServiceManager;
 import com.example.storesearching.databinding.FragmentRegistrationBinding;
 import com.example.storesearching.databinding.FragmentUserinfoBinding;
 
@@ -21,6 +23,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import com.example.storesearching.R;
+import com.example.storesearching.util.JsonUtils;
 
 public class UserinfoFragment extends Fragment{
 
@@ -52,7 +55,14 @@ public class UserinfoFragment extends Fragment{
             dataManager.update(username);
 
 //            String password = LoginJsonRespose.get("Interests");
-            String  description = LoginJsonRespose.getString("Interests");
+            JSONObject userinfo=null;
+            try{
+                WebServiceManager webServiceManager = WebServiceManager.getInstance();
+                userinfo = new JSONObject(webServiceManager.getJson(11, username));
+            }catch(MyCustomException e){
+
+            }
+            String  description = userinfo.getString("Interests");
 
 //            String depcriptionText = "";
 //

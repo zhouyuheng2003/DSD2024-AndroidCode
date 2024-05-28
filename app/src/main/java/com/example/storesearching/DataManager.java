@@ -93,6 +93,7 @@ public class DataManager {
         Integer currentId;
         if(DataManager.searchMode ==0) currentId = users.get(currentUserId).storeList.get(index).storeId;
         else currentId = users.get(currentUserId).recommendStoreList.get(index).storeId;
+        Log.v("val","visit storeid:"+currentId);
         boolean updateFlag = true;
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 5;

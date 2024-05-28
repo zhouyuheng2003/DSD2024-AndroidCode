@@ -154,6 +154,8 @@ public class StoreFragment extends Fragment {
                 TextView textView_no = listItemView.findViewById(R.id.textView_no);
                 textView_no.setText("Number"+ (i+1) +": ");
                 TextView textView_name = listItemView.findViewById(R.id.textView_name);
+                Log.v("val","content"+itemList.size());
+                Log.v("val","content"+itemList.get(i).toString());
                 textView_name.setText(itemList.get(i).itemName);
                 TextView textView_des = listItemView.findViewById(R.id.textView_des);
                 textView_des.setText("Description:" + itemList.get(i).itemDescription);

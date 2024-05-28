@@ -105,7 +105,7 @@ public class WebServiceManager {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            nowGet = uploadJson(interfaceId, userName, "");
+            nowGet = uploadJson(interfaceId, userName, head.toString());
         }
         else lastGet = null;
         if(nowGet == "Error"){

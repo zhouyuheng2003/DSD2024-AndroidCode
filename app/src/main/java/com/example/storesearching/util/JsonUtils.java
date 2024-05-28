@@ -4,6 +4,7 @@ import com.example.storesearching.DataManager;
 import com.example.storesearching.HistoryVisit;
 import com.example.storesearching.Item;
 import com.example.storesearching.MyCustomException;
+import com.example.storesearching.R;
 import com.example.storesearching.Store;
 import com.example.storesearching.myLocation;
 
@@ -23,25 +24,25 @@ public class JsonUtils {
     public static JSONObject buildLocation(Address myAddress){
         JSONObject jsonObject = new JSONObject();
         try {
-//            jsonObject.put("latitude", myAddress.getLatitude());
-//            jsonObject.put("longitude", myAddress.getLongitude());
-//            jsonObject.put("country", myAddress.getCountryName());
-//            jsonObject.put("state", myAddress.getAdminArea());
-//            jsonObject.put("city", myAddress.getLocality());
-//            jsonObject.put("street", myAddress.getThoroughfare());
-//            jsonObject.put("number", "");
-//            jsonObject.put("floor", "");
-//            jsonObject.put("zipcode", myAddress.getPostalCode());
-
-            jsonObject.put("latitude", "myAddress.getLatitude()");
-            jsonObject.put("longitude", "myAddress.getLongitude()");
-            jsonObject.put("country"," myAddress.getCountryName()");
-            jsonObject.put("state", "myAddress.getAdminArea()");
-            jsonObject.put("city", "myAddress.getLocality()");
-            jsonObject.put("street", "myAddress.getThoroughfare()");
+            jsonObject.put("latitude", myAddress.getLatitude());
+            jsonObject.put("longitude", myAddress.getLongitude());
+            jsonObject.put("country", myAddress.getCountryName());
+            jsonObject.put("state", myAddress.getAdminArea());
+            jsonObject.put("city", myAddress.getLocality());
+            jsonObject.put("street", myAddress.getThoroughfare());
             jsonObject.put("number", "");
             jsonObject.put("floor", "");
-            jsonObject.put("zipcode"," myAddress.getPostalCode()");
+            jsonObject.put("zipcode", myAddress.getPostalCode());
+
+//            jsonObject.put("latitude", "myAddress.getLatitude()");
+//            jsonObject.put("longitude", "myAddress.getLongitude()");
+//            jsonObject.put("country"," myAddress.getCountryName()");
+//            jsonObject.put("state", "myAddress.getAdminArea()");
+//            jsonObject.put("city", "myAddress.getLocality()");
+//            jsonObject.put("street", "myAddress.getThoroughfare()");
+//            jsonObject.put("number", "");
+//            jsonObject.put("floor", "");
+//            jsonObject.put("zipcode"," myAddress.getPostalCode()");
 
 
         } catch (JSONException e) {
@@ -212,9 +213,13 @@ public class JsonUtils {
                         JSONArray itemListArray = storeObject.getJSONArray("items");
                         for (int i = 0; i < itemListArray.length(); i++) {
                             store.itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+                            if(store.itemList.get(i)==null){
+                                Log.v("myerror","fail to get store item");
+                            }
                         }
                     } else if (itemsObject instanceof JSONObject) {
                         //TODO: this is for {'ERROR': 'item not found!'} situation
+                        store.itemList.clear();
                     }
                 }
                 store.StoreDescription = storeObject.getString("StoreDescription");
@@ -255,12 +260,17 @@ public class JsonUtils {
                 }
                 item.itemPrice = itemObject.getDouble("ItemPrice");
                 item.itemDescription = itemObject.getString("ItemDescription");
-                String base64String = itemObject.getString("ItemImage");
-                byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
-                item.image = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                if(itemObject.getString("ItemImage")=="Not Found"){
+                    item.image = null;
+                }
+                else{
+                    String base64String = itemObject.getString("ItemImage");
+                    byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
+                    item.image = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                }
                 item.itemStoreId = itemObject.getInt("ItemStoreId");
                 item.itemStoreName = itemObject.getString("ItemStoreName");
-                item.customerVisits = itemObject.getInt("customerVisits");
+//                item.customerVisits = itemObject.getInt("customerVisits");
             }
             return item;
         } catch (JSONException e) {
@@ -296,10 +306,19 @@ public class JsonUtils {
             }
             else{
                 huntedStoreIdList.clear();
-                JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("HuntedStoreIdList");
-                for (int i = 0; i < huntedStoreIdListArray.length(); i++) {
-                    huntedStoreIdList.add(new HistoryVisit(huntedStoreIdListArray.getJSONObject(i).getInt("StoreId"),huntedStoreIdListArray.getJSONObject(i).getString("VisitTime")));
+                if (jsonObject.has("HuntedStoreIdList")) {
+                    Object itemsObject = jsonObject.get("HuntedStoreIdList");
+
+                    if (itemsObject instanceof JSONArray) {
+                        JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("HuntedStoreIdList");
+                        for (int i = 0; i < huntedStoreIdListArray.length(); i++) {
+                            huntedStoreIdList.add(new HistoryVisit(huntedStoreIdListArray.getJSONObject(i).getInt("StoreId"),huntedStoreIdListArray.getJSONObject(i).getString("VisitTime")));
+                        }
+                    } else if (itemsObject instanceof JSONObject) {
+                        //TODO: this is for {'ERROR': "No History to show"} situation
+                    }
                 }
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -325,6 +344,7 @@ public class JsonUtils {
                         }
                     } else if (itemsObject instanceof JSONObject) {
                         //TODO: this is for {'ERROR': 'item not found!'} situation
+                        itemList.clear();
                     }
                 }
             }
