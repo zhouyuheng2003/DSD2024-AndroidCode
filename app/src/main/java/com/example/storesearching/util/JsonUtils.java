@@ -74,7 +74,7 @@ public class JsonUtils {
                 HistoryVisit.put("VisitTime",id.dataTime);
                 HuntedStoreIdList.put(HistoryVisit);
             }
-            jsonObject.put("HuntedStoreIdList", HuntedStoreIdList);
+            jsonObject.put("History", HuntedStoreIdList);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -306,11 +306,11 @@ public class JsonUtils {
             }
             else{
                 huntedStoreIdList.clear();
-                if (jsonObject.has("HuntedStoreIdList")) {
-                    Object itemsObject = jsonObject.get("HuntedStoreIdList");
+                if (jsonObject.has("History")) {
+                    Object itemsObject = jsonObject.get("History");
 
                     if (itemsObject instanceof JSONArray) {
-                        JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("HuntedStoreIdList");
+                        JSONArray huntedStoreIdListArray = jsonObject.getJSONArray("History");
                         for (int i = 0; i < huntedStoreIdListArray.length(); i++) {
                             huntedStoreIdList.add(new HistoryVisit(huntedStoreIdListArray.getJSONObject(i).getInt("StoreId"),huntedStoreIdListArray.getJSONObject(i).getString("VisitTime")));
                         }

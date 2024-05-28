@@ -90,6 +90,8 @@ public class DataManager {
         JsonUtils.parseInterface6JsonObject(Json,users.get(currentUserId).itemList);
     }
     public void updateHuntedStoreIdList(int index) throws JSONException,MyCustomException {
+        String userName = users.get(currentUserId).UserName;
+        if(userName=="")return;
         Integer currentId;
         if(DataManager.searchMode ==0) currentId = users.get(currentUserId).storeList.get(index).storeId;
         else currentId = users.get(currentUserId).recommendStoreList.get(index).storeId;
@@ -97,7 +99,6 @@ public class DataManager {
         boolean updateFlag = true;
         WebServiceManager webServiceManager = WebServiceManager.getInstance();
         int interfaceId = 5;
-        String userName = users.get(currentUserId).UserName;
         String JsonString = webServiceManager.getJson(interfaceId, userName);
         while(JsonString == ""){
             JsonString = webServiceManager.getJson(interfaceId, userName);
