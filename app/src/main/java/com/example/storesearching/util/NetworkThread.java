@@ -27,6 +27,7 @@ public class NetworkThread extends Thread {
     @Override
     public void run() {
         boolean recieveSign = false;
+        Log.v("val",Json);
         if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
                 interfaceId == 11 || interfaceId == 12)recieveSign = true;
 //      recieveSign = true;//This sign is for testing the interface without output
@@ -47,7 +48,7 @@ public class NetworkThread extends Thread {
 //                else if(interfaceId==11)interfaceKind = "Customer";
 //                else if(interfaceId==12)interfaceKind = "Registration";
 //                url = new URL(databaseApiUrl + interfaceKind);
-                url = new URL(apiUrl + "interface" + interfaceId);
+                url = new URL(databaseApiUrl + "interface" + interfaceId);
             }
             else{
                 url = new URL(apiUrl + interfaceId);
@@ -60,6 +61,7 @@ public class NetworkThread extends Thread {
             if(recieveSign)connection.setDoOutput(true);
             else connection.setDoOutput(false);
             connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
 
             DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
 
@@ -72,6 +74,7 @@ public class NetworkThread extends Thread {
                 int responseCode = connection.getResponseCode();
 //                result = "res is " + responseCode;
                 StringBuilder response = new StringBuilder();
+                Log.v("val","get"+(responseCode));
                 if (responseCode == HttpURLConnection.HTTP_OK ) {
                     BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                     String inputLine;
@@ -89,15 +92,19 @@ public class NetworkThread extends Thread {
                     }
                     in.close();
                     result = "Error";
+//                    result = response.toString();
                 }
 
-                int maxLogSize = 1000;
-                for(int i = 0; i <= result.length() / maxLogSize; i++) {
-                    int start = i * maxLogSize;
-                    int end = (i+1) * maxLogSize;
-                    end = end > result.length() ? result.length() : end;
-                    Log.v("val", result.substring(start, end));
-                }
+//                int maxLogSize = 1000;
+//                for(int i = 0; i <= result.length() / maxLogSize; i++) {
+//                    int start = i * maxLogSize;
+//                    int end = (i+1) * maxLogSize;
+//                    end = end > result.length() ? result.length() : end;
+//                    Log.v("val", result.substring(start, end));
+//                }
+                Log.v("val","get"+result);
+                Log.v("val",url.toString());
+
                 if(interfaceId == 1 || interfaceId == 3 || interfaceId == 5 ||interfaceId == 6 || interfaceId == 7 ||
                         interfaceId == 11 || interfaceId == 12);
                 else {

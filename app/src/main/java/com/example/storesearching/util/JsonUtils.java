@@ -3,6 +3,7 @@ package com.example.storesearching.util;
 import com.example.storesearching.DataManager;
 import com.example.storesearching.HistoryVisit;
 import com.example.storesearching.Item;
+import com.example.storesearching.MyCustomException;
 import com.example.storesearching.Store;
 import com.example.storesearching.myLocation;
 
@@ -202,9 +203,19 @@ public class JsonUtils {
                 store.storeId = storeObject.getInt("storeId");
                 store.storeName = storeObject.getString("storeName");
                 store.location = JSONObjectToLocation(storeObject.getJSONObject("location"));
-                JSONArray itemListArray = storeObject.getJSONArray("items");
-                for (int i = 0; i < itemListArray.length(); i++) {
-                    store.itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+
+
+                if (storeObject.has("items")) {
+                    Object itemsObject = storeObject.get("items");
+
+                    if (itemsObject instanceof JSONArray) {
+                        JSONArray itemListArray = storeObject.getJSONArray("items");
+                        for (int i = 0; i < itemListArray.length(); i++) {
+                            store.itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+                        }
+                    } else if (itemsObject instanceof JSONObject) {
+                        //TODO: this is for {'ERROR': 'item not found!'} situation
+                    }
                 }
                 store.StoreDescription = storeObject.getString("StoreDescription");
             }
@@ -304,9 +315,17 @@ public class JsonUtils {
             else{
 //                Log.d("LastGetContent", "LastGet content: " + jsonObject);
                 itemList.clear();
-                JSONArray itemListArray = jsonObject.getJSONArray("ItemList");
-                for (int i = 0; i < itemListArray.length(); i++) {
-                    itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+                if (jsonObject.has("ItemList")) {
+                    Object itemsObject = jsonObject.get("ItemList");
+
+                    if (itemsObject instanceof JSONArray) {
+                        JSONArray itemListArray = jsonObject.getJSONArray("ItemList");
+                        for (int i = 0; i < itemListArray.length(); i++) {
+                            itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+                        }
+                    } else if (itemsObject instanceof JSONObject) {
+                        //TODO: this is for {'ERROR': 'item not found!'} situation
+                    }
                 }
             }
         } catch (JSONException e) {
