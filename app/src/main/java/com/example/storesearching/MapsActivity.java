@@ -95,12 +95,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void updateMap(){
         mMap.clear();
         String[][] store = getData();
+        LatLng location = null;
 
         for (int i = 0; i < store.length; i++) {
             double lat = stringToDouble(store[i][1]);
             double lng = stringToDouble(store[i][2]);
-            LatLng location = new LatLng(lat, lng);
-            Marker marker = mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]).snippet(store[i][3]));
+            location = new LatLng(lat, lng);
+            Marker marker;
+            if (store[i].length > 3 && store[i][3] != null && !store[i][3].isEmpty()){
+                marker = mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]).snippet(store[i][3]));
+            }
+            else{
+                marker = mMap.addMarker(new MarkerOptions().position(location).title(store[i][0]).snippet(""));
+            }
             String[] storeInfo = store[i];
             marker.setTag(storeInfo);
         }
@@ -109,6 +116,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(this);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
+
         if(TestLocationActivity.TencentSign && DataManager.ChinaSign) {
             LatLng customLocation = new LatLng(TestLocationActivity.TencentLatitude, TestLocationActivity.TencentLongtitude); // 示例经纬度，需替换为实际自定义位置
             double accuracy = TestLocationActivity.TencentAccuracy;
@@ -143,7 +151,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
             mMap.setMyLocationEnabled(true);
 
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()), 12.0f));
+            if(store.length == 1 && location != null)
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12.0f));
+            else
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 12.0f));
             //TestLocationActivity
             mMap.setOnMarkerClickListener((GoogleMap.OnMarkerClickListener) this);
         }
