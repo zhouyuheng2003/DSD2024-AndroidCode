@@ -94,7 +94,7 @@ public class TestLocationActivity {
                         TencentLongtitude=location.getLongitude();
                         TencentAccuracy=location.getAccuracy();
                         if(MapsActivity.instance!=null){
-                            MapsActivity.instance.updateMap(0);
+                            MapsActivity.instance.updateMap();
                         }
                     } else {
                         str += "(*," + error + "," + reason + ")";

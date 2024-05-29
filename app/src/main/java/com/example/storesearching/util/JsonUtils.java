@@ -341,6 +341,9 @@ public class JsonUtils {
                         JSONArray itemListArray = jsonObject.getJSONArray("ItemList");
                         for (int i = 0; i < itemListArray.length(); i++) {
                             itemList.add(JSONObjectToItem(itemListArray.getJSONObject(i)));
+                            if(itemList.get(i)==null){
+                                Log.v("val","fail to get item list");
+                            }
                         }
                     } else if (itemsObject instanceof JSONObject) {
                         //TODO: this is for {'ERROR': 'item not found!'} situation

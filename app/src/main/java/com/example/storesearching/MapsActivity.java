@@ -92,7 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return Double.parseDouble(str);
     }
 
-    public void updateMap(int flag){
+    public void updateMap(){
         mMap.clear();
         String[][] store = getData();
 
@@ -129,8 +129,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addCircle(circleOptions);
 
             // 移动相机到自定义位置
-            if(flag==1){
+            if(DataManager.RedirectSign){
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(customLocation, 12.0f));
+                DataManager.RedirectSign = false;
             }
 
 
@@ -150,7 +151,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        updateMap(1);
+        updateMap();
     }
 
     @Override

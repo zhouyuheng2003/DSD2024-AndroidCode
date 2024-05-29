@@ -22,6 +22,10 @@ public class DataManager {
     public static boolean ChinaSign = false;
 
     public static boolean IntegrationTestingSign = true;//true means use database server
+
+
+
+    public static boolean RedirectSign= true;
     public static int searchMode = 0;//modified by HomeFragment
     private static DataManager instance;
     public int currentUserId, usedUserId;
