@@ -21,7 +21,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -94,7 +96,14 @@ public class TestLocationActivity {
                         TencentLongtitude=location.getLongitude();
                         TencentAccuracy=location.getAccuracy();
                         if(MapsActivity.instance!=null){
-                            MapsActivity.instance.updateMap();
+                            Handler mainHandler = new Handler(Looper.getMainLooper());
+                            mainHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    MapsActivity.instance.updateMap();
+                                }
+                            });
+
                         }
                     } else {
                         str += "(*," + error + "," + reason + ")";
