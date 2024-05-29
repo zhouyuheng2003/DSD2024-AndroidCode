@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class DataManager {
     public static double distanceLimit = 2;
-    public static boolean testSign = true;//false means use unit test server, true means use local data
-    public static boolean ChinaSign = false;
+    public static boolean testSign = false;//false means use unit test server, true means use local data
+    public static boolean ChinaSign = true;
 
     public static boolean IntegrationTestingSign = true;//true means use database server
 

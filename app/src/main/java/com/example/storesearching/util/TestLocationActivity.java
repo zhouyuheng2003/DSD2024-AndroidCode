@@ -111,7 +111,7 @@ public class TestLocationActivity {
                 } else {
                     str += "(null," + error + "," + reason + ")";
                 }
-                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
                 Log.v("TAG", "访问成功");
             }
 

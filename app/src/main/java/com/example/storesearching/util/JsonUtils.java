@@ -26,23 +26,23 @@ public class JsonUtils {
         try {
             jsonObject.put("latitude", myAddress.getLatitude());
             jsonObject.put("longitude", myAddress.getLongitude());
-            jsonObject.put("country", myAddress.getCountryName());
-            jsonObject.put("state", myAddress.getAdminArea());
-            jsonObject.put("city", myAddress.getLocality());
-            jsonObject.put("street", myAddress.getThoroughfare());
-            jsonObject.put("number", "");
-            jsonObject.put("floor", "");
-            jsonObject.put("zipcode", myAddress.getPostalCode());
+//            jsonObject.put("country", myAddress.getCountryName());
+//            jsonObject.put("state", myAddress.getAdminArea());
+//            jsonObject.put("city", myAddress.getLocality());
+//            jsonObject.put("street", myAddress.getThoroughfare());
+//            jsonObject.put("number", "");
+//            jsonObject.put("floor", "");
+//            jsonObject.put("zipcode", myAddress.getPostalCode());
 
 //            jsonObject.put("latitude", "myAddress.getLatitude()");
 //            jsonObject.put("longitude", "myAddress.getLongitude()");
-//            jsonObject.put("country"," myAddress.getCountryName()");
-//            jsonObject.put("state", "myAddress.getAdminArea()");
-//            jsonObject.put("city", "myAddress.getLocality()");
-//            jsonObject.put("street", "myAddress.getThoroughfare()");
-//            jsonObject.put("number", "");
-//            jsonObject.put("floor", "");
-//            jsonObject.put("zipcode"," myAddress.getPostalCode()");
+            jsonObject.put("country"," myAddress.getCountryName()");
+            jsonObject.put("state", "myAddress.getAdminArea()");
+            jsonObject.put("city", "myAddress.getLocality()");
+            jsonObject.put("street", "myAddress.getThoroughfare()");
+            jsonObject.put("number", "");
+            jsonObject.put("floor", "");
+            jsonObject.put("zipcode"," myAddress.getPostalCode()");
 
 
         } catch (JSONException e) {

@@ -70,6 +70,7 @@ public class NetworkThread extends Thread {
             outputStream.flush();
             outputStream.close();
             Log.v("val",Json);
+            Log.v("val","interfaceId:"+interfaceId);
             if(recieveSign){
                 int responseCode = connection.getResponseCode();
 //                result = "res is " + responseCode;

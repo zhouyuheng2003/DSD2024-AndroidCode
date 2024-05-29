@@ -63,7 +63,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLocation = location;
+                    if(TestLocationActivity.TencentSign && DataManager.ChinaSign== false){
 
+                    }
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
                     mapFragment.getMapAsync(MapsActivity.this);
                 }
