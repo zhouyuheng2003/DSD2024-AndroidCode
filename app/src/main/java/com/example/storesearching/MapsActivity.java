@@ -95,7 +95,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void updateMap(){
-        mMap.clear();
+        if (mMap != null) {
+            mMap.clear();
+        }
+
         String[][] store = getData();
         LatLng location = null;
 

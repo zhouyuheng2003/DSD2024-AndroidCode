@@ -117,8 +117,8 @@ public class TestLocationActivity {
 
             @Override
             public void onStatusUpdate(String name, int status, String desc) {
-                String str = name + "," + status + "," + desc + "," + Thread.currentThread().getName();
-                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+                //String str = name + "," + status + "," + desc + "," + Thread.currentThread().getName();
+                //Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
                 Log.v("TAG", "访问成功3");
             }
         };
